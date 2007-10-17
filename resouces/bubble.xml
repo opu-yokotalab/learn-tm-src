@@ -1,68 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xtdl>
-  <section title="バブルソート" id="bs1">
-    <section title="バブルソート" id="bs1.1">
-      <explanation title="" id="bs1.1.e1">
-        <div style="font-size:13pt;">
-				多くのソートアルゴリズムの中で、直感的に最も理解しやすいのは、バブルソートでしょう。<br />
-				バブルとは「泡」のことで、並べ替えの過程でデータが下から上へ移動する様子が、泡が浮かんでいくように見えることからこの名前があります。<br /></div>
-      </explanation>
-    </section>
-    <section title="考え方" id="bs1.2">
-      <explanation title="" id="bs1.2.e1">
-        <div style="font-size:13pt">
-				バブルソートのアルゴリズムは直感的であり、理解するのは容易です。<br />
-				N個の数値データが、1個ずつ箱に入って並べてあります。ただし、数字はばらばらな順番で格納されているものとします。<br />
-例えば、次のようです。<br /><div class="fig"><img src="/~learn/images/bubble-sort-image.jpg" alt="" /><br /><span style="font-weight:bold">図1　バブルソート</span></div><br />
-				バブルソートアルゴリズムを使ってこの数字を並べ替えるための、基本的な方針は次の通りです。
-<div class="deco_01">
-				上の要素と比較し、上のほうが大きければ互いに交換するこれを、下から順番にやっていきます。
-</div>
-				そうすると、小さい数字は交換されて上に順々に上がってきます。<br /><br />
-				一番下から一番上まで1回通ると、一番小さい数字が一番上に上がってきているはずです。<br /><br />
-				次に、一番上を除いて、もう1回同じことを繰り返します。<br />
-				そうすると、今度は2番目に小さい数字が2番目まで上がって来ます。（一番上は、操作から外れているので変化しません）<br />
-				もう1回やると、3番目が上がってきます。もう1回やると、4番目も上がってきます。以下、同様です。<br />
-				最後までやれば、並べ替えは終了です。簡単ですね。
-				</div>
-      </explanation>
-    </section>
-    <section title="アルゴリズム" id="bs1.3">
-      <explanation title="" id="bs1.3.e1">
-				C言語で書かれたバブルソートアルゴリズムを以下に示します。<br /><div class="fig"><img src="/~learn/images/bubble-sort-source.jpg" alt="" /></div></explanation>
-    </section>
-    <section title="バブルの動作" id="bs1.4">
-      <explanation title="" id="qs1.4.e1">
-        <div style="font-size:13pt">
-				バブルソートを可視化して行うアプレットを、下に示します。<br /><div style="margin:10px"><applet codebase="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/java/" code="SortApplet.class" width="500" height="300"><param name="sort" value="Bubble" /></applet></div>
-
-
-				このアプレットは、スタートするとランダムに並んだ長さの異なるデータを短い順に並べ替えます。<br />
-				この程度の並べ替えならば、たとえ遅いと言われるバブルソートを利用しても一瞬で終わってしまうのですが、並べ替えの過程を目で追えるようにスピードを調節できるようになっています。<br />
-				各部品の機能は以下の通りです。<br /><img src="/~learn/images/applet_explanation.jpg" /></div>
-      </explanation>
-    </section>
-    <section title="計算時間の評価" id="bs1.5">
-      <explanation title="" id="bs1.5.e1">
-        <div style="font-size:13pt">
-				最後に、バブルソートに要する時間量について考えてみましょう。<br />
-				バブルソートの基本となっている処理は、2つのデータの入れ替えです。<br />
-【アルゴリズム1】のコードの中では、もっとも深いループの底の部分です。<br />
-この処理を何回繰り返すかによって、バブルソートに要する時間量を評価することができます。<br />
-				この回数を数えてみると、データ数を N として、
-				<ol class="list"><li>もっとも小さいデータを一番上まで運ぶのに N-1 回 </li><li>2番目のデータを上から2番目まで運ぶのに N-2 回 </li><li>3番目のデータを上から3番目まで運ぶのに N-3 回 </li><li>: </li><li>: </li><li>最後から2番目のデータを下から2番目に運ぶのに 1 回 </li></ol>
-				となりますから、合計、
-				<blockquote style="font-weight:bold;">
-					(N-1) + (N-2) + (N-3) + … + 2 + 1 = N(N-1)/2<br /></blockquote>
-				となり、<span style="font-weight:bold;color:red;">オーダーは O(N2)</span> となります。<br />
-				また、平均的な場合として、すべて異なる一様分布のデータに対しては、O(N log(N)) になることが知られています。<br /></div>
-      </explanation>
-    </section>
-  </section>
   <section title="バブルソート" id="bsH1">
-    <section title="バブルソート" id="bsH1.1">&lt;explanation title="" id="bsH1.1.e1"&gt;&lt;div style="font-size:13pt;"&gt;
-				多くのソートアルゴリズムの中で、直感的に最も理解しやすいのは、バブルソートでしょう。&lt;br /&gt;
-				バブルとは「泡」のことで、並べ替えの過程でデータが下から上へ移動する様子が、泡が浮かんでいくように見えることからこの名前があります。&lt;br /&gt;&lt;/div&gt;&lt;/explanation&gt;</section>
+    <section title="バブルソート" id="bsH1.1">
+    <explanation title="" id="bsH1.1.e1">
+    <div style="font-size:13pt;">
+	多くのソートアルゴリズムの中で、直感的に最も理解しやすいのは、バブルソートでしょう。<br />
+	バブルとは「泡」のことで、並べ替えの過程でデータが下から上へ移動する様子が、泡が浮かんでいくように見えることからこの名前があります。<br />
+	</div>
+	</explanation>
+	</section>
     <section title="考え方" id="bsH1.2">
       <explanation title="" id="bsH1.2.e1">
         <div style="font-size:13pt">
@@ -75,8 +21,47 @@
     </section>
     <section title="アルゴリズム" id="bsH1.3">
       <explanation title="" id="bsH1.3.e1">
-				C言語で書かれたバブルソートアルゴリズムを以下に示します。<br /><div class="fig"><img src="/~learn/images/bubble-sort-source2.jpg" alt="" /></div>
-                                ただし、このプログラムはバブルソートの部分だけなので、実際に動かす場合には書き加えなければいけません。
+				C言語で書かれたバブルソートのプログラムを以下に示します。<br />
+				<blockquote title="ProgramList「BubbleSort」">
+				<pre>
+#include&lt;stdio.h&gt;
+void BubbleSort(int*);
+int main(int, char**)
+{
+	int array[] = {10, 5, 38, 15, 2, 49, 5, 24, 67, 14};//要素は仮に10個としよう！
+	BubbleSort(array);//ここでソートして
+	printf("\n");
+	for (int i=0; i&lt;10; i++) printf("%d, ", array[i]);//結果表示
+	return 0;
+}
+
+void BubbleSort(int *array)
+{
+	int temp, count;
+	do{
+		count = 0;//ここでカウンタをクリア
+		for(int i=0; i&lt;10; i++){
+			if (array[i] &gt; array[i+1]){
+				temp = array[i];
+				array[i] = array[i+1];
+				array[i+1] = temp;
+				count++;//交換がされたか管理するカウンタ
+			}
+		}
+		for (int j=0; j&lt;10; j++) printf("%d, ", array[j]);//途中経過を表示
+		printf("\n");
+
+	}while(count != 0);//交換回数０の場合のみ脱出（０以外はループへGO！）
+
+	return;
+}
+</pre>
+				</blockquote>
+				
+				<div class="fig">
+				<img src="/~learn/images/bubble-sort-source2.jpg" alt="" />
+				</div>
+                ただし、このプログラムはバブルソートの部分だけなので、実際に動かす場合には書き加えなければいけません。
       </explanation>
     </section>
     <section title="バブルの動作" id="bsH1.4">
