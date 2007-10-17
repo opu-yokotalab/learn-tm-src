@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xtdl>
   <section title="バブルソート" id="bsH1">
-    <section title="バブルソート" id="bsH1.1">
-    <explanation title="" id="bsH1.1.e1">
-    <div style="font-size:13pt;">
+    <section title="バブルソートについて" id="bsH1.1">
+      <explanation title="" id="bsH1.1.e1">
+        <div style="font-size:13pt;">
 	多くのソートアルゴリズムの中で、直感的に最も理解しやすいのは、バブルソートでしょう。<br />
-	バブルとは「泡」のことで、並べ替えの過程でデータが下から上へ移動する様子が、泡が浮かんでいくように見えることからこの名前があります。<br />
-	</div>
-	</explanation>
-	</section>
-    <section title="考え方" id="bsH1.2">
+	バブルとは「泡」のことで、並べ替えの過程でデータが下から上へ移動する様子が、泡が浮かんでいくように見えることからこの名前があります。<br /></div>
+      </explanation>
+    </section>
+    <section title="基本的な考え方" id="bsH1.2">
       <explanation title="" id="bsH1.2.e1">
         <div style="font-size:13pt">
 				バブルソートの流れは次のようになります。 <br /><br />
@@ -19,11 +18,9 @@
                                 1)から3)まで手順をデータの個数回だけ繰り返せば、データが整列されます。 以下に例を示します。<br /><br /><table border="1" frame="box" align="center"><tr><td align="center">元のデータ</td><td>15</td><td>9</td><td>7</td><td>23</td><td>3</td><td>1</td><td>30</td><td>19</td></tr><tr></tr><tr><td>(手順：1) 1つ目と2つ目の比較</td><td>(15)</td><td>(9)</td><td>7</td><td>23</td><td>3</td><td>1</td><td>30</td><td>19</td></tr><tr><td>(手順：2) 2つ目が小さいので交換</td><td>(9)</td><td>(15)</td><td>7</td><td>23</td><td>3</td><td>1</td><td>30</td><td>19</td></tr><tr><td>(手順：3) 2つ目と3つ目の比較</td><td>9</td><td>(15)</td><td>(7)</td><td>23</td><td>3</td><td>1</td><td>30</td><td>19</td></tr><tr><td>(手順：4) 3つ目が小さいので交換</td><td>9</td><td>(7)</td><td>(15)</td><td>23</td><td>3</td><td>1</td><td>30</td><td>19</td></tr><tr><td>(手順：5) 3つ目と4つ目の比較</td><td>9</td><td>7</td><td>(15)</td><td>(23)</td><td>3</td><td>1</td><td>30</td><td>19</td></tr><tr><td>(手順：6) 4つ目が大きいのでそのまま</td><td>9</td><td>7</td><td>(15)</td><td>(23)</td><td>3</td><td>1</td><td>30</td><td>19</td></tr><tr><td align="center">・</td></tr><tr><td align="center">・</td></tr><tr><td align="center">・</td></tr><tr><td align="center">1巡目</td><td>9</td><td>7</td><td>15</td><td>3</td><td>1</td><td>23</td><td>19</td><td>30</td></tr><tr><td align="center">・</td></tr><tr><td align="center">手順を繰り返す</td></tr><tr><td align="center">・</td></tr><tr><td align="center">2巡目</td><td>7</td><td>9</td><td>3</td><td>1</td><td>15</td><td>19</td><td>23</td><td>30</td></tr><tr><td align="center">・</td></tr><tr><td align="center">・</td></tr><tr><td align="center">・</td></tr><tr><td align="center">完成</td><td>1</td><td>3</td><td>7</td><td>9</td><td>15</td><td>19</td><td>23</td><td>30</td></tr></table></div>
       </explanation>
     </section>
-    <section title="アルゴリズム" id="bsH1.3">
+    <section title="サンプルプログラム" id="bsH1.3">
       <explanation title="" id="bsH1.3.e1">
-				C言語で書かれたバブルソートのプログラムを以下に示します。<br />
-<blockquote style="width:600px;" title="ProgramList「BubbleSort」">
-<pre>
+				C言語で書かれたバブルソートのプログラムを以下に示します。<br /><blockquote style="width:600px;" title="ProgramList「BubbleSort」"><pre>
 #include&lt;stdio.h&gt;
 void BubbleSort(int*);
 int main(int, char**)
@@ -60,11 +57,9 @@ void BubbleSort(int *array)
   }while(count != 0);
   return;
 }
-</pre>
-</blockquote>
-      </explanation>
+</pre></blockquote></explanation>
     </section>
-    <section title="バブルの動作" id="bsH1.4">
+    <section title="バブルソートの実行例" id="bsH1.4">
       <explanation title="" id="qs1.4.e1">
         <div style="font-size:13pt">
 				バブルソートを可視化して行うアプレットを、下に示します。<br /><div style="margin:10px"><applet codebase="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/java/" code="SortApplet.class" width="500" height="300"><param name="sort" value="Bubble" /></applet></div>このアプレットは、スタートするとランダムに並んだ長さの異なるデータを短い順に並べ替えます。<br />この程度の並べ替えならば、たとえ遅いと言われるバブルソートを利用しても一瞬で終わってしまうのですが、並べ替えの過程を目で追えるようにスピードを調節できるようになっています。<br />
