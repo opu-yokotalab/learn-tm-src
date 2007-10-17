@@ -1,0 +1,20 @@
+<examination title="確認テスト" id="test_000" ordering="_random">
+    <group id="q1" mark="20">
+        <item id="q1_0" type="0">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+    </group>
+    <group id="q2" mark="30">
+        <item id="q2_0" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+    </group>
+    <group id="q3" mark="50">
+        <item id="q3_0" type="0">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+    </group>
+</examination>
