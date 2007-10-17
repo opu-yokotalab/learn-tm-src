@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xtdl>
+
+  <section title="再帰" id="saiki1">
+    <section title="解説" id="saiki1.1">
+      <explanation title="テキスト" id="saiki1.1.1">
+         再帰呼び出し（さいきよびだし）は、プログラミング技法の一つである。リカーシブ、リカーシブ・コールなどともいう。<br />
+        <br />
+         手続きや関数といった概念を持つプログラミング言語では、ある手続き中で再びその手続き自身を呼び出す事を認める場合が多い。これを再帰呼び出しといい、階乗計算やフィボナッチ数列のように、本来再帰的な構造を持つアルゴリズム（再帰的アルゴリズム）を記述するのに適している。再帰のことを帰納という場合もある。
+      </explanation>
+    </section>
+    <section title="再帰プログラム(階乗)" id="saiki1.2">
+      <explanation title="テキスト" id="saiki1.2.1">
+再帰プログラムの例として，階乗関数があります。階乗関数 ｎ！は 
+	<blockquote style="font-weight:bold;">
+ｎ！＝１・２・３・・・(n-1)・ｎ 
+</blockquote>
+で定義されるものです。
+このとき、
+<blockquote style="font-weight:bold;">
+０！＝１， <br />
+ｎ＞０　のとき，　ｎ！＝（ｎ－１）！・ｎ 
+</blockquote>
+と考えることができます。 
+      　</explanation>
+      <explanation title="テキスト" id="saiki1.2.2">
+この考えをもとに３！を計算してみると，次のようになります。 
+<blockquote style="font-weight:bold;">
+３＞０だから，　３！＝２！＊３　 
+</blockquote>
+
+ここで，２！を計算する。 
+<blockquote style="font-weight:bold;">
+２＞０だから，２！＝１！＊２ 
+</blockquote>
+
+ここで１！を計算する。 
+<blockquote style="font-weight:bold;">
+１＞０だから，１！＝０！＊１ 
+</blockquote>
+
+ここで０！＝１である。これを使って，上の計算を逆にたどる。 
+<blockquote style="font-weight:bold;">
+１！＝０！＊１＝１＊１＝１ <br />
+２！＝１！＊２＝１＊２＝１ <br />
+３！＝２！＊３＝２＊３＝６ 
+</blockquote>
+
+このようにして３！が計算されます。 
+      　</explanation>
+      <explanation title="C言語" id="saiki1.2.3">
+        <div style="font-size:13pt">
+         /* 階乗n!を計算する */ <br />
+         int fact(int n) { <br />
+            if (n==0)  return 1; /* 脱出条件。0!は1である */ <br />
+            else return fact(n-1)*n; /* n!は(n-1)!にnを乗じたもの。再帰呼び出し */ <br />
+         }
+</div>
+      </explanation>
+      <explanation title="C言語補足" id="saiki1.1.4">
+        なお、処理を中断・終了する条件（下の例では引数 n が0である場合）が必ず一つは必要で、その部分が間違っていると無限に関数を呼び出してしまう場合がある
+        </explanation>
+    </section>
+    <section title="再帰プログラム(フィボナッチ)" id="saiki1.3">
+      <explanation title="テキスト" id="saiki1.3.1">
+別の例を挙げてみましょう。
+それは漸化式で定義される数列です。一般の場合も同様ですが，最も簡単な有名な例として，フィボナッチの数列を紹介します。フィボナッチの数列 F(n) は次のように定義されるものです。
+<blockquote style="font-weight:bold;">
+F(1)=1， F(2)=1， n&gt;2 のとき F(n)=F(n-1)+F(n-2)
+</blockquote>
+これによると例えば，F(3)=2, F(4)=3, F(5)=5, F(6)=8, ... となります。このフィボナッチ数はかなり急速に大きくなる数で，例えば
+<blockquote style="font-weight:bold;">
+
+F(50)=12586269025
+</blockquote>
+
+となります。
+      　</explanation>
+      <explanation title="C言語" id="saiki1.3.2">
+        <div style="font-size:13pt">
+int Fibonacci(int n) { <br />
+  if (n==0) return 0; <br />
+  else if (n==1) return 1; <br />
+  else return Fibonacci(n-1)+Fibonacci(n-2); <br />
+}
+</div>
+        なお、処理を中断・終了する条件（下の例では引数 n が0である場合）が必ず一つは必要で、その部分が間違っていると無限に関数を呼び出してしまう場合がある
+        </explanation>
+      <explanation title="C言語" id="saiki1.3.3">
+これを再帰を使わずに書くと次のようになります。
+<div style="font-size:13pt">
+int Fibonacci(int n) { <br />
+  int a=1 , b=1 , c;<br />
+  int i;<br />
+          <br />
+  for(i=3;i＜=n;i++){<br />
+    c=a+b;<br />
+    b=a;<br />
+    a=c;<br />
+  }<br />
+          <br />
+  return a;<br />
+}
+</div>
+      </explanation>
+      <explanation title="計算量" id="saiki1.3.3_1">
+ここで二つのプログラムの計算量を考えて見ましょう。<br />
+
+フィボナッチ数列の計算量をFB(n)とします。<br />
+再帰をつかったプログラムでは、FB(n)=FB(n-1)+FB(n-2)となります。
+詳細は省きますが、これをO(n)であらわすと
+FB(n)=O(exp^n)となります。
+<br />
+また、再帰を使わないプログラムでは3からn回までループが一つだけなので、FB(n)=n-3=O(n)となります。<br />
+        <br />
+このことからフィボナッチ数列では再帰を使わないほうが計算量が少なく、高速なプログラムといえます。
+　　　</explanation>
+    </section>
+  </section>
+  <section title="再帰" id="saiki_sample1">
+    <explanation title="解説" id="saiki_sample1.0">
+この章では再帰を学びます。サンプルプログラムを幾つか提示します。
+  </explanation>
+    <section title="階乗" id="saiki_sample1.1">
+      <explanation title="テキスト" id="sample1.1.1">
+次のプログラムは階乗を求める関数のサンプルです。<br />
+階乗関数 ｎ！は 
+<blockquote style="font-weight:bold;">
+ｎ！＝１・２・３・・・(n-1)・ｎ 
+</blockquote>
+で定義されるものです。
+      </explanation>
+      <explanation title="C言語" id="saiki_sample1.1.2">
+        <div style="font-size:13pt;">
+          <pre>
+         int fact(int n) { 
+            if (n==0)  return 1; /* 脱出条件。0!は1である */ 
+            else return fact(n-1)*n; /* n!は(n-1)!にnを乗じたもの。再帰呼び出し */ 
+         }
+</pre>
+        </div>
+      </explanation>
+    </section>
+    <section title="フィボナッチ数列" id="saiki_sample1.2">
+      <explanation title="テキスト" id="sample1.2.1">
+次はフィボナッチ数列を計算する関数のサンプルです。<br />
+フィボナッチ数列 F(n)は
+<blockquote style="font-weight:bold;">
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657... 
+</blockquote>
+の値をとる数列で、次のように定義されます。
+<blockquote style="font-weight:bold;">
+F(1)=1， F(2)=1， n&gt;2 のとき F(n)=F(n-1)+F(n-2)
+</blockquote>
+      </explanation>
+      <explanation title="C言語" id="saiki_sample1.2.2">
+        <div style="font-size:13pt;">
+          <pre>
+int Fibonacci(int n) {
+  if (n==0) return 0;
+  else if (n==1) return 1; 
+  else return Fibonacci(n-1) + Fibonacci(n-2);
+}
+</pre>
+        </div>
+      </explanation>
+    </section>
+    <section title="クイックソート" id="saiki_sample1.3">
+      <explanation title="テキスト" id="sample1.3.1">
+クイックソートをする関数のサンプルです。<br />
+クイックソートとは下記のアルゴリズムを元にしたソートです。<br />
+1. 適当な数（ピボットという）を選択する （データの中央値が望ましい） <br />
+2. ピボットより小さい数を前方、大きい数を後方に移動させる （分割） <br />
+3. 二分割された各々のデータを、それぞれソートする <br />
+      </explanation>
+      <explanation title="C言語" id="saiki_sample1.3.2">
+        <div style="font-size:13pt;">
+          <pre>
+void qsort(int v[], int left, int right)
+{
+  int i,last;
+  void swap(int v[], int i, int j);
+
+  if(left &gt;= right) return 0;
+
+  swap(v, left, (left + right)/2);
+  last = left;
+  for(i = left+1; i ＜= right; i++)
+    if (v[i] ＜ v[left]) swap(v, ++last, i);
+  swap(v, left, last);
+  qsort(v, left, last-1);
+  qsort(v, last+1, right);
+}
+
+void swap(int v[], int i, intj)
+{
+  int temp;
+
+  temp = v[i];
+  v[i] = v[j];
+  v[j] = temp;
+}
+</pre>
+        </div>
+      </explanation>
+    </section>
+  </section>
+
+</xtdl>
