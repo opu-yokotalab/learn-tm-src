@@ -2,7 +2,7 @@
     <section title="分岐と繰り返し" id="c3">
         <section title="制御文と条件式" id="c3.1">
             <explanation title="" id="c3.1.1">
-        A言語では分岐と繰り返し処理のために，下記の制御文を使用します．<br/>
+        C言語では分岐と繰り返し処理のために，下記の制御文を使用します．<br/>
                 <div class="deco_01">
           if文  switch文　　　　　　　分岐処理<br/>
 	  for文 while文 do-while文　　繰り返し処理
