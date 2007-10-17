@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module>
-<block>
-<node level="*" resource="if_state" refs="c3.2"/>
-</block>
-</module>

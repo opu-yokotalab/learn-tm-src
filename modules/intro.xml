@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<module>
-<block>
-<node level="3,4,5" resource="if_state" refs="c3.1.1"/>
-<node level="2" resource="if_state" refs="c3.1.1,c3.1.2"/>
-<node level="1" resource="if_state" refs="c3.1"/>
-</block>
-</module>
