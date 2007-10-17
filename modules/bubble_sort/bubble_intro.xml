@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 <block>
-<node level="*" resource="bubble" refs="bs1.1"/>
+<node level="*" resource="bubble" refs="bsH1.1"/>
 </block>
 </module>
