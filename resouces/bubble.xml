@@ -22,46 +22,46 @@
     <section title="アルゴリズム" id="bsH1.3">
       <explanation title="" id="bsH1.3.e1">
 				C言語で書かれたバブルソートのプログラムを以下に示します。<br />
-				<blockquote title="ProgramList「BubbleSort」">
-				<pre>
+<blockquote style="width:600px;" title="ProgramList「BubbleSort」">
+<pre>
 #include&lt;stdio.h&gt;
 void BubbleSort(int*);
 int main(int, char**)
 {
-	int array[] = {10, 5, 38, 15, 2, 49, 5, 24, 67, 14};//要素は仮に10個としよう！
-	BubbleSort(array);//ここでソートして
-	printf("\n");
-	for (int i=0; i&lt;10; i++) printf("%d, ", array[i]);//結果表示
-	return 0;
+  //要素は仮に10個としよう！
+  int array[] = {10, 5, 38, 15, 2, 49, 5, 24, 67, 14};
+  //ここでソートして
+  BubbleSort(array);
+  printf("\n");
+
+  //結果表示
+  for (int i=0; i&lt;10; i++) printf("%d, ", array[i]);
+  return 0;
 }
 
 void BubbleSort(int *array)
 {
-	int temp, count;
-	do{
-		count = 0;//ここでカウンタをクリア
-		for(int i=0; i&lt;10; i++){
-			if (array[i] &gt; array[i+1]){
-				temp = array[i];
-				array[i] = array[i+1];
-				array[i+1] = temp;
-				count++;//交換がされたか管理するカウンタ
-			}
-		}
-		for (int j=0; j&lt;10; j++) printf("%d, ", array[j]);//途中経過を表示
-		printf("\n");
+  int temp, count;
+  do{
+	count = 0;//ここでカウンタをクリア
+	for(int i=0; i&lt;10; i++){
+	  if (array[i] &gt; array[i+1]){
+	  temp = array[i];
+	  array[i] = array[i+1];
+	  array[i+1] = temp;
+	  count++;//交換がされたか管理するカウンタ
+	}
+  }
+  //途中経過を表示
+  for (int j=0; j&lt;10; j++) printf("%d, ", array[j]);
+	printf("\n");
 
-	}while(count != 0);//交換回数０の場合のみ脱出（０以外はループへGO！）
-
-	return;
+  //交換回数０の場合のみ脱出（０以外はループへGO！）
+  }while(count != 0);
+  return;
 }
 </pre>
-				</blockquote>
-				
-				<div class="fig">
-				<img src="/~learn/images/bubble-sort-source2.jpg" alt="" />
-				</div>
-                ただし、このプログラムはバブルソートの部分だけなので、実際に動かす場合には書き加えなければいけません。
+</blockquote>
       </explanation>
     </section>
     <section title="バブルの動作" id="bsH1.4">
