@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+<block>
+<node level="1,2,3" resource="bubble" refs="bs1.4"/>
+<node level="4,5" resource="bubble" refs="bs1.4,bs1.5"/>
+</block>
+</module>
