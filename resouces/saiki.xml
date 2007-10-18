@@ -2,7 +2,7 @@
 <xtdl>
   <section title="再帰呼び出し" id="saiki1">
     <section title="再帰呼び出し" id="saiki1.1">
-      <explanation title="再帰呼び出しの概要" id="saiki1.1.1">階乗 n! は次のような性質を満たす．<blockquote>n! = n・(n-1)! , 0! = 1</blockquote>ある関数のなかから, 自分自身を呼び出すことを再帰呼び出し (recursive call) という. <br />手続きや関数といった概念を持つプログラミング言語では、ある手続き中で再びその手続き自身を呼び出す事を認める場合が多い。階乗計算やフィボナッチ数列のように、本来再帰的な構造を持つアルゴリズム（再帰的アルゴリズム）を記述するのに適している。<br />再帰のことを帰納という場合もある。</explanation>
+      <explanation title="再帰呼び出しの概要" id="saiki1.1.1">階乗 n! は次のような性質を満たす．<blockquote>n! = n・(n-1)! , 0! = 1</blockquote>ある関数のなかから, 自分自身を呼び出すことを<strong>再帰呼び出し (recursive call)</strong>という。<br />手続きや関数といった概念を持つプログラミング言語では、ある手続き中で再びその手続き自身を呼び出す事を認める場合が多い。階乗計算やフィボナッチ数列のように、本来再帰的な構造を持つアルゴリズム（再帰的アルゴリズム）を記述するのに適している。<br />再帰のことを帰納という場合もある。</explanation>
       <example title="階乗計算の例" id="saiki1.1.2">再帰プログラムの例として，階乗関数がある．階乗関数 ｎ!は 	<blockquote style="font-weight:bold;">
 n!＝1・2・3.....(n-1)・ｎ 
 </blockquote>で定義される．このとき、<blockquote style="font-weight:bold;">0! = 1， <br />n &gt; 0　のとき，　n! = (n -1)!・n</blockquote>
@@ -48,7 +48,7 @@ int fact(int n){
   // 帰納段階
   if(n &gt; 0) return n * fact(n-1);
 }
-</pre></blockquote>上記のプログラムの実行結果です。<blockquote><pre>n として 3 を入力した場合
+</pre></blockquote><h4>実行結果</h4><blockquote><pre>n として 3 を入力した場合
 [******@localhost c]$ ./kaijo
 input n:3
 answer : 3! = 6
@@ -58,20 +58,49 @@ n として 4 を入力した場合
 input n:4
 answer : 4! = 24</pre></blockquote></exercise>
     </section>
-    <section title="漸化式での再帰呼び出し" id="saiki1.2">
-      <example id="saiki1.2.1" title="漸化式の例">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. 再帰をつかわないプログラムと比べて, ずいぶんすっきりかけていることに注意しよう.<blockquote><pre>int xn2(int n){
+    <section title="漸化式" id="saiki1.2">
+      <example id="saiki1.2.1" title="漸化式の例題1">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4><blockquote><pre>/* 再帰を利用した漸化式の実装例 */
+int xn2(int n){
+  /* 基底段階 */
   if(n == 0) return 0;
+
+  /* 帰納段階 */
   if(n &gt; 0) return 2*xn2(n-1)+1;
-}</pre></blockquote><br />漸化式プログラム自体は単純であるが, 実はこのような場面で再帰をもちいるのはあまり得策ではない.
-メモリや実行効率の低下があるからである.<br />関数およびその局所変数は動的に生成, 消滅を繰り返している. たとえば, 上のプログラムで xn2(4) をよぶと, xn2(3), xn2(2), xn2(1), xn2(0) がつぎつぎとよびだされ, xn2(0) の実行中には, 5 つの xn2 が実行されており, したがって局所変数 XN および 引数 N も, それぞれ 5 つ生成されている. したがって一般に, xn2(n) に対しては, 最大 n+1 個の変数領域が確保されることになる.<br />次のようなプログラムを書けば, このようなメモリの無駄使いは生じない.<blockquote><pre>int xn2(int n){
+}</pre></blockquote><br />このように再帰呼び出しを利用することで ずいぶんすっきりとしたプログラムを書くことができる。</example>
+      <exercise title="演習問題" id="1.2.2-1">上記の例題1で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
+      <exercise id="saiki1.2.2-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
+
+
+とりあえずこんなところで</pre></blockquote><h4>実行結果</h4><blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
+
+
+とりあえずこんなところで</pre></blockquote></exercise>
+      <example id="saiki1.2.3" title="漸化式の例題2">漸化式プログラム自体は単純であるが, 実はこのような場面で再帰をもちいるのはあまり得策ではない.
+メモリや実行効率の低下があるからである.関数およびその局所変数は動的に生成, 消滅を繰り返している.<br /><br />たとえば, 前節のプログラムで xn2(4) をよぶと, xn2(3), xn2(2), xn2(1), xn2(0) がつぎつぎとよびだされ, xn2(0) の実行中には, 5 つの xn2 が実行されており, したがって局所変数 XN および 引数 N も, それぞれ 5 つ生成されている. <br />
+したがって一般に, xn2(n) に対しては, 
+<strong>最大 n+1 個の変数領域</strong>
+が確保されることになる.<br /><br />次のようなプログラムを書けば, このようなメモリの無駄使いは生じない.<h4>再帰を利用しない実装例</h4><blockquote><pre>/* 再帰を利用しない漸化式の実装例 */
+int xn2(int n){
   int i,xn = 0;
+
+  /* for文を用いて求める */
   for(i=0;i&lt;n;i++){
     xn = 2*xn+1;
   }
   return xn;
 }</pre></blockquote></example>
-      <exercise title="演習問題" id="1.2.2-1">上記の例で示したサンプルを用いて、再帰を利用する場合と利用しない場合での、入出力を含めたプログラムを完成させなさい。</exercise>
-      <exercise id="saiki1.2.2-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote />実行結果<blockquote /></exercise>
+      <exercise title="演習問題" id="1.2.4-1">上記の例題2で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
+      <exercise id="saiki1.2.4-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
+
+
+とりあえずこんなところで</pre></blockquote><h4>実行結果</h4><blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
+
+
+とりあえずこんなところで</pre></blockquote></exercise>
     </section>
     <section id="saiki1.3" title="フィボナッチ数列">
       <explanation title="フィボナッチ数列" id="saiki1.3.1">フィボナッチの数列 F(n) は次のように定義されている．
@@ -83,17 +112,20 @@ F(50)=12586269025
 
 となる．
       　</explanation>
-      <example title="C言語による実装例" id="saiki1.3.2">
+      <example title="C言語による実装例" id="saiki1.3.2-1">
+        <h4>再帰を利用する場合</h4>
         <blockquote>
           <pre>int Fibonacci(int n) { 
   if (n==0) return 0; 
   else if (n==1) return 1; 
   else return Fibonacci(n-1)+Fibonacci(n-2); 
 }</pre>
-        </blockquote>なお、処理を中断・終了する条件（下の例では引数 n が0である場合）が必ず一つは必要で、その部分が間違っていると無限に関数を呼び出してしまう場合がある</example>
-      <example title="再帰を利用しない実装例" id="saiki1.3.3">
-これを再帰を使わずに書くと次のようになります。
-<blockquote><pre>int Fibonacci(int n) { 
+        </blockquote>
+      </example>
+      <example title="C言語による実装例2" id="saiki1.3.2-2">
+        <h4>再帰を利用しない場合</h4>
+        <blockquote>
+          <pre>int Fibonacci(int n) { 
   int a=1 , b=1 , c;
   int i;
   for(i=3;i＜=n;i++){
@@ -102,58 +134,216 @@ F(50)=12586269025
     a=c;
   }
   return a;
-}</pre></blockquote></example>
-      <exercise title="演習問題" id="1.3.4-1">上記の例で示したサンプルを用いて、再帰を利用する場合と利用しない場合での、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
-      <exercise id="saiki1.3.4-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote />実行結果<blockquote /></exercise>
-      <explanation title="時間計算量の比較" id="saiki1.3.5">
-ここで二つのプログラムの計算量を考えて見ましょう。<br />
+}</pre>
+        </blockquote>
+      </example>
+      <exercise title="演習問題" id="1.3.4-1">上記の例で示したサンプルプログラムを用いて、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
+      <exercise title="演習問題" id="1.3.4-2">上記の例で示したサンプルプログラムを用いて、再帰を利用する場合と利用しない場合での、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
+      <exercise id="saiki1.3.4-3" title="模範解答(再帰を利用する実装)">以下が模範解答のプログラムリストです。<blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
 
-フィボナッチ数列の計算量をFB(n)とします。<br />
-再帰をつかったプログラムでは、FB(n)=FB(n-1)+FB(n-2)となります。
-詳細は省きますが、これをO(n)であらわすと
-FB(n)=O(exp^n)となります。
-<br />
-また、再帰を使わないプログラムでは3からn回までループが一つだけなので、FB(n)=n-3=O(n)となります。<br /><br />
+
+とりあえずこんなところで</pre></blockquote><h4>実行結果</h4><blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
+
+
+とりあえずこんなところで</pre></blockquote></exercise>
+      <exercise id="saiki1.3.4-4" title="模範解答(再帰を利用しない実装)">以下が模範解答のプログラムリストです。<blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
+
+
+とりあえずこんなところで</pre></blockquote><h4>実行結果</h4><blockquote><pre>sample text
+あとでプログラムソースをいれますよ。
+
+
+とりあえずこんなところで</pre></blockquote></exercise>
+      <explanation title="時間計算量の比較" id="saiki1.3.5">
+ここで二つのプログラムの計算量を考えて見ましょう。<br /><br />フィボナッチ数列の計算量をFB(n)とします。<br />再帰をつかったプログラムでは、FB(n)=FB(n-1)+FB(n-2)となります。<br />詳細は省きますが、これをO(n)であらわすと<blockquote><pre>FB(n)=O(exp^n)</pre></blockquote>となります。<br />また、再帰を使わないプログラムでは3からn回までループが一つだけなので、<blockquote><pre>FB(n)=n-3=O(n)</pre></blockquote>となります。<br /><br />
 このことからフィボナッチ数列では再帰を使わないほうが計算量が少なく、高速なプログラムといえます。
 　　　</explanation>
     </section>
   </section>
   <section title="いろいろな応用" id="saiki2">
-    <explanation title="クイックソート" id="quick1">
-クイックソートをする関数のサンプルです。<br />
-クイックソートとは下記のアルゴリズムを元にしたソートです。<br />
-1. 適当な数（ピボットという）を選択する （データの中央値が望ましい） <br />
-2. ピボットより小さい数を前方、大きい数を後方に移動させる （分割） <br />
-3. 二分割された各々のデータを、それぞれソートする <br /></explanation>
-    <explanation title="C言語" id="quick_sample">
-      <blockquote>
-        <pre>
-void qsort(int v[], int left, int right)
+    <section id="quick" title="クイックソートへの応用">
+      <explanation title="クイックソート" id="quick1">クイックソートは、その名前が示すように非常に高速なソートアルゴリズムです。処理速度が求められる場面では必ず候補に挙がります。しかし、必ずしも常に高速であるとは限らず、ある条件下ではバブルソート並の速度にまで落ち込む可能性があります。<br></br><br />クイックソートの考え方は、全体の中から基準となる要素を１つ選び（この要素を枢軸 やピボットと呼びます）、これより小さい要素と大きい要素とに分割します。分割された２つの要素群については、更にその中で分割を行います。これを繰り返していくと、最終的には要素が１つ１つばらばらな状態にまで分割されます。この状態になったら、今度はそれを一気に結合します。分割処理は、要素の大小関係によって行われているので、最終結果を結合すれば既にソート結果が出来上がっているということです。<br></br>アルゴリズムの一例を示します。<blockquote style="width:600px;"><ol type="1"><li>ピボットとして一つ選びそれをPとする。</li><li>左から順に値を調べ、P以上のものを見つけたらその位置をiとする。</li><li>右から順に値を調べ、P以下のものを見つけたらその位置をjとする。</li><li>iがjより左にあるのならばその二つの位置を入れ替え、2に戻る。ただし、次の2での探索はiの一つ右、次の3での探索はjの一つ左から行う。</li><li>2に戻らなかった場合、iの左側を境界に分割を行って2つの領域に分け、そのそれぞれに対して再帰的に1からの手順を行う。要素数が1以下の領域ができた場合、その領域は確定とする。</li></ol></blockquote><br></br>分かりにくいかも知れませんが、重要なのは「分割」していく処理を「再帰」するという点だけです。</explanation>
+      <example title="クイックソートの動作イメージ" id="quick2">ここではクイックソートの動作イメージを掴むためのJavaアプレットを紹介します。<br />(引用元：<a href="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/index.html">いろいろなソートアルゴリズム</a>)<br /><applet codebase="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/java/" code="SortApplet.class" width="500" height="300"><param name="sort" value="Quick" /></applet><h4>操作方法</h4><img src="/~learn/images/applet_explanation.jpg" /></example>
+      <example title="クイックソートのC言語による実装例" id="quick3">ここでは再帰呼び出しを用いない実装例を紹介します。<blockquote style="width:800px;"><pre>#include &lt;stdio.h&gt;
+
+#define ARRAY_SIZE (10)
+#define STACK_SIZE (32)
+
+/* プロトタイプ宣言 */
+void quick_sort(int array[], int begin, int end);
+void print_array(int array[], int size);
+
+int main(void)
 {
-  int i,last;
-  void swap(int v[], int i, int j);
-
-  if(left &gt;= right) return 0;
-
-  swap(v, left, (left + right)/2);
-  last = left;
-  for(i = left+1; i ＜= right; i++)
-    if (v[i] ＜ v[left]) swap(v, ++last, i);
-  swap(v, left, last);
-  qsort(v, left, last-1);
-  qsort(v, last+1, right);
+  int data[ARRAY_SIZE] = { 30, 20, 60, 50, 90, 0, 40, 10, 70, 80 };
+  
+  print_array( data, ARRAY_SIZE );    /* ソート前の配列を出力 */
+  quick_sort( data, 0, ARRAY_SIZE );  /* クイックソート実行 */
+  print_array( data, ARRAY_SIZE );    /* ソート前の配列を出力 */
+  
+  return 0;
 }
 
-void swap(int v[], int i, intj)
+/*
+  昇順になるようにクイックソートを行う。
+  引数　array：ソート対象の配列。
+  　　　begin：ソート範囲の先頭の添字。
+      end：ソート範囲の末尾の添字。
+*/
+void quick_sort(int array[], int begin, int end)
 {
-  int temp;
-
-  temp = v[i];
-  v[i] = v[j];
-  v[j] = temp;
+  int i, j;
+  int work;
+  int pivot;   /* 枢軸 */
+  int left_stack[STACK_SIZE], right_stack[STACK_SIZE];  /* スタック */
+  int sp;      /* スタックポインタ */
+  int left, right;
+  
+  /* スタックを初期化する */
+  left_stack[0] = 0;
+  right_stack[0] = end - 1;
+  sp = 1;
+  
+  /* スタックが空になるまで繰り返す */
+  while( sp &gt; 0 )
+  {
+    /* ソートする範囲をスタックからポップ */
+    --sp;
+    left = left_stack[sp];
+    right = right_stack[sp];
+    
+    /* ソート範囲に含まれる要素数が１つだけなら、何もする必要はない */
+    if( left &lt; right )
+    {
+      pivot = array[ ( left + right ) / 2 ];  /* 範囲の中央にある要素を枢軸とする */
+      i = left;
+      j = right;
+      
+      while( 1 )
+      {
+        while( array[i] &lt; pivot ){ ++i; }  /* 枢軸以上の値が見つかるまで右方向へ進めていく */
+        while( array[j] &gt; pivot ){ --j; }  /* 枢軸以下の値が見つかるまで左方向へ進めていく */
+        if( i &gt;= j ){ break; }  /* 左右から進めてきたiとjがぶつかったらループを終える */
+        
+        /* 要素を交換する */
+        work = array[i];
+        array[i] = array[j];
+        array[j] = work;
+      }
+            
+      /* 左右の部分のうち、小さい方の範囲を先に処理するようにする */
+      if( i - left &lt; right - i )
+      {
+        /* 左部分の方が小さいので、先に処理できるように、スタックには右部分から積む */
+        left_stack[sp]    = i + 1;
+        right_stack[sp++] = right;
+        left_stack[sp]    = left;
+        right_stack[sp++] = i - 1;
+      }
+      else
+      {
+        /* 右部分の方が小さいので、先に処理できるように、スタックには左部分から積む */
+        left_stack[sp]    = left;
+        right_stack[sp++] = i - 1;
+        left_stack[sp]    = i + 1;
+        right_stack[sp++] = right;
+      }
+    }
+  }
 }
-</pre>
-      </blockquote>
-    </explanation>
+
+/*
+  配列の要素を出力。
+  引数　array：出力する配列。
+  　　　size：配列の要素数。
+*/
+void print_array(int array[], int size)
+{
+  int i;
+  int *p = &amp;array[0];
+  
+  for( i = 0; i &lt; size; ++i )
+  {
+    printf( "%d ", *p );
+    ++p;
+  }
+  printf( "\n\n" );
+}</pre></blockquote></example>
+      <exercise id="quick_exercise1" title="演習問題1">上記の例題で示したサンプルプログラムを各々の環境で実行し、動作を確認しなさい。</exercise>
+      <exercise id="quick_exercise2-1" title="演習問題2">再帰呼び出しを用いたクイックソートのプログラムをC言語で実装しなさい。</exercise>
+      <exercise id="quick_exercise2-2" title="模範解答">以下に、再帰呼び出しを用いたクイックソートの実装例を示します。<blockquote style="width:800px;"><pre>#include &lt;stdio.h&gt;
+
+#define ARRAY_SIZE (10)
+
+/* プロトタイプ宣言 */
+void quick_sort(int array[], int begin, int end);
+void print_array(int array[], int size);
+
+int main(void)
+{
+ int data[ARRAY_SIZE] = { 30, 20, 60, 50, 90, 0, 40, 10, 70, 80 };
+ 
+ print_array( data, ARRAY_SIZE );      /* ソート前の配列を出力 */
+ quick_sort( data, 0, ARRAY_SIZE-1 );  /* クイックソート実行 */
+ print_array( data, ARRAY_SIZE );      /* ソート前の配列を出力 */
+ 
+ return 0;
+}
+
+/*
+ 昇順になるようにクイックソートを行う。
+ 引数　array：ソート対象の配列。
+ 　　　begin：ソート範囲の先頭の添字。
+    end：ソート範囲の末尾の添字。
+*/
+void quick_sort(int array[], int begin, int end)
+{
+ int i, j;
+ int pivot;   /* 枢軸 */
+ int work;
+  
+ pivot = array[ ( begin + end ) / 2 ];  /* 範囲の中央にある要素を枢軸とする */
+ i = begin;
+ j = end;
+ 
+ while( 1 )
+ {
+  while( array[i] &lt; pivot ){ ++i; }  /* 枢軸以上の値が見つかるまで右方向へ進めていく */
+  while( array[j] &gt; pivot ){ --j; }  /* 枢軸以下の値が見つかるまで左方向へ進めていく */
+  if( i &gt;= j ){ break; }  /* 左右から進めてきたiとjがぶつかったらループを終える */
+  
+  /* 要素を交換する */
+  work = array[i];
+  array[i] = array[j];
+  array[j] = work;
+ }
+ 
+ /* 枢軸の左側に要素が２つ以上あれば、その部分についてクイックソートを再帰させる */
+ if( begin &lt; i - 1 ){ quick_sort( array, begin, i - 1 ); }
+ /* 枢軸の右側に要素が２つ以上あれば、その部分についてクイックソートを再帰させる */
+ if( j + 1 &lt; end ){ quick_sort( array, j + 1, end ); }
+}
+
+/*
+ 配列の要素を出力。
+ 引数　array：出力する配列。
+ 　　　size：配列の要素数。
+*/
+void print_array(int array[], int size)
+{
+ int i;
+ int *p = &amp;array[0];
+ 
+ for( i = 0; i &lt; size; ++i )
+ {
+  printf( "%d ", *p );
+  ++p;
+ }
+ printf( "\n\n" );
+}</pre></blockquote></exercise>
+    </section>
   </section>
 </xtdl>
