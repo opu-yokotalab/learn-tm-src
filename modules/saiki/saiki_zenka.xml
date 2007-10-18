@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 <block>
-<node level="*" resource="saiki" refs="saiki1.2"/>
+<node level="*" resource="saiki" refs="saiki1.2.1,saiki1.2.2-1"/>
+</block>
+<block>
+<node level="1,2,3" resource="saiki" refs="saiki1.2.2-2"/>
+<node level="4,5" resource="saiki" refs="saiki1.2.3,saiki1.2.4-1"/>
 </block>
 </module>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 <block>
-<node level="*" resource="saiki" refs="hanoi"/>
+<node level="*" resource="saiki" refs="hanoi1,hanoi2,hanoi3-1"/>
 </block>
+
+<block>
+<node level="1,2,3" resource="saiki" refs="hanoi3-2"/>
+</block>
+
 </module>

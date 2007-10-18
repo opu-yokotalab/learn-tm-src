@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <module>
 <block>
-<node level="*" resource="saiki" refs="quick"/>
+<node level="*" resource="saiki" refs="quick1"/>
 </block>
+
+<block>
+<node level="1,2,3" resource="saiki" refs="quick2"/>
+</block>
+
+<block>
+<node level="*" resource="saiki" refs="quick3,quick_exercise1"/>
+</block>
+
+<block>
+<node level="4,5" resource="saiki" refs="quick_exercise2-1"/>
+</block>
+
 </module>

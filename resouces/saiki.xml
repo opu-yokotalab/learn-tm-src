@@ -59,7 +59,7 @@ input n:4
 answer : 4! = 24</pre></blockquote></exercise>
     </section>
     <section title="漸化式" id="saiki1.2">
-      <example id="saiki1.2.1" title="漸化式の例題1">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4><blockquote><pre>/* 再帰を利用した漸化式の実装例 */
+      <example id="saiki1.2.1" title="漸化式の例題">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4><blockquote><pre>/* 再帰を利用した漸化式の実装例 */
 int xn2(int n){
   /* 基底段階 */
   if(n == 0) return 0;
@@ -67,7 +67,7 @@ int xn2(int n){
   /* 帰納段階 */
   if(n &gt; 0) return 2*xn2(n-1)+1;
 }</pre></blockquote><br />このように再帰呼び出しを利用することで ずいぶんすっきりとしたプログラムを書くことができる。</example>
-      <exercise title="演習問題" id="1.2.2-1">上記の例題1で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
+      <exercise title="演習問題" id="saiki1.2.2-1">上記の例題1で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
       <exercise id="saiki1.2.2-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>// 漸化式 再帰呼出しを利用
 #include&lt;stdio.h&gt;
 int xn2(int);
@@ -116,7 +116,7 @@ int xn2(int n){
   }
   return xn;
 }</pre></blockquote></example>
-      <exercise title="演習問題" id="1.2.4-1">上記の例題2で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
+      <exercise title="演習問題" id="saiki1.2.4-1">上記の例題2で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
       <exercise id="saiki1.2.4-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>// 漸化式 再帰呼出しを利用しない場合
 #include&lt;stdio.h&gt;
 int xn2(int);
@@ -164,7 +164,7 @@ F(50)=12586269025
 
 となる．
       　</explanation>
-      <example title="C言語による実装例" id="saiki1.3.2-2">
+      <example title="C言語による実装例" id="saiki1.3.2">
         <h4>再帰を利用しない場合</h4>
         <blockquote>
           <pre>int Fibonacci(int n) { 
@@ -179,8 +179,8 @@ F(50)=12586269025
 }</pre>
         </blockquote>
       </example>
-      <exercise title="演習問題" id="1.3.4-1">上記の例で示したサンプルプログラムを用いて、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
-      <exercise title="演習問題" id="1.3.4-2">再帰を利用する場合のフィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
+      <exercise title="演習問題" id="saiki1.3.4-1">上記の例で示したサンプルプログラムを用いて、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
+      <exercise title="演習問題" id="saiki1.3.4-2">再帰を利用する場合のフィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
       <exercise id="saiki1.3.4-3" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>// Fibonacci 再帰呼出しを利用する場合
 #include&lt;stdio.h&gt;
 int fibonacci(int);
