@@ -4,13 +4,17 @@ next([saiki_zenka,saiki_fibo],[[msg,"“ï‚µ‚¢•û‚Ì‹³Ş‚É‚æ‚­‚¼’§í‚µ‚Ü‚µ‚½BŠ´“®‚µ‚
 next([saiki_zenka,saiki_fibo],[[msg,"¡“x‚Í“ï‚µ‚¢•û‚É‚à’§í‚µ‚Ä‚İ‚Ü‚µ‚å‚¤B"]]):-currentLevel(L),1<=L,L<=3.
 next([saiki_fibo,quick],[[msg,"‚±‚±‚©‚ç‚Í‰—p–â‘è‚Å‚·B©g‚Ì‚ ‚él‚Í’§í‚µ‚Ä‰º‚³‚¢B"]]).
 next([quick,hanoi],[]).
-next([hanoi,end],[[msg,"‚¨”æ‚ê—l‚Å‚µ‚½!!"]]).
+next([hanoi,saiki_test],[]).
+next([saiki_test,saiki_intro],[[msg,"—‰ğ‚ª‚¢‚Üˆê‚Â‚Ì‚æ‚¤‚Å‚·BÅ‰‚©‚ç‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢B"]]):-testCompare(test_saiki,Point),Point<60.
+next([saiki_test,end],[[msg,"‡Ši‚Å‚·BŸ‚Í–“_‚ğ–Úw‚µ‚Ü‚µ‚å‚¤B"]]):-testCompare(test_saiki,Point),60<=Point,Point<80.
+next([saiki_test,end],[[msg,"ƒp[ƒtƒFƒNƒg‚Å‚·B‘å•Ï‚æ‚­Šæ’£‚è‚Ü‚µ‚½B"]]):-testCompare(test_saiki,Point),80<=Point.
 
 toc(saiki_intro,[]).
 toc(saiki_zenka,[]).
 toc(saiki_fibo,[]).
 toc(quick,[]).
 toc(hanoi,[]).
+toc(saiki_test,[]).
 
 changeLv([up,5],[]):-currentLevel(L),L==1.
 changeLv([down,1],[]):-currentLevel(L),L==5.
