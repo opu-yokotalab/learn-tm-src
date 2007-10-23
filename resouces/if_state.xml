@@ -1,104 +1,104 @@
 <xtdl>
-	<section title="分岐と繰り返し" id="c3">
-		<section title="制御文と条件式" id="c3.1">
-			<explanation title="" id="c3.1.1">
-				C言語では分岐と繰り返し処理のために，下記の制御文を使用します．<br/>
-				<div class="deco_01">
-					if文  switch文　　　　　　　分岐処理<br/>
-					for文 while文 do-while文　　繰り返し処理
-				</div>
-				これらの制御文は，下記の文と組み合わせてよく使います．<br/>
-				<div class="deco_01">
-					break文　continue文　return文
-				</div>
-				制御文の共通知識として，分岐や繰り返し動作を決める働きをする条件式があります．条件式は表3.1の比較演箪子を使って書きます．
-			</explanation>
-			<explanation title="比較演算子と条件式" id="c3.1.2">
-				比較演算子は，２っのオペランドの関係を表現する演算子です．２つの定数や変数の間に比較演算子を挿入すると条件式になります．
-				<div class="fig">
-					表3.1　比較演算子と式<br/>
-					<img src="/~learn/images/c/table3-1.gif" alt=""/>
-				</div>
-				演算子 &lt;，&gt;，&lt;=，&gt;=　を関係演算子，==を等価演算子，!=を非等価演算子といい，これらの演算子をまとめて比較演算子といいます.
-			</explanation>
-			<explanation title="条件式の評価" id="c3.1.3">
-				条件式は評価され，その評価の値によって「成立」か「不成立」かを判定されます．条件式と評価の関係を表3.2に示します．
-				<div class="fig">
-					表3.2<br/>
-					<img src="/~learn/images/c/table3-2.gif" alt=""/>
-				</div>
-				0でない値はコンパイラによって異なりますが，代表値として１を使用している例が多い．<br/>
-				<div class="deco_01">
-					例) while(l)
-				</div>
-				<div style="text-align:center"/>
-			</explanation>
-		</section>
-		<section title="if文" id="c3.2">
-			<explanation title="" id="c3.2.1">
-				プログラム処理で，｢もし～ならば処理１を行え，そうでなければ処理２を行え」というように、条件によって異なる処理をさせたい場合があります．
-				このような二者択一の処理を分岐処理といい，if文を使用します．<br/>
-				<div class="fig">
-					<img src="/~learn/images/c/fig3-1.gif" alt=""/>
-					<br/>
-					図3.1
-				</div>
-				条件式が成立ならば文１（then節）を実行します．この時の条件式を評価した結果は「真」であるといいます．
-				また，条件が不成立ならば文２（else飾）を実行します．この時の条件式を評価した結果は「偽」であるといいます．
-			</explanation>
-			<explanation title="" id="c3.2.2">
-				<div class="fig">
-	  <img src="/~learn/images/c/fig3-2-1.gif" alt=""/>
-				</div>
-				<br/>
-				使用例1はthen節，およびelse節を一段下げて書いていまずが，右の使用例2のように続けて書くこともできます．
-				ここで，次の文の意味を考えてみましょう．
-				
-				<div class="fig">
-					<img src="/~learn/images/c/fig3-2-2.gif" alt=""/>
-				</div>
-				<br/>
-				条件式(1&gt;2)は不成立なので、``Ｂ"が出力されます．また，(1&gt;2)は，評価されると0になるので，if(0)のように
-				条件式に直接に評価の値を書いた文と等価になります．
-			</explanation>
-		</section>
-		<section title="奇数の判定" id="c3.3">
-			<example title="" id="c3.3.1">
-				<div class="deco_01">
-					読み込んだ整数値を5ではなくて2で割ると、奇数であるかどうかの判定を行うことができます．プログラムをLIST3-2に示します．
-				</div>
-				<p>List3-2</p>
-				<blockquote title="List3-2">
-					<p>
-						/* <br/>
-						読み込んだ整数値は奇数か<br/>
-						*/<br/>
-						<br/>
-						#include &lt;stdio.h&gt;<br/>
-						int main(void){<br/>
-						int no;<br/>
-						<br/>
-						printf("整数を入力してください：");<br/>
-						scanf("%d",&amp;no);<br/>
-						<br/>
-						if(no % 2)<br/>
-						puts("その数は奇数です");<br/>
-						<br/>
-						return (0);<br/>
-						}<br/>
-					</p>
-				</blockquote>
-				<p>実行例 1</p>
-				<div class="deco_01">
-					整数を入力してください：17<br/>
-					その数は奇数です。
-				</div>
-				<p>実行例 2</p>
-				<div class="deco_01">
-					整数を入力してください：16<br/>
-					<br/>
-				</div>
-			</example>
-		</section>
-	</section>
+    <section title="分岐と繰り返し" id="c3">
+        <section title="制御文と条件式" id="c3.1">
+            <explanation title="" id="c3.1.1">
+        C言語では分岐と繰り返し処理のために下記の制御文を使用します．<br/>
+                <div class="deco_01">
+          if文  switch文　　　　　　　分岐処理<br/>
+	  for文 while文 do-while文　　繰り返し処理
+	</div>
+	これらの制御文は，下記の文と組み合わせてよく使います．<br/>
+                <div class="deco_01">
+	  break文　continue文　return文
+	</div>
+	  制御文の共通知識として，分岐や繰り返し動作を決める働きをする条件式があります．条件式は表3.1の比較演箪子を使って書きます．
+      </explanation>
+            <explanation title="比較演算子と条件式" id="c3.1.2">
+        比較演算子は，２っのオペランドの関係を表現する演算子です．２つの定数や変数の間に比較演算子を挿入すると条件式になります．
+	<div class="fig">
+	  表3.1　比較演算子と式<br/>
+                    <img src="/~learn/images/c/table3-1.gif" alt=""/>
+                </div>
+	  演算子 &lt;，&gt;，&lt;=，&gt;=　を関係演算子，==を等価演算子，!=を非等価演算子といい，これらの演算子をまとめて比較演算子といいます.
+      </explanation>
+            <explanation title="条件式の評価" id="c3.1.3">
+        条件式は評価され，その評価の値によって「成立」か「不成立」かを判定されます．条件式と評価の関係を表3.2に示します．
+	<div class="fig">
+	  表3.2<br/>
+                    <img src="/~learn/images/c/table3-2.gif" alt=""/>
+                </div>
+	0でない値はコンパイラによって異なりますが，代表値として１を使用している例が多い．<br/>
+                <div class="deco_01">
+	例) while(l)
+	</div>
+                <div style="text-align:center"/>
+            </explanation>
+        </section>
+        <section title="if文" id="c3.2">
+            <explanation title="" id="c3.2.1">
+プログラム処理で，｢もし～ならば処理１を行え，そうでなければ処理２を行え」というように、条件によって異なる処理をさせたい場合があります．
+このような二者択一の処理を分岐処理といい，if文を使用します．<br/>
+                <div class="fig">
+                    <img src="/~learn/images/c/fig3-1.gif" alt=""/>
+                    <br/>
+	図3.1
+      </div>
+条件式が成立ならば文１（then節）を実行します．この時の条件式を評価した結果は「真」であるといいます．
+また，条件が不成立ならば文２（else飾）を実行します．この時の条件式を評価した結果は「偽」であるといいます．
+</explanation>
+            <explanation title="" id="c3.2.2">
+                <div class="fig">
+                    <img src="/~learn/images/c/fig3-2-1.gif" alt=""/>
+                </div>
+                <br/>
+使用例1はthen節，およびelse節を一段下げて書いていまずが，右の使用例2のように続けて書くこともできます．
+ここで，次の文の意味を考えてみましょう．
+
+<div class="fig">
+                    <img src="/~learn/images/c/fig3-2-2.gif" alt=""/>
+                </div>
+                <br/>
+条件式(1&gt;2)は不成立なので、``Ｂ"が出力されます．また，(1&gt;2)は，評価されると0になるので，if(0)のように
+条件式に直接に評価の値を書いた文と等価になります．
+</explanation>
+        </section>
+        <section title="奇数の判定" id="c3.3">
+            <example title="" id="c3.3.1">
+                <div class="deco_01">
+      読み込んだ整数値を5ではなくて2で割ると、奇数であるかどうかの判定を行うことができます．プログラムをLIST3-2に示します．
+      </div>
+                <p>List3-2</p>
+                <blockquote title="List3-2">
+                    <p>
+/* <br/>
+  読み込んだ整数値は奇数か<br/>
+*/<br/>
+                        <br/>
+#include &lt;stdio.h&gt;<br/>
+int main(void){<br/>
+    int no;<br/>
+                        <br/>
+    printf("整数を入力してください：");<br/>
+    scanf("%d",&amp;no);<br/>
+                        <br/>
+    if(no % 2)<br/>
+      puts("その数は奇数です");<br/>
+                        <br/>
+    return (0);<br/>
+}<br/>
+                    </p>
+                </blockquote>
+                <p>実行例 1</p>
+                <div class="deco_01">
+	整数を入力してください：17<br/>
+	その数は奇数です。
+      </div>
+                <p>実行例 2</p>
+                <div class="deco_01">
+	整数を入力してください：16<br/>
+                    <br/>
+                </div>
+            </example>
+        </section>
+    </section>
 </xtdl>
