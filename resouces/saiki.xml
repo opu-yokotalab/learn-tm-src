@@ -1,108 +1,152 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xtdl>
-  <section title="再帰呼び出し" id="saiki1">
-    <section title="再帰呼び出し" id="saiki1.1">
-      <explanation title="再帰呼び出しの概要" id="saiki1.1.1">階乗 n! は次のような性質を満たす．<blockquote>n! = n・(n-1)! , 0! = 1</blockquote>ある関数のなかから, 自分自身を呼び出すことを<strong>再帰呼び出し (recursive call)</strong>という。<br />手続きや関数といった概念を持つプログラミング言語では、ある手続き中で再びその手続き自身を呼び出す事を認める場合が多い。階乗計算やフィボナッチ数列のように、本来再帰的な構造を持つアルゴリズム（再帰的アルゴリズム）を記述するのに適している。<br />再帰のことを帰納という場合もある。</explanation>
-      <example title="階乗計算の例" id="saiki1.1.2">再帰プログラムの例として，階乗関数がある．階乗関数 ｎ!は 	<blockquote style="font-weight:bold;">
-n!＝1・2・3.....(n-1)・ｎ 
-</blockquote>で定義される．このとき、<blockquote style="font-weight:bold;">0! = 1， <br />n &gt; 0　のとき，　n! = (n -1)!・n</blockquote>
-と考えることができる． 
-      　</example>
-      <explanation title="具体的な解説" id="saiki1.1.3">
-この考えをもとに３！を計算してみると，次のようになります。 
-<blockquote style="font-weight:bold;">3 &gt; 0 だから，　3! = 2! × 3</blockquote>ここで， 2! を計算する。 <blockquote style="font-weight:bold;">2 &gt; 0 だから，2! = 1! × 2</blockquote>ここで 1! を計算する。 <blockquote style="font-weight:bold;">1 &gt; 0 だから，1! = 0! × 1</blockquote>ここで 0! = 1 である。これを使って，上の計算を逆にたどる。 <blockquote style="font-weight:bold;">1! = 0! × 1 = 1 × 1 = 1<br />2! = 1! × 2 = 1 × 2 = 1<br />3! = 2! × 3 = 2 × 3 = 6</blockquote>このようにして 3! が計算されます。 </explanation>
-      <example title="C言語による階乗計算の実装例" id="saiki1.1.4">
-        <blockquote>
-          <pre>/* 階乗n!を計算する */ 
-int fact(int n) { 
-   /* 脱出条件。0!は1である */ 
-   if (n==0)  return 1; 
-
-   /* n!は(n-1)!にnを乗じたもの。再帰呼び出し */
-   else return fact(n-1)*n;  
-}</pre>
-        </blockquote>なお、処理を中断・終了する条件（下の例では引数 n が0である場合）が必ず一つは必要で、その部分が間違っていると無限に関数を呼び出してしまう場合がある.        </example>
-      <exercise id="saiki1.1.5-1" title="演習問題">前節で示したプログラムソースに加えて、さらに入力と出力の処理を追加してプログラムを完成させなさい。</exercise>
-      <exercise title="模範解答" id="saiki1.1.5-2">以下が模範解答です。<blockquote><pre>// 階乗 n! を計算する
+	<section title="再帰呼び出し" id="saiki1">
+		<section title="再帰呼び出し" id="saiki1.1">
+			<explanation title="再帰呼び出しの概要" id="saiki1.1.1">
+			階乗 n! は次のような性質を満たす．
+			<blockquote>n! = n・(n-1)! , 0! = 1</blockquote>
+			ある関数のなかから, 自分自身を呼び出すことを<strong>再帰呼び出し (recursive call)</strong>という。<br />
+			手続きや関数といった概念を持つプログラミング言語では、ある手続き中で再びその手続き自身を呼び出す事を認める場合が多い。階乗計算やフィボナッチ数列のように、本来再帰的な構造を持つアルゴリズム（再帰的アルゴリズム）を記述するのに適している。<br />
+			再帰のことを帰納という場合もある。
+			</explanation>
+			<example title="階乗計算の例" id="saiki1.1.2">
+				再帰プログラムの例として，階乗関数がある．階乗関数 ｎ!は 	
+				<blockquote style="font-weight:bold;">
+					n!＝1・2・3.....(n-1)・n 
+				</blockquote>
+				で定義される．このとき、
+				<blockquote style="font-weight:bold;">
+					0! = 1， <br />n &gt; 0　のとき，　n! = (n -1)!・n
+				</blockquote>
+				と考えることができる． 
+			</example>
+			<explanation title="具体的な解説" id="saiki1.1.3">
+				この考えをもとに３！を計算してみると，次のようになります。 
+			<blockquote style="font-weight:bold;">
+				3 &gt; 0 だから，　3! = 2! × 3
+			</blockquote>ここで， 2! を計算する。 
+			<blockquote style="font-weight:bold;">
+				2 &gt; 0 だから，2! = 1! × 2
+			</blockquote>ここで 1! を計算する。 
+			<blockquote style="font-weight:bold;">
+				1 &gt; 0 だから，1! = 0! × 1
+			</blockquote>ここで 0! = 1 である。これを使って，上の計算を逆にたどる。 
+			<blockquote style="font-weight:bold;">
+				1! = 0! × 1 = 1 × 1 = 1<br />
+				2! = 1! × 2 = 1 × 2 = 1<br />
+				3! = 2! × 3 = 2 × 3 = 6
+				</blockquote>このようにして 3! が計算されます。 
+			</explanation>
+			<example title="C言語による階乗計算の実装例" id="saiki1.1.4">
+				<blockquote>
+					<pre>/* 階乗n!を計算する */ 
+					int fact(int n) { 
+					/* 脱出条件。0!は1である */ 
+					if (n==0)  return 1; 
+					
+					/* n!は(n-1)!にnを乗じたもの。再帰呼び出し */
+					else return fact(n-1)*n;  
+					}</pre>
+			</blockquote>なお、処理を中断・終了する条件（下の例では引数 n が0である場合）が必ず一つは必要で、その部分が間違っていると無限に関数を呼び出してしまう場合がある.        </example>
+			<exercise id="saiki1.1.5-1" title="演習問題">前節で示したプログラムソースに加えて、さらに入力と出力の処理を追加してプログラムを完成させなさい。</exercise>
+			<exercise title="模範解答" id="saiki1.1.5-2">以下が模範解答です。<blockquote><pre>// 階乗 n! を計算する
 #include&lt;stdio.h&gt;
 int fact(int);
 int main(void)
 {
-  int a,n;
+int a,n;
 
-  // 変数入力
-  printf("input n:");
-  scanf("%d",&amp;n);
+// 変数入力
+printf("input n:");
+scanf("%d",&amp;n);
 
-  // 階乗計算
-  a = fact(n);
+// 階乗計算
+a = fact(n);
 
-  // 出力
-  printf("answer : %d! = %d\n",n,a);
-  return 0;
+// 出力
+printf("answer : %d! = %d\n",n,a);
+return 0;
 }
 int fact(int n){
-  // 基底段階
-  if(n == 0) return 1;
+// 基底段階
+if(n == 0) return 1;
 
-  // 帰納段階
-  if(n &gt; 0) return n * fact(n-1);
+// 帰納段階
+if(n &gt; 0) return n * fact(n-1);
 }
-</pre></blockquote><h4>実行結果</h4><blockquote><pre>n として 3 を入力した場合
-[******@localhost c]$ ./kaijo
-input n:3
-answer : 3! = 6
+</pre></blockquote>
+<h4>実行結果</h4>
+<blockquote><pre>
+	n として 3 を入力した場合
+	[******@localhost c]$ ./kaijo
+	input n:3
+	answer : 3! = 6
 
-n として 4 を入力した場合
-[******@localhost c]$ ./kaijo
-input n:4
-answer : 4! = 24</pre></blockquote></exercise>
-    </section>
-    <section title="漸化式" id="saiki1.2">
-      <example id="saiki1.2.1" title="漸化式の例題">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4><blockquote><pre>/* 再帰を利用した漸化式の実装例 */
-int xn2(int n){
-  /* 基底段階 */
-  if(n == 0) return 0;
-
-  /* 帰納段階 */
-  if(n &gt; 0) return 2*xn2(n-1)+1;
-}</pre></blockquote><br />このように再帰呼び出しを利用することで ずいぶんすっきりとしたプログラムを書くことができる。</example>
-      <exercise title="演習問題" id="saiki1.2.2-1">上記の例題1で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
-      <exercise id="saiki1.2.2-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>// 漸化式 再帰呼出しを利用
-#include&lt;stdio.h&gt;
-int xn2(int);
-int main(void){
-  int a,n;
-  printf("input n:");
-  scanf("%d",&amp;n);
-
-  a = xn2(n);
-
-  printf("answer: a = %d\n",a);
-
-  return 0;
-}
-int xn2(int n){
-  /* 基底段階 */
-  if( n==0 ) return 0;
-  
-  /* 帰納段階*/
-  if( n&gt;0 ) return 2*xn2(n-1)+1;
-}</pre></blockquote><h4>実行結果</h4><blockquote><pre>入力として1を与えた場合
-[*******@localhost c]$ ./zenka
-input n:1
-answer: a = 1
-
-入力として2を与えた場合
-[*******@localhost c]$ ./zenka
-input n:2
-answer: a = 3
-
-入力として3を与えた場合
-[*******@localhost c]$ ./zenka
-input n:3
-answer: a = 7</pre></blockquote></exercise>
-      <example id="saiki1.2.3" title="漸化式の例題2">漸化式プログラム自体は単純であるが, 実はこのような場面で再帰をもちいるのはあまり得策ではない.
+	n として 4 を入力した場合
+	[******@localhost c]$ ./kaijo
+	input n:4
+	answer : 4! = 24
+			</pre></blockquote>
+			</exercise>
+		</section>
+		<section title="漸化式" id="saiki1.2">
+			<example id="saiki1.2.1" title="漸化式の例題">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4><blockquote><pre>/* 再帰を利用した漸化式の実装例 */
+			int xn2(int n){
+			/* 基底段階 */
+			if(n == 0) return 0;
+			
+			/* 帰納段階 */
+			if(n &gt; 0) return 2*xn2(n-1)+1;
+			}</pre></blockquote>
+			<br />
+			このように再帰呼び出しを利用することで ずいぶんすっきりとしたプログラムを書くことができる。
+			</example>
+			<exercise title="演習問題" id="saiki1.2.2-1">
+				上記の例題1で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。
+			</exercise>
+      <exercise id="saiki1.2.2-2" title="模範解答">
+				以下が模範解答のプログラムリストです。
+				<blockquote><pre>
+					// 漸化式 再帰呼出しを利用
+					#include&lt;stdio.h&gt;
+					int xn2(int);
+					int main(void){
+					int a,n;
+					printf("input n:");
+					scanf("%d",&amp;n);
+					
+					a = xn2(n);
+					
+					printf("answer: a = %d\n",a);
+					
+					return 0;
+					}
+					int xn2(int n){
+					/* 基底段階 */
+					if( n==0 ) return 0;
+					
+					/* 帰納段階*/
+					if( n&gt;0 ) return 2*xn2(n-1)+1;
+					}</pre></blockquote>
+					<h4>実行結果</h4>
+					<blockquote><pre>
+						入力として1を与えた場合
+						[*******@localhost c]$ ./zenka
+						input n:1
+						answer: a = 1
+						
+						入力として2を与えた場合
+						[*******@localhost c]$ ./zenka
+						input n:2
+						answer: a = 3
+						
+						入力として3を与えた場合
+						[*******@localhost c]$ ./zenka
+						input n:3
+						answer: a = 7
+					</pre></blockquote>
+			</exercise>
+			<example id="saiki1.2.3" title="漸化式の例題2">漸化式プログラム自体は単純であるが, 実はこのような場面で再帰をもちいるのはあまり得策ではない.
 メモリや実行効率の低下があるからである.関数およびその局所変数は動的に生成, 消滅を繰り返している.<br /><br />たとえば, 前節のプログラムで xn2(4) をよぶと, xn2(3), xn2(2), xn2(1), xn2(0) がつぎつぎとよびだされ, xn2(0) の実行中には, 5 つの xn2 が実行されており, したがって局所変数 XN および 引数 N も, それぞれ 5 つ生成されている. <br />
 したがって一般に, xn2(n) に対しては, 
 <strong>最大 n+1 個の変数領域</strong>
