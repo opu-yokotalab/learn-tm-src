@@ -1,14 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xtdl>
   <section title="再帰呼び出し" id="saiki1">
     <section title="再帰呼び出し" id="saiki1.1">
-      <explanation title="再帰呼び出しの概要" id="saiki1.1.1">階乗 n! は次のような性質を満たす．<blockquote>n! = n・(n-1)! , 0! = 1</blockquote>ある関数のなかから, 自分自身を呼び出すことを<strong>再帰呼び出し (recursive call)</strong>という。<br />手続きや関数といった概念を持つプログラミング言語では、ある手続き中で再びその手続き自身を呼び出す事を認める場合が多い。階乗計算やフィボナッチ数列のように、本来再帰的な構造を持つアルゴリズム（再帰的アルゴリズム）を記述するのに適している。<br />再帰のことを帰納という場合もある。</explanation>
-      <example title="階乗計算の例" id="saiki1.1.2">再帰プログラムの例として，階乗関数がある．階乗関数 ｎ!は 	<blockquote style="font-weight:bold;">
-n!＝1・2・3.....(n-1)・n
-</blockquote>で定義される．このとき、<blockquote style="font-weight:bold;">0! = 1， <br />n &gt; 0　のとき，　n! = (n -1)!・n</blockquote>
-と考えることができる． 
-      　</example>
-      <explanation title="具体的な解説" id="saiki1.1.3">
+      <explanation title="再帰呼び出しの概要" id="saiki1.1.1">
+				<p>階乗 n! は次のような性質を満たす．</p>
+				<blockquote><p>n! = n・(n-1)! , 0! = 1</p></blockquote>
+				<p>ある関数のなかから, 自分自身を呼び出すことを<strong>再帰呼び出し (recursive call)</strong>という。<br />
+				手続きや関数といった概念を持つプログラミング言語では、ある手続き中で再びその手続き自身を呼び出す事を認める場合が多い。階乗計算やフィボナッチ数列のように、本来再帰的な構造を持つアルゴリズム（再帰的アルゴリズム）を記述するのに適している。<br />
+				再帰のことを帰納という場合もある。</p>
+			</explanation>
+			<example title="階乗計算の例" id="saiki1.1.2">
+				<p>再帰プログラムの例として，階乗関数がある．階乗関数 ｎ!は</p>
+				<blockquote style="font-weight:bold;">
+					<p>n!＝1・2・3.....(n-1)・n</p>
+					</blockquote><p>で定義される．このとき、</p>
+					<blockquote style="font-weight:bold;">
+						<p>0! = 1， <br />n &gt; 0　のとき，　n! = (n -1)!・n</p>
+					</blockquote>
+					<p>と考えることができる.</p>
+			</example>
+			<explanation title="具体的な解説" id="saiki1.1.3">
 この考えをもとに３！を計算してみると，次のようになります。 
 <blockquote style="font-weight:bold;">3 &gt; 0 だから，　3! = 2! × 3</blockquote>ここで， 2! を計算する。 <blockquote style="font-weight:bold;">2 &gt; 0 だから，2! = 1! × 2</blockquote>ここで 1! を計算する。 <blockquote style="font-weight:bold;">1 &gt; 0 だから，1! = 0! × 1</blockquote>ここで 0! = 1 である。これを使って，上の計算を逆にたどる。 <blockquote style="font-weight:bold;">1! = 0! × 1 = 1 × 1 = 1<br />2! = 1! × 2 = 1 × 2 = 1<br />3! = 2! × 3 = 2 × 3 = 6</blockquote>このようにして 3! が計算されます。 </explanation>
       <example title="C言語による階乗計算の実装例" id="saiki1.1.4">
@@ -103,22 +114,24 @@ if(n &gt; 0) return n * fact(n-1);
 					if( n&gt;0 ) return 2*xn2(n-1)+1;
 					}</pre></blockquote>
 					<h4>実行結果</h4>
-					<blockquote><pre>
-						入力として1を与えた場合
-						[*******@localhost c]$ ./zenka
-						input n:1
-						answer: a = 1
-						
-						入力として2を与えた場合
-						[*******@localhost c]$ ./zenka
-						input n:2
-						answer: a = 3
-						
-						入力として3を与えた場合
-						[*******@localhost c]$ ./zenka
-						input n:3
-						answer: a = 7
-					</pre></blockquote>
+					<blockquote>
+<pre>
+入力として1を与えた場合
+[*******@localhost c]$ ./zenka
+input n:1
+answer: a = 1
+
+入力として2を与えた場合
+[*******@localhost c]$ ./zenka
+input n:2
+answer: a = 3
+
+入力として3を与えた場合
+[*******@localhost c]$ ./zenka
+input n:3
+answer: a = 7
+</pre>
+					</blockquote>
 			</exercise>
 			<example id="saiki1.2.3" title="漸化式の例題2">漸化式プログラム自体は単純であるが, 実はこのような場面で再帰をもちいるのはあまり得策ではない.
 メモリや実行効率の低下があるからである.関数およびその局所変数は動的に生成, 消滅を繰り返している.<br /><br />たとえば, 前節のプログラムで xn2(4) をよぶと, xn2(3), xn2(2), xn2(1), xn2(0) がつぎつぎとよびだされ, xn2(0) の実行中には, 5 つの xn2 が実行されており, したがって局所変数 XN および 引数 N も, それぞれ 5 つ生成されている. <br />
@@ -157,7 +170,9 @@ int xn2(int n){
     xn = 2*xn+1;
   }
   return xn;
-}</pre></blockquote><h4>実行結果</h4><blockquote><pre>入力として1を与えた場合
+}</pre></blockquote>
+<h4>実行結果</h4><blockquote>
+<pre>入力として1を与えた場合
 [*******@localhost c]$ ./zenka
 input n:1
 answer: a = 1
@@ -170,22 +185,28 @@ answer: a = 3
 入力として3を与えた場合
 [*******@localhost c]$ ./zenka
 input n:3
-answer: a = 7</pre></blockquote></exercise>
-    </section>
-    <section id="saiki1.3" title="フィボナッチ数列">
-      <explanation title="フィボナッチ数列" id="saiki1.3.1">フィボナッチの数列 F(n) は次のように定義されている．
-<blockquote style="font-weight:bold;"><pre>F(1)=1， F(2)=1
-n&gt;2 のとき F(n)=F(n-1)+F(n-2)</pre></blockquote>これによると例えば，F(3)=2, F(4)=3, F(5)=5, F(6)=8, ... となる．このフィボナッチ数はかなり急速に大きくなる数で，例えば F(50)ならば、<blockquote style="font-weight:bold;">
-
+answer: a = 7
+</pre>
+</blockquote>
+			</exercise>
+		</section>
+		<section id="saiki1.3" title="フィボナッチ数列">
+			<explanation title="フィボナッチ数列" id="saiki1.3.1">
+				フィボナッチの数列 F(n) は次のように定義されている．
+<blockquote style="font-weight:bold;">
+<pre>F(1)=1， F(2)=1
+n&gt;2 のとき F(n)=F(n-1)+F(n-2)</pre>
+</blockquote>
+これによると例えば，F(3)=2, F(4)=3, F(5)=5, F(6)=8, ... となる．このフィボナッチ数はかなり急速に大きくなる数で，例えば F(50)ならば、
+<blockquote style="font-weight:bold;">
 F(50)=12586269025
 </blockquote>
-
 となる．
-      　</explanation>
+			　</explanation>
       <example title="C言語による実装例" id="saiki1.3.2">
         <h4>再帰を利用しない場合</h4>
-        <blockquote>
-          <pre>int Fibonacci(int n) { 
+				<blockquote>
+  <pre>int Fibonacci(int n) { 
   int a=1 , b=1 , c;
   int i;
   for(i=3;i＜=n;i++){
@@ -195,7 +216,7 @@ F(50)=12586269025
   }
   return a;
 }</pre>
-        </blockquote>
+				</blockquote>
       </example>
       <exercise title="演習問題" id="saiki1.3.4-1">上記の例で示したサンプルプログラムを用いて、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
       <exercise title="演習問題" id="saiki1.3.4-2">再帰を利用する場合のフィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
@@ -413,7 +434,16 @@ void print_array(int array[], int size)
 }</pre></blockquote></exercise>
     </section>
     <section title="応用編：ハノイの塔" id="hanoi">
-      <explanation title="応用編：ハノイの塔" id="hanoi1">ハノイの塔は1883年にフランスのＥ．Lucas（リュカ）が考案したゲームと言われています。<br />これは次のようなゲームです。 <br></br><img src="/~learn/images/Tower_of_Hanoi.gif"></img><br />以下のルールに従ってすべての円盤を右端の杭に移動させられれば完成。<ul><li>3本の杭と、中央に穴の開いた大きさの異なる複数の円盤から構成される。</li><li>最初はすべての円盤が左端の杭に小さいものが上になるように順に積み重ねられている。</li><li>円盤を一回に一枚ずつどれかの杭に移動させることができるが、小さな円盤の上に大きな円盤を乗せることはできない。</li></ul></explanation>
+      <explanation title="応用編：ハノイの塔" id="hanoi1">
+			ハノイの塔は1883年にフランスのＥ．Lucas（リュカ）が考案したゲームと言われています。<br />これは次のようなゲームです。 <br></br>
+			<img src="/~learn/images/Tower_of_Hanoi.gif"></img><br />
+			以下のルールに従ってすべての円盤を右端の杭に移動させられれば完成。
+			<ul>
+			<li>3本の杭と、中央に穴の開いた大きさの異なる複数の円盤から構成される。</li>
+			<li>最初はすべての円盤が左端の杭に小さいものが上になるように順に積み重ねられている。</li>
+			<li>円盤を一回に一枚ずつどれかの杭に移動させることができるが、小さな円盤の上に大きな円盤を乗せることはできない。</li>
+			</ul>
+			</explanation>
       <explanation id="hanoi2" title="解法アルゴリズム">3本の棒にA,B,Cの名前を付ける。最初Aにn個の円盤があり、Cにすべての円盤を移動させるとすると、次のようにする。<blockquote style="width:600px;"><ol type="1"><li>上からn-1個目までの円盤をAからBに移動する。</li><li>残った1枚をAからCに移動する。</li><li>Bにある円盤をBからCに移動する。</li></ol></blockquote>2と3のあいだでは、Bに置いてあるｎ－１個の円盤をCに移すことを考えればよい。この時点のBの状態を先のAと考え、Bを先のAと考えてやれば、上記1,2,3の手順がそのまま利用できる。上記手順を関数的に記述してみよう。<p><strong>ｎ個の円盤をＡからＣへ移す： move( n, A to C, using B )</strong></p><blockquote style="width:600px;"><ol type="1"><li>n-1 個の円盤を A から B へ移動 ： move( n-1, A to B, using C )</li><li>Aの一番下にあった（n番目の）円盤をCへ移す ： print( n を A から C へ )</li><li>n-1 個の円盤をBからCへ移動 ： move( n-1, B to C, using A )</li></ol></blockquote>このように記述してみると、手続きが再帰的になっていることが分かる。つまりこれらが再帰の一般式になっている。これに再帰の停止条件つまり、ｎが１の時の状況を考えればよい。<blockquote style="width:600px;"><ol type="1"><li>1個の円盤をAからCへ移す： move( 1, A to C, using B )</li><li>Aにある1つの円盤をCへ移す ： print( 1 を A から C へ )</li></ol></blockquote></explanation>
       <exercise id="hanoi3-1" title="演習問題">前節で示した解法アルゴリズムに従って、ハノイの塔のプログラムを完成させなさい。</exercise>
       <exercise title="模範解答" id="hanoi3-2">以下が模範解答です。<blockquote><pre>/*  ハノイの塔  */
