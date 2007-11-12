@@ -31,8 +31,7 @@
 			<p>このようにして 3! が計算されます。 </p>
 			</explanation>
       <example title="C言語による階乗計算の実装例" id="saiki1.1.4">
-        <blockquote>
-          <pre>
+          <pre class="prettyprint">
 /* 階乗n!を計算する */ 
 int fact(int n) { 
    /* 脱出条件。0!は1である */ 
@@ -40,10 +39,13 @@ int fact(int n) {
 
    /* n!は(n-1)!にnを乗じたもの。再帰呼び出し */
    else return fact(n-1)*n;  
-}</pre>
-        </blockquote>なお、処理を中断・終了する条件（下の例では引数 n が0である場合）が必ず一つは必要で、その部分が間違っていると無限に関数を呼び出してしまう場合がある.        </example>
-      <exercise id="saiki1.1.5-1" title="演習問題">前節で示したプログラムソースに加えて、さらに入力と出力の処理を追加してプログラムを完成させなさい。</exercise>
-      <exercise title="模範解答" id="saiki1.1.5-2">以下が模範解答です。<blockquote><pre>// 階乗 n! を計算する
+}
+					</pre>
+			なお、処理を中断・終了する条件（下の例では引数 n が0である場合）が必ず一つは必要で、その部分が間違っていると無限に関数を呼び出してしまう場合がある.
+			</example>
+			<exercise id="saiki1.1.5-1" title="演習問題">前節で示したプログラムソースに加えて、さらに入力と出力の処理を追加してプログラムを完成させなさい。</exercise>
+      <exercise title="模範解答" id="saiki1.1.5-2">以下が模範解答です。
+			<pre class="prettyprint">// 階乗 n! を計算する
 #include&lt;stdio.h&gt;
 int fact(int);
 int main(void)
@@ -68,7 +70,7 @@ if(n == 0) return 1;
 // 帰納段階
 if(n &gt; 0) return n * fact(n-1);
 }
-</pre></blockquote>
+</pre>
 <h4>実行結果</h4>
 <blockquote><pre>
 n として 3 を入力した場合
@@ -84,7 +86,7 @@ answer : 4! = 24</pre></blockquote>
 		</section>
 		<section title="漸化式" id="saiki1.2">
 			<example id="saiki1.2.1" title="漸化式の例題">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4>
-<blockquote><pre>
+<pre class="prettyprint">
 /* 再帰を利用した漸化式の実装例 */
 int xn2(int n){
 /* 基底段階 */
@@ -92,7 +94,7 @@ if(n == 0) return 0;
 
 /* 帰納段階 */
 if(n &gt; 0) return 2*xn2(n-1)+1;
-}</pre></blockquote>
+}</pre>
 			<br />
 			このように再帰呼び出しを利用することで ずいぶんすっきりとしたプログラムを書くことができる。
 			</example>
@@ -101,7 +103,7 @@ if(n &gt; 0) return 2*xn2(n-1)+1;
 			</exercise>
       <exercise id="saiki1.2.2-2" title="模範解答">
 				以下が模範解答のプログラムリストです。
-				<blockquote><pre>
+				<pre class="prettyprint">
 // 漸化式 再帰呼出しを利用
 #include&lt;stdio.h&gt;
 int xn2(int);
@@ -122,7 +124,7 @@ if( n==0 ) return 0;
 
 /* 帰納段階*/
 if( n&gt;0 ) return 2*xn2(n-1)+1;
-}</pre></blockquote>
+}</pre>
 <h4>実行結果</h4>
 <blockquote>
 <pre>
@@ -147,7 +149,8 @@ answer: a = 7
 メモリや実行効率の低下があるからである.関数およびその局所変数は動的に生成, 消滅を繰り返している.<br /><br />たとえば, 前節のプログラムで xn2(4) をよぶと, xn2(3), xn2(2), xn2(1), xn2(0) がつぎつぎとよびだされ, xn2(0) の実行中には, 5 つの xn2 が実行されており, したがって局所変数 XN および 引数 N も, それぞれ 5 つ生成されている. <br />
 したがって一般に, xn2(n) に対しては, 
 <strong>最大 n+1 個の変数領域</strong>
-が確保されることになる.<br /><br />次のようなプログラムを書けば, このようなメモリの無駄使いは生じない.<h4>再帰を利用しない実装例</h4><blockquote><pre>/* 再帰を利用しない漸化式の実装例 */
+が確保されることになる.<br /><br />次のようなプログラムを書けば, このようなメモリの無駄使いは生じない.<h4>再帰を利用しない実装例</h4>
+<pre class="prettyprint">/* 再帰を利用しない漸化式の実装例 */
 int xn2(int n){
   int i,xn = 0;
 
@@ -156,9 +159,11 @@ int xn2(int n){
     xn = 2*xn+1;
   }
   return xn;
-}</pre></blockquote></example>
+}</pre>
+			</example>
       <exercise title="演習問題" id="saiki1.2.4-1">上記の例題2で示した漸化式のプログラムソースを用いて、入出力を含めたプログラムを完成させなさい。</exercise>
-      <exercise id="saiki1.2.4-2" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>// 漸化式 再帰呼出しを利用しない場合
+      <exercise id="saiki1.2.4-2" title="模範解答">以下が模範解答のプログラムリストです。
+			<pre class="prettyprint">// 漸化式 再帰呼出しを利用しない場合
 #include&lt;stdio.h&gt;
 int xn2(int);
 int main(void){
@@ -180,9 +185,9 @@ int xn2(int n){
     xn = 2*xn+1;
   }
   return xn;
-}</pre></blockquote>
-<h4>実行結果</h4><blockquote>
-<pre>入力として1を与えた場合
+}</pre>
+<h4>実行結果</h4>
+<blockquote><pre>入力として1を与えた場合
 [*******@localhost c]$ ./zenka
 input n:1
 answer: a = 1
@@ -196,8 +201,7 @@ answer: a = 3
 [*******@localhost c]$ ./zenka
 input n:3
 answer: a = 7
-</pre>
-</blockquote>
+</pre></blockquote>
 			</exercise>
 		</section>
 		<section id="saiki1.3" title="フィボナッチ数列">
@@ -215,8 +219,7 @@ F(50)=12586269025
 			　</explanation>
       <example title="C言語による実装例" id="saiki1.3.2">
         <h4>再帰を利用しない場合</h4>
-				<blockquote>
-  <pre>int Fibonacci(int n) { 
+				<pre class="prettyprint">int Fibonacci(int n) { 
   int a=1 , b=1 , c;
   int i;
   for(i=3;i＜=n;i++){
@@ -226,11 +229,11 @@ F(50)=12586269025
   }
   return a;
 }</pre>
-				</blockquote>
-      </example>
-      <exercise title="演習問題" id="saiki1.3.4-1">上記の例で示したサンプルプログラムを用いて、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
+			</example>
+			<exercise title="演習問題" id="saiki1.3.4-1">上記の例で示したサンプルプログラムを用いて、フィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
       <exercise title="演習問題" id="saiki1.3.4-2">再帰を利用する場合のフィボナッチ数を求めるプログラムを入出力を含めた形で完成させなさい。</exercise>
-      <exercise id="saiki1.3.4-3" title="模範解答">以下が模範解答のプログラムリストです。<blockquote><pre>// Fibonacci 再帰呼出しを利用する場合
+      <exercise id="saiki1.3.4-3" title="模範解答">以下が模範解答のプログラムリストです。
+			<pre class="prettyprint">// Fibonacci 再帰呼出しを利用する場合
 #include&lt;stdio.h&gt;
 int fibonacci(int);
 int main(void){
@@ -246,7 +249,9 @@ int fibonacci(int n){
   if(n == 0) return 0;
   else if (n == 1) return 1;
   else return fibonacci(n-1)+fibonacci(n-2);
-}</pre></blockquote><h4>実行結果</h4><blockquote><pre>入力として4を与える
+}</pre>
+<h4>実行結果</h4>
+<blockquote><pre>入力として4を与える
 [*******@localhost c]$ ./fibo
 input n:4
 answer: a = 3
@@ -265,7 +270,8 @@ answer: a = 55</pre></blockquote></exercise>
     <section id="quick" title="応用編：クイックソート">
       <explanation title="応用編：クイックソート" id="quick1">クイックソートは、その名前が示すように非常に高速なソートアルゴリズムです。処理速度が求められる場面では必ず候補に挙がります。しかし、必ずしも常に高速であるとは限らず、ある条件下ではバブルソート並の速度にまで落ち込む可能性があります。<br></br><br />クイックソートの考え方は、全体の中から基準となる要素を１つ選び（この要素を枢軸 やピボットと呼びます）、これより小さい要素と大きい要素とに分割します。分割された２つの要素群については、更にその中で分割を行います。これを繰り返していくと、最終的には要素が１つ１つばらばらな状態にまで分割されます。この状態になったら、今度はそれを一気に結合します。分割処理は、要素の大小関係によって行われているので、最終結果を結合すれば既にソート結果が出来上がっているということです。<br></br>アルゴリズムの一例を示します。<blockquote style="width:600px;"><ol type="1"><li>ピボットとして一つ選びそれをPとする。</li><li>左から順に値を調べ、P以上のものを見つけたらその位置をiとする。</li><li>右から順に値を調べ、P以下のものを見つけたらその位置をjとする。</li><li>iがjより左にあるのならばその二つの位置を入れ替え、2に戻る。ただし、次の2での探索はiの一つ右、次の3での探索はjの一つ左から行う。</li><li>2に戻らなかった場合、iの左側を境界に分割を行って2つの領域に分け、そのそれぞれに対して再帰的に1からの手順を行う。要素数が1以下の領域ができた場合、その領域は確定とする。</li></ol></blockquote><br></br>分かりにくいかも知れませんが、重要なのは「分割」していく処理を「再帰」するという点だけです。</explanation>
       <example title="クイックソートの動作イメージ" id="quick2">ここではクイックソートの動作イメージを掴むためのJavaアプレットを紹介します。<br />(引用元：<a href="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/index.html">いろいろなソートアルゴリズム</a>)<br /><applet codebase="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/java/" code="SortApplet.class" width="500" height="300"><param name="sort" value="Quick" /></applet><h4>操作方法</h4><img src="/~learn/images/applet_explanation.jpg" /></example>
-      <example title="クイックソートのC言語による実装例" id="quick3">ここでは再帰呼び出しを用いない実装例を紹介します。<blockquote style="width:800px;"><pre>#include &lt;stdio.h&gt;
+      <example title="クイックソートのC言語による実装例" id="quick3">ここでは再帰呼び出しを用いない実装例を紹介します。
+<pre class="prettyprint">#include &lt;stdio.h&gt;
 
 #define ARRAY_SIZE (10)
 #define STACK_SIZE (32)
@@ -369,10 +375,12 @@ void print_array(int array[], int size)
     ++p;
   }
   printf( "\n\n" );
-}</pre></blockquote></example>
-      <exercise id="quick_exercise1" title="演習問題1">上記の例題で示したサンプルプログラムを各々の環境で実行し、動作を確認しなさい。</exercise>
+}</pre>
+			</example>
+			<exercise id="quick_exercise1" title="演習問題1">上記の例題で示したサンプルプログラムを各々の環境で実行し、動作を確認しなさい。</exercise>
       <exercise id="quick_exercise2-1" title="演習問題2">再帰呼び出しを用いたクイックソートのプログラムをC言語で実装しなさい。</exercise>
-      <exercise id="quick_exercise2-2" title="模範解答">以下に、再帰呼び出しを用いたクイックソートの実装例を示します。<blockquote style="width:800px;"><pre>#include &lt;stdio.h&gt;
+      <exercise id="quick_exercise2-2" title="模範解答">以下に、再帰呼び出しを用いたクイックソートの実装例を示します。
+<pre class="prettyprint">#include &lt;stdio.h&gt;
 
 #define ARRAY_SIZE (10)
 
@@ -441,8 +449,10 @@ void print_array(int array[], int size)
   ++p;
  }
  printf( "\n\n" );
-}</pre></blockquote></exercise>
-    </section>
+}
+</pre>
+			</exercise>
+		</section>
     <section title="応用編：ハノイの塔" id="hanoi">
       <explanation title="応用編：ハノイの塔" id="hanoi1">
 			ハノイの塔は1883年にフランスのＥ．Lucas（リュカ）が考案したゲームと言われています。<br />これは次のようなゲームです。 <br></br>
@@ -456,7 +466,8 @@ void print_array(int array[], int size)
 			</explanation>
       <explanation id="hanoi2" title="解法アルゴリズム">3本の棒にA,B,Cの名前を付ける。最初Aにn個の円盤があり、Cにすべての円盤を移動させるとすると、次のようにする。<blockquote style="width:600px;"><ol type="1"><li>上からn-1個目までの円盤をAからBに移動する。</li><li>残った1枚をAからCに移動する。</li><li>Bにある円盤をBからCに移動する。</li></ol></blockquote>2と3のあいだでは、Bに置いてあるｎ－１個の円盤をCに移すことを考えればよい。この時点のBの状態を先のAと考え、Bを先のAと考えてやれば、上記1,2,3の手順がそのまま利用できる。上記手順を関数的に記述してみよう。<p><strong>ｎ個の円盤をＡからＣへ移す： move( n, A to C, using B )</strong></p><blockquote style="width:600px;"><ol type="1"><li>n-1 個の円盤を A から B へ移動 ： move( n-1, A to B, using C )</li><li>Aの一番下にあった（n番目の）円盤をCへ移す ： print( n を A から C へ )</li><li>n-1 個の円盤をBからCへ移動 ： move( n-1, B to C, using A )</li></ol></blockquote>このように記述してみると、手続きが再帰的になっていることが分かる。つまりこれらが再帰の一般式になっている。これに再帰の停止条件つまり、ｎが１の時の状況を考えればよい。<blockquote style="width:600px;"><ol type="1"><li>1個の円盤をAからCへ移す： move( 1, A to C, using B )</li><li>Aにある1つの円盤をCへ移す ： print( 1 を A から C へ )</li></ol></blockquote></explanation>
       <exercise id="hanoi3-1" title="演習問題">前節で示した解法アルゴリズムに従って、ハノイの塔のプログラムを完成させなさい。</exercise>
-      <exercise title="模範解答" id="hanoi3-2">以下が模範解答です。<blockquote><pre>/*  ハノイの塔  */
+      <exercise title="模範解答" id="hanoi3-2">以下が模範解答です。
+			<pre class="prettyprint">/*  ハノイの塔  */
 
 #include &lt;stdio.h&gt;
 void move(int n, char a, char b, char c);
@@ -471,7 +482,9 @@ void move(int n, char a, char b, char c){
   if(n &gt; 1)  move(n - 1, a, c, b);
   printf("saucer %2d : %c -&gt; %c\n", n, a, c);
   if(n &gt; 1)  move(n - 1, b, a, c);
-}</pre></blockquote><h4>実行結果</h4><blockquote><pre>How many saucers do You want? 4
+}</pre>
+<h4>実行結果</h4>
+<blockquote><pre>How many saucers do You want? 4
 saucer  1 : A -&gt; B
 saucer  2 : A -&gt; C
 saucer  1 : B -&gt; C
@@ -486,7 +499,8 @@ saucer  1 : C -&gt; A
 saucer  3 : B -&gt; C
 saucer  1 : A -&gt; B
 saucer  2 : A -&gt; C
-saucer  1 : B -&gt; C</pre></blockquote></exercise>
+saucer  1 : B -&gt; C</pre></blockquote>
+			</exercise>
     </section>
   </section>
 </xtdl>
