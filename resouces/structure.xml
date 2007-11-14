@@ -18,6 +18,9 @@
 				tgif などのドローソフトには、いくつかの図形をグループ化する機能がある。グループ化された図形たちは、あたかも1 つの図形であるかのように拡大縮小したり、コピー&amp;ペーストしたりすることができる。構造体は、この「グループ化」の機能に近い。
 			</p>
 		</explanation>
+		<exercise id="kadai1" title="課題1">
+			<p>個人データを表す構造体を作成せよ。個人データの項目は配布された課題にある通りとする。</p>
+		</exercise>
 		<explanation id="sec1.2" title="型としての構造体">
 			<p>
 				いったん構造体を定義すると、以降、その構造体は型として扱える。つまりint やchar などと同じように扱うことができる。例えば、先の構造体point を宣言すると、次のように、point 型の変数を宣言したり利用したりできる。
@@ -162,7 +165,7 @@ struct point2 .pp ;</pre>
 			</p>
 		</explanation>
 		<section id="sec1.7" title="演習問題：文字列操作">
-			<exercise id="sec1.7.1" title="演習問題：文字列操作関数の調査">
+			<exercise id="kadai2" title="演習問題：文字列操作関数の調査">
 				<p>
 					C 言語には、文字列を操作するライブラリ関数としてstrcpy, strcmp, strcat などがある。これらの関数について、以下の項目をマニュアル等を用いて調べよ。
 				</p>
@@ -171,7 +174,7 @@ struct point2 .pp ;</pre>
 					<li>関数の動作の概要、引数や返り値の意味</li>
 				</ul>
 			</exercise>
-			<exercise id="sec1.7.2" title="演習問題：文字列操作関数の実装">
+			<exercise id="kadai3" title="演習問題：文字列操作関数の実装">
 				<p>
 					strcpy, strcmp, strcat と全く同じ振舞いをする関数を実装し、動作を確認せよ。関数名はそれぞれmy strcpy, my strcmp, my strcat とせよ。<br />
 					ここでいう「振舞い」とは、関数の動作だけではなく、引数の数・型、返り値の型、それらの意味なども含まれる。つまり、strcpy の代わりにmy strcpy を用いても全く同じ動作をしなければならない。<br />
@@ -199,6 +202,52 @@ struct point2 .pp ;</pre>
 					<li>上記の仕様を用いて，一度削除されたデータ項目は以降の新規追加処理で再利用可能であること．</li>
 				</ul>
 			</explanation>
+			<section id="sec1.8.2" title="課題：構造体を用いない実装">
+				<exercise id="kadai4" title="課題4">
+					<p>前節で述べた個人データを管理する住所録を、名前、電話番号、学籍番号を表す3 つの配列name, phone,number を用いて実装せよ。</p>
+					<ol>
+						<li>(データの新規追加) 引数を順に名前、電話番号、学籍番号とするようなデータ項目を住所録に追加する関数void add(char *, char *, int);</li>
+						<li>(データ項目の削除) 引数で指定されたデータ項目と合致する個人データを住所録から削除する関数
+						<pre class="prettyprint">void delByName(char *);
+void delByPhone(char *);
+void delByNumber(int);</pre>
+						例えばdelByName() は、引数で指定された文字列を名前とするような個人データを住所録から削除する。delByPhone(), delByNumber() も同様である。</li>
+						<li>(データの検索) 引数で指定されたデータ項目を住所録から検索する関数
+						<pre class="prettyprint">void findByName(char *);
+void findByPhone(char *);
+void findByNumber(int);</pre>
+例えばfindByName() は、引数で指定された文字列を名前とするようなデータ項目を住所録から検索する。findByPhone(), findByNumber() も同様である。<br />
+						これらの関数は、合致するすべての個人データを表示するものとする。</li>
+						<li>(データの表示) 住所録に登録されている個人データをすべて表示する関数
+						<pre class="prettyprint">void printAll();</pre>
+						未使用の領域も出力すること。</li>
+					</ol>
+					<p>を作成せよ。</p>
+					<ul>
+						<li>引数の意味に充分注意すること。例年、引数の意味を誤解して実装を行う学生が少なからず見受けられる。</li>
+						<li>文字列の一致判定にはstrcmp あるいはstrcasecmp を用いるとよい．</li>
+						<li>データを格納する配列name，phone，number はグローバル変数（大域変数）で確保してよい．</li>
+					</ul>
+				</exercise>
+				<exercise id="kadai5" title="課題5">
+					<p>課題4 で作成した関数を用いて住所録データを操作するmain() 関数を作成せよ。その実行結果も示せ。</p>
+					<ul>
+						<li>今回の実験の主眼はmain() ではなく、課題1.4(および課題1.7) である。したがってデータの入出力に凝る必要は必ずしもない。例年、ユーザとの対話的入出力を実装してくる学生が多い*11が、そこまでは要求しない。</li>
+						<li>ただし、課題1.4 で実装した関数が正しく動作することを確認するように実装を行うこと。すなわち、最低限、main() の中ですべての関数を使うようにしなければならない。</li>
+					</ul>
+				</exercise>
+			</section>
+			<section id="sec1.8.3" title="課題：構造体を用いた実装">
+				<exercise id="kadai6" title="課題6">
+					<p>仕様で述べた個人データを表す構造体の宣言を書け。構造体のメンバー名は自由に決めてよい。</p>
+				</exercise>
+				<exercise id="kadai7" title="課題7">
+					<p>課題4 で作成したものと同一（機能だけではなく引数の個数，型も同一）の関数群を構造体の配列を用いて実装せよ．ここで用いる構造体は，課題6 で作成した構造体を用いること．なお，データを格納する構造体の配列はグローバル変数（大域変数）で確保してよい．</p>
+				</exercise>
+				<exercise id="kadai8" title="課題8">
+					<p>課題7 で作成した関数を用いて住所録データを操作するmain() 関数を作成せよ。その実行結果も示せ。</p>
+				</exercise>
+			</section>
 		</section>
 	</section>
 </xtdl>
