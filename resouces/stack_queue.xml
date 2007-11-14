@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xtdl>
+	<section id="sec3" title="スタック、キュー">
+		<explanation id="sec3a" title="スタック、キュー">
+			<p>
+				リストの特殊な場合として重要なものに、スタックとキュー(待ち行列) がある。これらはリストとは独立した概念として計算機科学の分野で登場することも多い。
+			</p>
+		</explanation>
+		<section id="sec3.1" title="スタック">
+			<explanation id="sec3.1.1" title="定義と基本操作群">
+				<p>
+					リストの中で、挿入や削除がいつも一方の端からしかできないものをスタックという*1。追加や削除をする側の端をスタックの先頭、もう一方の端をスタックの底という。スタックでは、あとで追加した要素のほうが先に取り出されるという性質があり、このことからスタックをLIFO(Last-In First-Out) と呼ぶこともある。<br />
+スタックでは追加や削除が一方の端からしかできない。また、先頭以外のスタック中の要素を参照することもできない。したがって、スタックの基本操作群はリストよりも簡単になる。一例を図3.1 に示す。
+				</p>
+				<div style="text-align:center">
+					<img src="/~learn/images/c-kunishi/fig3_1.jpg" alt="スタックの基本操作群" /><br />
+					<strong>図3.1　スタックの基本操作群</strong>
+				</div>
+			</explanation>
+			<explanation id="sec3.1.2" title="リストによる実装">
+				<p>
+					リストの基本操作群を用いてスタックの基本操作群を実装することを考える。このとき、スタックの先頭をリストのどちら側の端にするかを決めておかなければならない。リストによる実装の場合は、実装のしやすいほうにしておけばよい。<br />
+ここではリストの先頭をスタックの先頭にすることとしよう。すると、たとえばTOP(S) はリストの先頭の要素を返せばよいのだから、RETRIEV E(FIRST(S), S) と書くことができる。またPUSH(x, S) はリストの先頭に要素x を挿入すればよいのだから、INSERT(x, FIRST(S), S) と書くことができる。<br />
+このようにして実装されたスタックは、内部的な実装はリストであるが、外部から基本操作群によって利用する限り、内部の実装を利用者が知る必要はない。このように、基本操作群で内部の実装を隠すという考え方を「情報隠蔽」もしくは「抽象データ型」と呼ぶことがある。オブジェクト指向プログラミング言語の「クラス」は、この考え方を発展させたものである。
+				</p>
+			</explanation>
+			<explanation id="sec3.1.3" title="配列による実装">
+				<p>
+					スタックを配列で実装することもできる。多くの場合、配列の要素数は固定であるから、スタックに積むことのできる最大要素数も固定されることになる。また配列では、添字の大きいほうをスタックの先頭にしておくと実装しやすくなる。添字の小さいほうをスタックの先頭にすると、一般には要素の挿入・削除のたびに配列の詰め直しをしなければならない。<br />
+たとえば、スタックを実装する配列をelements[0 ・ ・ ・ 99]、スタックに現在入っている要素数をlength とすると、TOP(S) はelements[length . 1] を返すような関数として実装できる。またPUSH(x, S) は次のような関数として実装できる。
+				</p>
+				<pre class="prettyprint">push(x, S) {
+  if (length == 100) {
+    もう追加できない;
+  } else {
+    elements[length++] = x;
+  }
+}</pre>
+			</explanation>
+		</section>
+		<section id="sec3.2" title="キュー(待ち行列)">
+			<explanation id="sec3.2.1" title="定義と基本操作群">
+				<p>
+					リストの中で、挿入が一方の端から、削除が反対の端からしかできないものをキュー(待ち行列) という。キューでは、先に追加された要素ほど先に取り出されるという性質があり、このことからFIFO (First-In First-Out) と呼ばれることもある。<br />
+スタックの場合と同様、待ち行列の基本操作群はリストより簡単になる。一例を図3.2 に示す。
+				</p>
+				<div style="text-align:center">
+					<img src="/~learn/images/c-kunishi/fig3_2.jpg" alt="待ち行列の基本操作群" /><br />
+					<strong>図3.2　待ち行列の基本操作群</strong>
+				</div>
+			</explanation>
+			<explanation id="sec3.2.2" title="リストによる実装">
+				<p>
+					スタックの場合と同様、リストのどちらの端を待ち行列の先頭・末尾に対応させるかは決めておく必要がある。リストの基本操作群の種類を考慮しながら、実装のしやすいほうに定めればよい。<br />
+ここではリストの先頭を待ち行列の先頭、リストの末尾を待ち行列の末尾にそれぞれ対応させることにする。すると、たとえばFRONT(Q) はリストの先頭の要素の値を返せばよいのだからRETRIEV E(FIRST(Q),Q) と書くことができる。またENQUEUE(x,Q) はリストの末尾に要素x を加えればよいのだから、INSERT(x,END(Q),Q)とすればよい。
+				</p>
+			</explanation>
+			<explanation id="sec3.2.3" title="配列による実装">
+				<pre class="prettyprint">ENQUEUE(x, Q) {
+  if (length == 100) {
+    もう追加できない;
+  } else {
+    elements[(front + length) % 100] = x;
+    length ++;
+  }
+}</pre>
+			</explanation>
+		</section>
+		<section id="sec3.3" title="スタックの実装">
+			<explanation id="sec3.3.1" title="プログラムの仕様">
+				<ul>
+					<li>内部構造として連結リストを用いる．</li>
+					<li>先週作成したリスト操作ライブラリをできる限り活用する．</li>
+					<li>スタックの先頭を連結リストのどちら側に対応させるかは各自で決めること。</li>
+					<li>扱うデータはint 型のデータとする．</li>
+					<li>操作関数は，スタックの新規作成(MAKENULL），先頭データの取得(TOP），先頭セルの取り出し(POP），データの新規追加(PUSH），空スタックの検査(EMPTY）にスタック全体の削除を加えた計6 関数から構成する．</li>
+				</ul>
+				<p>
+					また，実使用時に利用しやすいように，構造体宣言，関数のプロトタイプ宣言等はヘッダファイル（例えばstack.h）に，操作関数群と操作プログラムは別ファイル（例えばstack.c とstack-test.c）とし，コンパイルにはmake を用いるようにすること．<br />
+なお，前回作成したリスト操作ライブラリを利用することから，今回の課題において構造体メンバへの直接アクセスは不要となるはずである．課題回答中にこのような操作が必要となった場合には，リスト操作関数のいずれかで代用できるはずであるので，その点を考慮すること．
+				</p>
+			</explanation>
+			<section id="sec3.3.2" title="課題：スタックの実装">
+				<exercise id="kadai1" title="課題1">
+					<p>
+						空スタックを作成してそのポインタ(ダミーセルへのポインタ）を返す関数
+					</p>
+					<blockquote>
+						<p>struct cell *makeNullStack(void);</p>
+					</blockquote>
+					<p>を作成せよ。</p>
+				</exercise>
+				<exercise id="kadai1_answer" title="課題1の解答例">
+					<pre class="prettyprint">/*
+ * Make null stack and return pointer to stack
+ */
+struct cell *makeNullStack(void)
+{
+  return makeNullList(); /* call makeNullList() */
+}</pre>
+				</exercise>
+				<exercise id="kadai2" title="課題2">
+					<p>指定されたスタックが空(1）か否(0）かを返す関数</p>
+					<blockquote>
+						<p>int emptyStack(struct cell*);</p>
+					</blockquote>
+					<p>を作成せよ。</p>
+				</exercise>
+				<exercise id="kadai3" title="課題3">
+					<p>引数として指定されたスタックのトップセルが保持しているデータを返す関数</p>
+					<blockquote>
+						<p>int topStack(struct cell*);</p>
+					</blockquote>
+					<p>を作成せよ．</p>
+				</exercise>
+				<exercise id="kadai3_answer" title="課題3の解答例">
+					<pre class="prettyprint">/*
+ * Return data of the top stack
+ */
+int topStack(struct cell *stack)
+{
+  return retrieveCell(firstCell(stack), stack);
+}</pre>
+				</exercise>				
+				<exercise id="kadai4" title="課題4">
+					<p>引数として指定されたスタックのトップデータを返し，そのセルを取り除く関数</p>
+					<blockquote>
+						<p>int popStack(struct cell*);</p>
+					</blockquote>
+					<p>を作成せよ．</p>
+				</exercise>
+				<exercise id="kadai5" title="課題5">
+					<p>引数として与えられたデータをスタックに追加する関数</p>
+					<blockquote>
+						<p>void pushStack(int, struct cell*);</p>
+					</blockquote>
+					<p>を作成せよ．</p>
+				</exercise>
+				<exercise id="kadai6" title="課題6">
+					<p>引数として指定されたスタックに残っているすべてのセルを削除し，スタックのダミーセルまでも削除する関数</p>
+					<blockquote>
+						<p>void deleteStack(struct cell*);</p>
+					</blockquote>
+					<p>を作成せよ．</p>
+				</exercise>
+				<exercise id="kadai7" title="課題7">
+					<p>ここまでに作成したスタック操作関数群の動作を確認するようなmain() 関数を作成し、動作を確かめよ。</p>
+				</exercise>
+			</section>
+		</section>
+		<section id="sec3.4" title="キュー(待ち行列)の実装">
+			<explanation id="sec3.4.1" title="実装の仕様">
+				<ul>
+					<li>内部構造として連結リストを用いる．</li>
+					<li>先週作成したリスト操作ライブラリをできる限り活用する．</li>
+					<li>キューの先頭を連結リストの先頭とするか末尾とするかは各自で決めてよい。</li>
+					<li>扱うデータはint 型のデータとする．</li>
+					<li>操作関数は，キューの新規作成（MAKENULL），先頭データの取得（FRONT），先頭データの取り出し（DEQUEUE），データの新規追加（ENQUEUE），空キューの検査（EMPTY）にキュー全体の削除を加えた計6 関数から構成する．</li>
+				</ul>
+				<p>
+また，実使用時に利用しやすいように，構造体宣言，関数のプロトタイプ宣言等はヘッダファイル（例えばqueue.h）に，操作関数群と操作プログラムは別ファイル（例えばqueue.c とqueue-test.c）とし，コンパイルにはmake を用いるようにすること．<br />
+なお，前回作成したリスト操作ライブラリを利用することから，今回の課題において構造体メンバへの直接アクセスは不要となるはずである．課題回答中にこのような操作が必要となった場合には，リスト操作関数のいずれかで代用できるはずであるので，その点を考慮すること．
+				</p>
+			</explanation>
+			<section id="sec3.4.2" title="課題：キューの実装">
+				<exercise id="kadai8" title="課題8">
+					<p>空キューを作成してそのポインタ（ダミーセルへのポインタ）を返す関数</p>
+					<blockquote><p>struct cell *makeNullQueue(void);</p></blockquote>
+					<p>を作成せよ．</p>
+				</exercise>
+				<exercise id="kadai9" title="課題9">
+					<p>指定されたキューが空（1）か否（0）かを返す関数emptyQueue を作成せよ．プロトタイプ宣言は次のとおりとする．</p>
+					<blockquote><p>int emptyQueue(struct cell*);</p></blockquote>
+				</exercise>
+				<exercise id="kadai10" title="課題10">
+					<p>引数として指定されたキューの先頭データを返す関数frontQueue を作成せよ．プロトタイプ宣言は次のとおりとする．</p>
+					<blockquote><p>int frontQueue(struct cell*);</p></blockquote>
+				</exercise>
+				<exercise id="kadai11" title="課題11">
+					<p>引数として指定されたキューの先頭データを返し，そのセルを取り除く関数dequeue を作成せよ．プロトタイプ宣言は次のとおりとする．</p>
+					<blockquote><p>int dequeue(struct cell*);</p></blockquote>
+				</exercise>
+				<exercise id="kadai12" title="課題12">
+					<p>引数として与えられたデータをキューに追加する関数enqueue を作成せよ．プロトタイプ宣言は次のとおりとする．</p>
+					<blockquote><p>void enqueue(int, struct cell*);</p></blockquote>
+				</exercise>
+				<exercise id="kadai13" title="課題13">
+					<p>引数として指定されたキューに残っているすべてのセルを削除し，キューのダミーセルまでも削除する関数</p>
+					<blockquote><p>void deleleteQueue(struct cell*);</p></blockquote>
+				</exercise>
+				<exercise id="kadai14" title="課題14">
+					<p>ここまでに作成したキュー操作関数群の動作を確認するようなmain() 関数を作成し、動作を確かめよ。</p>
+				</exercise>
+			</section>
+		</section>
+		<section id="sec3.5" title="発展課題：配列によるスタック・キューの実装">
+			<exercise id="kadai15" title="課題15">
+				<p>配列を用いたスタック操作関数群を作成せよ．各操作関数のプロトタイプは下記の通りとする．</p>
+				<pre class="prettyprint">struct array_stack *makeNullStack(void);
+int emptyStack(struct array_stack*);
+int topStack(struct array_stack*);
+int popStack(struct array_stack*);
+void pushStack(int, struct array_stack*);
+void deleteStack(struct array_stack*);</pre>
+				<p>また，構造体struct array_stack は下記を用いることとする．</p>
+				<pre class="prettyprint">#define MAX_STACK_SIZE 10
+struct array_stack {
+  int length; /* スタックの長さ(格納数) */
+  int elements[MAX_STACK_SIZE]; /* データを格納するための配列*/
+};</pre>
+				<p>スタックに格納するデータはint 型に限定する．また，格納位置が0 のものをスタックの底とする．なお，MAX_STACK_SIZE を越えてデータを格納しようとした場合にはエラーメッセージを出し，その操作を無効とすること．</p>
+			</exercise>
+			<exercise id="kadai16" title="課題16">
+				<p>各操作関数のプロトタイプは下記の通りとする．</p>
+				<pre class="prettyprint">struct array_queue *makeNullQueue(void);
+int emptyQueue(struct array_queue*);
+int frontQueue(struct array_queue*);
+int dequeue(struct array_queue*);
+void enqueue(int, struct array_queue*);
+void deleteQueue(struct array_queue*);</pre>
+				<p>また，構造体struct array_queue は下記を用いることとする．</p>
+				<pre class="prettyprint">#define MAX_QUEUE_SIZE 10
+struct array_queue {
+  int front; /* キューのフロントを示す配列の添字*/
+  int length; /* キューの長さ(格納数) */
+  int elements[MAX_QUEUE_SIZE]; /* データを格納するための配列*/
+};</pre>
+				<p>キューに格納するデータはint 型に限定する．また，格納位置が配列の終端（MAX_QUEUE_SIZE-1）になった場合には，配列の先頭の0 に折り返すこととし，常にMAX_QUEUE_SIZE 個のデータを格納できるようにすること．なお，MAX_QUEUE_SIZE を越えてデータを格納しようとした場合にはエラーメッセージを出し，その操作を無効とすること．</p>
+			</exercise>
+		</section>
+	</section>
+</xtdl>
