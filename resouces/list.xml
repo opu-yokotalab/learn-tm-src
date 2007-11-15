@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xtdl>
+<section title="リスト" id="list">
+<explanation title="リストの数学的定義" id="list1">　数学的には、「ある同一の型の要素を0 個以上並べたもの」を<strong>リスト</strong>という。記法は文献によってまちまちであるが、この実験では[a1, a2, · · · , an] というように、要素をコンマで区切り、角括弧で囲って書くことにする。このとき、リストに含まれる要素数をリストの長さという。また、要素が一つもないリストを<strong>空リスト</strong>といい、[] と書く。<br/>
+　リストの要素は、リスト内の位置によって全順序(total order) の関係をつけることができる。つまり、リスト内の任意の2 要素を取ってくると、それらの間にリスト内の位置による順序関係を決めることができる。なお、ここでいう順序関係は、要素間の大小とは関係ないことに注意すること。たとえば、整数型の要素からなるリスト[1, 3, 2] を考えると、要素間に次のような順序関係をつけることができる。
+	<ul>
+		<li>リスト内の位置による順序: 1(第1要素), 3(第2要素), 2(第3要素)</li>
+		<li>要素の大小による順序: 1(第1要素), 2(第3要素), 3(第2要素)</li>
+	</ul>
+</explanation>
+<explanation title="リスト内の基本操作" id="list2">　リストに限らず、この実験で扱うような論理的なデータ構造では、それに対する基本的な操作群を考えることができる。これをうまく定めれば、そのデータ構造に対するあらゆる操作は、操作群中の操作のみを用いて構成することができる。<br/>　リストに対する基本操作群の一例として、図2.1 のようなものを考えることができる。なお、このような基本操作群の定め方は一通りとは限らない。たとえばプログラミング言語ML では、図2.2 のようなものを基本操作群としている。
+	<div align="center">
+		<img src="/~learn/images/c-kunishi/fig2_1.jpg" alt="リストの基本操作群"/><br/>
+		<strong>図2.1 リストの基本操作群</strong>
+	</div><br/>
+	<div align="center">
+		<img src="/~learn/images/c-kunishi/fig2_2.jpg" alt="ML におけるリストの基本操作群"/><br/>
+		<strong>図2.2 ML におけるリストの基本操作群</strong>
+	</div>
+</explanation>
+<section title="リストの実装" id="list3">
+	<explanation title="リストの実装" id="list3.1">
+　これまで述べてきたリストをプログラミング言語で実装する方法はいくつかある。この章では、実装方法のうちのいくつかについて概略を述べる。<br/>
+　プログラミング言語の中には、リストをライブラリとしてすでに持っているものもある。Lisp, ML, Prolog, Java などはその例である。一方C はリストをライブラリとして持っていないので、リストを使いたい場合は自分で実装を行う必要がある。
+	</explanation>
+	<explanation title="配列による実装" id="list3.2">　もっとも簡単な実装は配列を用いたものである。図2.3 のように、配列内の連続したセルの中にリストの要素を順に格納する。
+		<div align="center">
+			<img src="/~learn/images/c-kunishi/fig2_3.jpg" alt="配列によるリストの実装"/><br/>
+			<strong>図2.3 配列によるリストの実装</strong>
+		</div><br/>
+　この方法は実装が容易であり、また、リストの各要素を調べたり最後に新しい要素を尽け加える操作は簡単に実装できる。しかし、配列の大きさを越える長さのリストは扱うことができない。また、リストの途中に要素を挿入する場合、それ以降の要素をすべて1 つずつずらして、新しく挿入する要素のための領域を確保しなければならない。同様に、途中の要素を削除する場合も、後ろの要素を前に詰めて、すきまを埋める必要がある。
+	</explanation>
+	<explanation title="構造体によるリストの実装(1)" id="list3.3">　構造体を用いてリストを実装することもできる。この場合、各要素を表すデータ構造と、次の要素へのポインタとを構造体(<strong>セル</strong>) として構成し、リストの出現順につないでいくことになる。図2.4 に実装例を示す。この実装のことを連結リストということがある。なお、この図のように、連結リストの先頭に特別なセルheaderを設けておくと都合のよいことが多い。
+		<div align="center">
+			<img src="/~learn/images/c-kunishi/fig2_4.jpg" alt="構造体によるリストの実装"/><br/>
+			<strong>図2.4 構造体によるリストの実装</strong>
+		</div><br/>
+　この方法では、リストの要素の増減に合わせて記憶領域を動的に確保することができ、リストの長さに制限がない。また、リストを格納するために連続した記憶領域を使わなくてよいので、要素の挿入や削除の実装が簡単になる。そのかわり、ポインタのための領域を余分に使用する、要素の検索は先頭の要素から順にポインタをたどっていく必要がある、などの欠点がある。<br/>
+　今回の実験では、この方式による実装を行う。
+	</explanation>
+	<explanation title="構造体によるリストの実装(2)" id="list3.4">　Lisp やML などのプログラミング言語では、[[1, 2, 3], [4, 5], nil] のようにリストを入れ子にすることができる。このようなリストを許す場合には、ここまでに述べたものとは違う実装が必要になる。ML におけるリストの実装を図2.5に示す。
+		<div align="center">
+			<img src="/~learn/images/c-kunishi/fig2_5.jpg" alt="構造体によるリストの実装(2)"/><br/>
+			<strong>図2.5 構造体によるリストの実装(2)</strong>
+		</div><br/>
+　基本的には構造体を使うが、各要素へのポインタと、次の要素へのポインタとをセルとして構成するところが前節の実装と大きく異なる点である。
+	</explanation>
+</section>
+<section title="構造体を指し示すポインタ" id="list4">
+	<exercise title="練習問題1" id="list4.1">個人データを保持する構造体として以下のようなものを作成した。この宣言に、構造体personal_data へのポインタを保持するメンバnext を追加せよ。
+		<pre class="prettyprint">struct personal_data {
+	char name[256];
+	char phone[16];
+	int number;
+};</pre>
+	</exercise>
+	<exercise title="練習問題2" id="list4.2">struct personal_data 型の構造体が2 つ、メモリ上に置かれており、それらの先頭番地がそれぞれstruct personal_data *型の変数a, b に格納されているものとする。
+		<pre class="prettyprint">struct personal_data *a, *b;
+/* 実際のプログラムでは、malloc() を用いてメモリ領域を動的に確保・
+初期化し、それらの先頭番地をa, b に代入するという作業が必要であ
+る。ここでは、すでにこの作業は行われているものとする*/</pre>
+さて，a (で指し示されている構造体) の次にb (で指し示されている構造体) をつなぎたい。どのようなコードを書けばよいか、示せ。
+	</exercise>
+	<exercise title="練習問題3" id="list4.3">練習問題2 に続き、「a(で指し示される構造体) の次の構造体の氏名」をprintf() で表示させたい。どのようなコードを書けばよいか、示せ。(変数b は使用せずに書くこと)
+	</exercise>
+</section>
+<section title="課題: 連結リストによる「リスト」の実装" id="list5">
+	<explanation title="仕様、実装上の注意" id="list5.1">リストはC 言語には元々ないデータ構造なので、プログラム中でリストを扱うためには、C 言語に用意されているデータ構造で実装を行う必要がある。実装方法はいくつかあるが、ここでは、連結リストを採用することとする。細かい仕様は以下の通りである。
+		<ul>
+			<li>リストの各要素に構造体(以下「セル」と呼ぶ) を一つ対応させ、リスト中で並んでいる順にセルをポインタで
+接続するものとする(図2.4 参照)。</li>
+			<li>セルデータはint 型のデータ1 個だけとする。</li>
+			<li>次の要素が存在しない場合には，対応するセルでは、次のセルへのポインタをNULL とする．すなわち，次のセ
+ルとしてNULL を保持するセルは，リストの終端となる。</li>
+			<li>各要素を表すセルの他に、連結リストの先頭にセルを1 つ置く(これを以下「ダミーセル」と呼ぶ)。リスト全体
+をC 言語中で指し示す必要がある場合には、ダミーセルへのポインタで代用する。例えば、空リストは、ダミーセル1 つだけからなる連結リストで表現される。</li>
+			<li>操作関数は，以下の課題で述べる11 個である。各関数の仕様はそれぞれの課題で述べるが、いずれも図2.1 にならったものとしている。<br/>なお、これらの関数はすべてリスト全体を指し示す引数を持つように統一している。そのため、一部の関数では、引数をすべて使用しなくても実装できることがある。</li>
+		</ul>
+一部の課題では解答例を示している。この解答例では，セルの構造体のメンバとして次のセルへのポインタを保持す
+る変数名をnext と仮定している。
+	</explanation>
+	<section title="課題" id="list5.2">
+		<exercise title="課題1" id="list5.2.1">int 型のデータを1 つ持つ連結リストのセルを表す構造体(struct cell) を記述せよ．</exercise>
+		<exercise title="課題2" id="list5.2.2">空リストを作成する関数
+			<pre class="prettyprint">struct cell *makeNullList(void);</pre>
+を作成せよ．返り値は、ダミーセルへのポインタである。<br/>
+　ダミーセルはmalloc を用いて動的に領域を確保すること．また，動的確保が成功したかどうかを必ず確認し，失敗した場合にはその旨を表示してプログラムを終了させるようにすること*5．また、ダミーセルの次のセルへのポインタの初期値はNULL とし, 次がないことを表しておく．
+　		</exercise>
+　		<exercise title="課題2 解答例" id="list5.2.2_answer">
+			<pre class="prettyprint">/*
+* Make null list and return pointer to list.
+*/
+struct cell *makeNullList(void)
+{
+	struct cell *list; /* pointer to new list */
+	
+	/* allocate memory for new list entry */
+	list = (struct cell*)malloc(sizeof(struct cell));
+	/* check the allocation succeeded or failed */
+	if (list == (struct cell*)NULL) {
+		fprintf(stderr, "makeNullList: can not allocate memory for new list.\n");
+		exit(1);
+	}
+	/* set next cell’s position to NULL */
+	list->next = (struct cell*)NULL;
+	
+	return list; /* return pointer to list */
+}</pre>
+		</exercise>
+		<exercise title="課題3" id="list5.2.3">指定されたセルの次のセルへのポインタを返す関数nextCell を作成せよ．
+			<pre class="prettyprint">struct cell *nextCell(struct cell *, struct cell *);</pre>
+第1 引数は指定するセルへのポインタである。また，第2 引数は対象となるリスト全体を表す。すなわち、操作対象と
+している連結リストのダミーセルへのポインタである．
+		</exercise>
+		<exercise title="課題3 解答例" id="list5.2.3_answer">
+			<pre class="prettyprint">/*
+* Return pointer to the next cell.
+*/
+struct cell *nextCell(struct cell *target, struct cell *list)
+{
+	struct cell *next = (struct cell*)NULL;
+	
+	if (target != (struct cell*)NULL) {
+		next = target->next;
+	}
+	
+	return next;
+}</pre>
+		</exercise>
+		<exercise title="課題4" id="list5.2.4">連結リストの先頭のセル、終端のセルへのポインタを返す関数
+			<pre class="prettyprint">struct cell *firstCell(struct cell *);
+struct cell *endCell(struct cell *);</pre>
+を作成せよ．いずれの関数もダミーセルへのポインタを引数とする。連結リストが空リストを表している場合には、いずれの関数もNULL を返すものとする．
+		</exercise>
+		<exercise title="課題5" id="list5.2.5">指定されたセルの前のセルへのポインタを返す関数previousCell を作成せよ．
+			<pre class="prettyprint">struct cell *previousCell(struct cell*, struct cell*);</pre>
+第1 引数は指定するセルへのポインタ，第2 引数は対象となる連結リストのダミーセルへのポインタである．
+		</exercise>
+		<exercise title="課題6" id="list5.2.6">新たにセルを作成し，指定された位置に挿入する関数insertCell を作成せよ．
+			<pre class="prettyprint">struct cell *insertCell(int, struct cell *, struct cell *);</pre>
+第1 引数はデータの値，第2 引数は挿入位置となるセルへのポインタ，第3 引数は対象となる連結リストのダミーセルへのポインタである．新たに作成されたセルは、第2 引数のセルの前に挿入することとする。関数の返り値は、挿入したセルへのポインタである。<br/>
+連結リストの最後尾にセルを追加するときは，位置(第2 引数) としてNULL を指定する．また，新規に作成するセルの格納領域はmalloc を用いて動的に確保する。
+		</exercise>
+		<exercise title="課題7" id="list5.2.7">指定されたセルを指定されたリストから削除する関数deleteCell を作成せよ．削除したセルのメモリは解放すること．
+			<pre class="prettyprint">struct cell *deleteCell(struct cell*, struct cell*);</pre>
+第1 引数は指定するセルへのポインタ，第2 引数は対象となる連結リストのダミーセルへのポインタである．返り値は、削除されたセルの次に位置していたセルへのポインタである。
+		</exercise>
+		<exercise title="課題8" id="list5.2.8">指定されたセルのデータを返す関数retrieveCell を作成せよ．ただし，指定されたポインタがNULL であった場合には, 0 を返すこととする．
+			<pre class="prettyprint">int retrieveCell(struct cell*, struct cell*);</pre>
+第1 引数はデータを取得したいセルへのポインタ，第2 引数は対象となる連結リストのダミーセルへのポインタである．
+		</exercise>
+		<exercise title="課題9" id="list5.2.9">指定されたデータを値として持つセルへのポインタを返す関数locateCell を作成せよ．ただし，該当するセルがない場合にはNULL を返すこと．また，同じ値をもつセルが複数ある場合にはそのうちのいずれか1 つのみを返すものとする．
+			<pre class="prettyprint">struct cell *locateCell(int, struct cell*);</pre>
+第1 引数は指定するデータの値，第2 引数は対象となる連結リストのダミーセルへのポインタである．
+		</exercise>
+		<exercise title="課題9 解答例" id="list5.2.9_answer">
+			<pre class="prettyprint">/*
+* return position of the cell has data equals to specified as iData
+*/
+struct cell *locateCell(int data, struct cell *list)
+{
+	struct cell *current; /* current cell’s pointer */
+	
+	/* set pointer to current cell as pointer to first cell */
+	current = firstCell(list);
+	
+	/* while current cell’s data is not data, pursue the next cell */
+	while ((current != (struct cell*)NULL)
+			&amp;&amp; (retrieveCell(current, list) != data)) {
+		current = nextCell(current, list);
+	}
+	
+	return current; /* return end cell’s pointer */
+}</pre>
+		</exercise>
+		<exercise title="課題10" id="list5.2.10">先に作成した関数deleteCell を用いて，指定された連結リスト中のすべてのセルを削除する関数deleteList を作成せよ．ダミーセルも含めて削除すること。
+			<pre class="prettyprint">void deleteList(struct cell*);</pre>
+第1 引数は対象となる連結リストのダミーセルへのポインタである．
+		</exercise>
+		<exercise title="課題11" id="list5.2.11">指定されたリストの内容を表示する関数printList を作成せよ．ただし，表示はリストの先頭から順に[1, 2, 3, 4, 5] の形で表示することとする．
+			<pre class="prettyprint">void printList(struct cell*);</pre>
+第1 引数は対象となる連結リストのダミーセルへのポインタである．
+		</exercise>
+		<exercise title="課題12" id="list5.2.12">実装を行った連結リスト操作関数群を用いて連結リストを操作するmain() を実装せよ。連結リスト操作関数群が正しく動作していることが確かめられるように、基本関数群の使い方を工夫すること。
+		</exercise>
+	</section>
+</section>
+</section>
+</xtdl>

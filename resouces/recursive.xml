@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xtdl>
+<section title="再帰" id="recursive">
+<section title="定義" id="recursive1">
+	<explanation title="定義" id="recursive1.1">　関数f が、その関数本体の中にf 自身の適用を含むとき、関数f を<strong>再帰関数</strong>(recursive function) という。一般的には、f から直接的にf が呼び出される場合だけではなく、間接的に呼び出される場合も再帰関数という。<br/>
+	　特に、関数f の中で直接的にたかだか1 回しかf を呼び出さない場合を線形再帰(linear recursive)、2 回以上のfの呼び出しを含む場合を非線形再帰(non-linear recursive) という。<br/>
+	　再帰関数には、必ず以下の2 つの部分が含まれる。
+	<blockquote><ol type="1">
+		<li><strong>基底</strong>(basis)…再帰を含まない計算</li>
+		<li><strong>帰納段階</strong>(induction step)…再帰を含む計算</li>
+	</ol></blockquote>
+	　再帰関数は、リストや木などの再帰的なデータ構造を扱うアルゴリズムにおいて特に強力な計算手段であることが知られている。
+	</explanation>
+	<section title="再帰関数の例" id="recursive1.2">
+		<explanation title="階乗計算" id="recursive1.2.1">自然数n の階乗は以下のアルゴリズムで計算できる。
+			<ul>
+				<li>n = 0 のとき1</li>
+				<li>n ≥ 1 のときn ∗ (n − 1)!</li>
+			</ul>
+	これをML で書くと次のようになる。
+			<pre class="prettyprint">fun factorial(n) =
+		if n = 0 then 1 else n * factorial(n - 1);</pre>
+		</explanation>
+		<explanation title="リストの逆順並び替え" id="recursive1.2.2">リストL を逆順に並び替える操作は以下のアルゴリズムで計算できる。
+			<ul>
+				<li>L が空リストのとき、結果は空リストである。</li>
+				<li>L が空リストでないとき、tl(L) を逆順に並び替えたリストの後ろに、hd(L) だけからなるリストを連接したものになる。ただし、hd(L), tl(L) はそれぞれL の頭部、尾部を表す。</li>
+			</ul>
+	これをML で実装すると次のようになる。
+			<pre class="prettyprint">fun reverse(L) =
+		if L = nil then nil
+			else reverse(tl(L)) @ [hd(L)];</pre>
+		</explanation>
+	</section>
+	<explanation title="再帰関数の実装上の注意" id="recursive1.3">　再帰関数を実装する場合、いくつか決まりごとがある。
+		<ul>
+			<li>基底、帰納段階を必ず両方とも作り、引数の値などによって条件分岐させる。たとえば整数を引数に取る関数の場合は0(もしくは1) かどうかで、またリストを引数に取る場合は、リストがnil かどうかで、基底・帰納段階のいずれかに条件分岐させることがひじょうに多い。</li>
+			<li>帰納段階での再帰呼び出しでは、必ず引数の値を小さくして呼び出すようにする。たとえば、整数の場合はn−1、リストの場合はtl(L) などとする。これと、上記の条件分岐により、再帰関数はいつか必ず基底の計算を行い(無限に帰納段階を繰り返すことはない)、計算が停止することが保証される。</li>
+		</ul>
+	</explanation>
+</section>
+<section title="再帰プログラミング" id="recursive2">
+	<section title="数に関する再帰" id="recursive2.1">
+		<example title="例題" id="recursive2.1.1">1 から引数で指定された正の整数値までの和を返す関数int sigma(int); を再帰を用いて作成せよ．
+			<pre>sigma(n)	= n + sigma(n − 1)
+		= n + (n − 1) + sigma(n − 2)
+		...
+		= n + (n − 1) + · · · + sigma(1)
+		= n + (n − 1) + · · · + 1</pre>
+		</example>
+		<example title="解答例" id="recursive2.1.1_answer1">
+			<pre class="prettyprint">int sigma(int num)
+{
+	int result; /* calculation result */
+	
+	if (num &lt;= 1) {
+		result = num;
+	} else {
+		result = num + sigma(num - 1);
+	}
+	
+	return result;
+}</pre>
+		</example>
+		<example title="main関数の例" id="recursive2.1.1_answer2">
+			<pre class="prettyprint">int main(int argc, char *argv[])
+{
+	/* check arguments */
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s num\n", argv[0]);
+		exit(1);
+	}
+	
+	/* check argument sign */
+	if (atoi(argv[1]) &lt; 0) {
+		fprintf(stderr, "Error: The argument must be a positive value.\n");
+		exit(1);
+	}
+	/* calculation and print result */
+	printf("sigma(%d) = %d\n", atoi(argv[1]), sigma(atoi(argv[1])));
+	
+	return 0;
+}</pre>
+		</example>
+		<exercise title="課題1" id="recursive2.1.2">上記の解答例では，引数として与える値に制限が存在する．その制限値の上限についてあらかじめ推定せよ．また，様々な値を引数として与え，その推定の正否を確認するとともに，その様な制限が発生している理由を文献等により調査せよ．</exercise>
+		<exercise title="課題2" id="recursive2.1.3">1, 1, 2, 3, 5, 8, 13, 21, 34, 55, . . . という数列を<strong>フィボナッチ数列</strong>という．この数列の最初の2 要素は1 であり，それ以降の要素はその前2 つの要素の和となっている．例えば5 番目の要素は，その前2 つの要素である3, 4 番目の要素2 と3 の和であるから2 + 3 = 5 となっている．<br/>フィボナッチ数列において，引数で指定された順番に位置する要素を返す関数int fibonacci(int); を再帰を用いて作成せよ．また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。
+			<pre>fibonacci(n)	= fibonacci(n − 1) + fibonacci(n − 2)
+		= {fibonacci(n − 2) + fibonacci(n − 3)} + {fibonacci(n − 3) + fibonacci(n − 4)}
+		...
+			</pre>
+		</exercise>
+	</section>
+	<section title="リストに関する再帰" id="recursive2.2">
+		<explanation title="注意" id="recursive2.2_attention">これ以降の課題については，前回に作成したリスト操作関数を用いること．</explanation>
+		<exercise title="課題1" id="recursive2.2.1">リストへのポインタを引数としてとり，その内容を逆順に並べ替えたリストへのポインタを返す関数struct cell *reverseList(struct cell*); を再帰を用いて作成せよ．また、この関数の動作を確かめるmain()関数を作成し、動作を確かめよ。なお，並べ替え後に元のリストが破壊されていても構わない．
+			<pre>reverseList([3, 6, 4, 5, 2])	= reverseList([6, 4, 5, 2])@[3](@はリストの連結演算を表す)
+				= reverseList([4, 5, 2])@[6]@[3]
+				...
+				= [2, 5, 4, 6, 3]</pre>
+		</exercise>
+		<exercise title="課題2" id="recursive2.2.2">与えられたリストlist を二分割した結果をlist1，list2 として返す再帰関数を作成せよ．プロトタイプ宣言は次のとおりとする．
+			<pre class="prettyprint">void divideList(struct cell *list, struct cell *list1, struct cell *list2);</pre>
+分割は，list の奇数番目のデータをlist1 に，偶数番目のデータをlist2 に格納するという手順で行うこと．なお，並べ替え後に元のリストが破壊されていても構わない．また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。
+			<pre>参考) pcList = [1, 2, 3, 4, 5] のとき，
+list1	= [1]@([3, 4, 5] をdivideList した結果得られるlist1)
+	= [1]@([3]@([5] をdivideList した結果得られるlist1))，
+list2	= [2]@([3, 4, 5] をdivideList した結果得られるlist2)
+	= [2]@([4]@([5] をdivideList した結果得られるlist2))</pre>
+		</exercise>
+		<exercise title="課題3" id="recursive2.2.3">与えられた2 つのリストを結合する再帰関数を作成せよ．プロトタイプ宣言は次のとおりとする．
+			<pre class="prettyprint">void mergeList(struct cell *list1, struct cell *list2, struct cell *merged);</pre>
+結合は，list1 およびlist2 それぞれの先頭のデータを比較し，小さい方のデータをmerged に追加するという手順で行う．なお，並べ替え後に元のリストlist1 およびlist2 が破壊されていても構わない．<br/>また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。
+			<pre>参考) list1 = [3, 6, 2]，list2 = [4, 5, 7] のとき，
+merged	= [3]@([6, 2]，[4, 5, 7] をmergeList した結果得られるmerged)
+	= [3]@([4]@([6, 2]，[5, 7] をmergeList した結果得られるmerged))
+	= · · ·</pre>
+		</exercise>
+		<exercise title="課題4" id="recursive2.2.4">作成したdivideList とmergeList を利用することで，リストの並べ替えを行うことができる．並べ替えを行う関数がmergeSort であるとき，並べ替えは，
+			<ol type="1">
+				<li>与えられたリストをdivideList によって二分割，</li>
+				<li>分割した結果をそれぞれmergeSort で並べ替え，</li>
+				<li>並べ替えた結果2 つをmergeList で結合，</li>
+			</ol>
+という手順で実現できる．この手法は<strong>マージソート</strong>として知られている．
+与えられたリストlist からその内容を昇順に並べ替えたリストsorted を得る再帰関数void mergeSort(struct cell *list, を作成せよ．<br/>また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。<br/>参考) list = [ 4, 7, 2, 3, 9, 1 ] が与えられたとき，mergeSort を実行した結果得られるsorted はsorted= [ 1, 2, 3, 4, 7, 9 ] となる．
+			<div align="center">
+				<img src="/~learn/images/c-kunishi/fig4_1.jpg"/>
+			</div>
+さらに[4, 2, 9] のmergeSort は次のようになる．
+			<div align="center">
+				<img src="/~learn/images/c-kunishi/fig4_2.jpg"/>
+			</div>
+		</exercise>
+	</section>
+</section>
+</section>
+</xtdl>
