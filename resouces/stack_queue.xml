@@ -13,7 +13,7 @@
 スタックでは追加や削除が一方の端からしかできない。また、先頭以外のスタック中の要素を参照することもできない。したがって、スタックの基本操作群はリストよりも簡単になる。一例を図3.1 に示す。
 				</p>
 				<div style="text-align:center">
-					<img src="/~learn/images/c-kunishi/fig3_1.jpg" alt="スタックの基本操作群" /><br />
+					<img src="/images/c-kunishi/fig3_1.jpg" alt="スタックの基本操作群" /><br />
 					<strong>図3.1　スタックの基本操作群</strong>
 				</div>
 			</explanation>
@@ -45,7 +45,7 @@
 スタックの場合と同様、待ち行列の基本操作群はリストより簡単になる。一例を図3.2 に示す。
 				</p>
 				<div style="text-align:center">
-					<img src="/~learn/images/c-kunishi/fig3_2.jpg" alt="待ち行列の基本操作群" /><br />
+					<img src="/images/c-kunishi/fig3_2.jpg" alt="待ち行列の基本操作群" /><br />
 					<strong>図3.2　待ち行列の基本操作群</strong>
 				</div>
 			</explanation>

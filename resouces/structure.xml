@@ -41,7 +41,7 @@ struct float_point{
 } float_pt;
 			</pre>
 			<div style="text-align:center;">
-				<img src="/~learn/images/c-kunishi/fig1_1.jpg" alt="構造体pointのメモリ上の配置" /><br />
+				<img src="/images/c-kunishi/fig1_1.jpg" alt="構造体pointのメモリ上の配置" /><br />
 				<strong>図1.1　構造体pointのメモリ上の配置</strong>
 			</div>
 			<p>
@@ -101,7 +101,7 @@ pts1[1].y = 240;</pre>
 					また、型X に対して、X 型のメモリ領域の先頭番地を表す型X*を用意した。例えばint *pi; と書くと、変数pi にはint 型のメモリ領域の先頭番地しか格納できない(図1.2)。
 				</p>
 				<div style="text-align:center">
-					<img src="/~learn/images/c-kunishi/fig1_2.jpg" alt="int *pi;" /><br />
+					<img src="/images/c-kunishi/fig1_2.jpg" alt="int *pi;" /><br />
 					<strong>図1.2　int *pi;</strong>
 				</div>
 			</explanation>
@@ -135,11 +135,11 @@ pts1[1].y = 240;</pre>
 					図1.3 において、動的に確保した構造体のメンバーx の値を読み出すにはどうしたらよいだろうか。<br />
 					8236 番地から始まる構造体は、*p で得られる。したがって、この構造体のメンバーx は(*p).x で得られる。ただし、二項演算子. は単項演算子*よりも優先順位が高いので、カッコが必要になる。</p>
 					<div style="text-align:center">
-						<img src="/~learn/images/c-kunishi/fig1_3.jpg" alt="領域の動的確保" /><br />
+						<img src="/images/c-kunishi/fig1_3.jpg" alt="領域の動的確保" /><br />
 						<strong>図1.3　領域の動的確保</strong>
 					</div>
 					<div style="text-align:center">
-						<img src="/~learn/images/c-kunishi/fig1_4.jpg" alt="point2型の構造体" /><br />
+						<img src="/images/c-kunishi/fig1_4.jpg" alt="point2型の構造体" /><br />
 						<strong>図1.4　point2型の構造体</strong>
 					</div>
 					<p>
