@@ -85,7 +85,7 @@ answer : 4! = 24</pre></blockquote>
 			</exercise>
 		</section>
 		<section title="漸化式" id="saiki1.2">
-			<example id="saiki1.2.1" title="漸化式の例題">漸化式<blockquote><img src="/~learn/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4>
+			<example id="saiki1.2.1" title="漸化式の例題">漸化式<blockquote><img src="/images/zenka.png" width="179"></img></blockquote>できまる数列のn項めをもとめるプログラムを作ろう. <br />プログラムは以下のようになる. <h4>再帰を利用する実装例</h4>
 <pre class="prettyprint">
 /* 再帰を利用した漸化式の実装例 */
 int xn2(int n){
@@ -269,7 +269,7 @@ answer: a = 55</pre></blockquote></exercise>
   <section title="いろいろな応用" id="saiki2">
     <section id="quick" title="応用編：クイックソート">
       <explanation title="応用編：クイックソート" id="quick1">クイックソートは、その名前が示すように非常に高速なソートアルゴリズムです。処理速度が求められる場面では必ず候補に挙がります。しかし、必ずしも常に高速であるとは限らず、ある条件下ではバブルソート並の速度にまで落ち込む可能性があります。<br></br><br />クイックソートの考え方は、全体の中から基準となる要素を１つ選び（この要素を枢軸 やピボットと呼びます）、これより小さい要素と大きい要素とに分割します。分割された２つの要素群については、更にその中で分割を行います。これを繰り返していくと、最終的には要素が１つ１つばらばらな状態にまで分割されます。この状態になったら、今度はそれを一気に結合します。分割処理は、要素の大小関係によって行われているので、最終結果を結合すれば既にソート結果が出来上がっているということです。<br></br>アルゴリズムの一例を示します。<blockquote style="width:600px;"><ol type="1"><li>ピボットとして一つ選びそれをPとする。</li><li>左から順に値を調べ、P以上のものを見つけたらその位置をiとする。</li><li>右から順に値を調べ、P以下のものを見つけたらその位置をjとする。</li><li>iがjより左にあるのならばその二つの位置を入れ替え、2に戻る。ただし、次の2での探索はiの一つ右、次の3での探索はjの一つ左から行う。</li><li>2に戻らなかった場合、iの左側を境界に分割を行って2つの領域に分け、そのそれぞれに対して再帰的に1からの手順を行う。要素数が1以下の領域ができた場合、その領域は確定とする。</li></ol></blockquote><br></br>分かりにくいかも知れませんが、重要なのは「分割」していく処理を「再帰」するという点だけです。</explanation>
-      <example title="クイックソートの動作イメージ" id="quick2">ここではクイックソートの動作イメージを掴むためのJavaアプレットを紹介します。<br />(引用元：<a href="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/index.html">いろいろなソートアルゴリズム</a>)<br /><applet codebase="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/java/" code="SortApplet.class" width="500" height="300"><param name="sort" value="Quick" /></applet><h4>操作方法</h4><img src="/~learn/images/applet_explanation.jpg" /></example>
+      <example title="クイックソートの動作イメージ" id="quick2">ここではクイックソートの動作イメージを掴むためのJavaアプレットを紹介します。<br />(引用元：<a href="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/index.html">いろいろなソートアルゴリズム</a>)<br /><applet codebase="http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/java/" code="SortApplet.class" width="500" height="300"><param name="sort" value="Quick" /></applet><h4>操作方法</h4><img src="/images/applet_explanation.jpg" /></example>
       <example title="クイックソートのC言語による実装例" id="quick3">ここでは再帰呼び出しを用いない実装例を紹介します。
 <pre class="prettyprint">#include &lt;stdio.h&gt;
 
@@ -456,7 +456,7 @@ void print_array(int array[], int size)
     <section title="応用編：ハノイの塔" id="hanoi">
       <explanation title="応用編：ハノイの塔" id="hanoi1">
 			ハノイの塔は1883年にフランスのＥ．Lucas（リュカ）が考案したゲームと言われています。<br />これは次のようなゲームです。 <br></br>
-			<img src="/~learn/images/Tower_of_Hanoi.gif"></img><br />
+			<img src="/images/Tower_of_Hanoi.gif"></img><br />
 			以下のルールに従ってすべての円盤を右端の杭に移動させられれば完成。
 			<ul>
 			<li>3本の杭と、中央に穴の開いた大きさの異なる複数の円盤から構成される。</li>
