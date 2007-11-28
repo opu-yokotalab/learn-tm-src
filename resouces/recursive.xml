@@ -124,11 +124,11 @@ merged	= [3]@([6, 2]，[4, 5, 7] をmergeList した結果得られるmerged)
 という手順で実現できる．この手法は<strong>マージソート</strong>として知られている．
 与えられたリストlist からその内容を昇順に並べ替えたリストsorted を得る再帰関数void mergeSort(struct cell *list, を作成せよ．<br/>また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。<br/>参考) list = [ 4, 7, 2, 3, 9, 1 ] が与えられたとき，mergeSort を実行した結果得られるsorted はsorted= [ 1, 2, 3, 4, 7, 9 ] となる．
 			<div align="center">
-				<img src="/~learn/images/c-kunishi/fig4_1.jpg"/>
+				<img src="/images/c-kunishi/fig4_1.jpg"/>
 			</div>
 さらに[4, 2, 9] のmergeSort は次のようになる．
 			<div align="center">
-				<img src="/~learn/images/c-kunishi/fig4_2.jpg"/>
+				<img src="/images/c-kunishi/fig4_2.jpg"/>
 			</div>
 		</exercise>
 	</section>
