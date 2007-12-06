@@ -50,4 +50,67 @@ int my_strcmp(char *str, char *ct){
 		</group>
 	</examination>
 </section>
+<section id="sec2" title="確認テスト：電話番号簿の操作関数">
+<explanation id="sec2.1" title="問題">
+	<p>前節の電話番号簿の演習課題のうち，add，delByName，findByNumberの3つの関数を以下のように実装した．各問いの箇所に当てはまるプログラムを選択せよ．</p>
+	<pre class="prettyprint">/* レコードを新規追加する */
+void add(char *name, char *tel, int number){
+  int n=0;
+  while(n&lt;N){
+    if(strcmp([ a ]) == 0)
+      break;
+    n++;
+  }
+  if([ b ]){
+   [ c ]
+   [ d ]
+    personList[n].number = number;
+  }
+}
+
+/* 名前が一致するレコードを削除する */
+void delByName(char *name){
+  int i;
+  for(i=0;i&lt;N;i++){
+    if([ e ] == 0)
+     [ f ]
+     [ g ]
+     personList[i].number = 0;
+  }
+}
+
+/* 学籍番号が一致するレコードを標準出力する。 */
+void findByNumber(int number){
+  int i;
+  for(i=0;i&lt;N;i++){
+    if(personList[i].number == number)
+        printf("person[%d] :\n",i+1);
+        printf("name : %s\n",[ h ]);
+        printf("tel : %s\n",[ i ]);
+        printf("number : %d\n\n",[ j ]);
+  }
+}</pre>
+</explanation>
+
+	<examination title="解答欄" id="my_string_exam" ordering="_random">
+		<group id="mystring2" mark="100">
+        <item id="mystring2_0" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mystring2_1" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mystring2_2" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mystring2_3" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+		</group>
+	</examination>
+</section>
 </xtdl>
