@@ -29,5 +29,25 @@ int my_strcmp(char *str, char *ct){
   return [ i ] - (unsigned char)ct[n];
 }</pre>
 	</explanation>
+	<examination title="解答欄" id="my_string_exam" ordering="_random">
+		<group id="my_string" mark="100">
+        <item id="my_string_0" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="my_string_1" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="my_string_2" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="my_string_3" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+		</group>
+	</examination>
 </section>
 </xtdl>
