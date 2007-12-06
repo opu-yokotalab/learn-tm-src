@@ -17,13 +17,13 @@
 }
 
 char * my_strcat( [ d ] ){
-  my_strcpy( &str[ [ e ] ], ct);
+  my_strcpy( &amp;str[ [ e ] ], ct);
   return str;
 }
 
 int my_strcmp(char *str, char *ct){
   int n=0;
-  while( ( [ f ] ) && ( [ g ] ) && (ct[n] != '\0')){
+  while( ( [ f ] ) &amp;&amp; ( [ g ] ) &amp;&amp; (ct[n] != '\0')){
     [ h ] ;
   }
   return [ i ] - (unsigned char)ct[n];
