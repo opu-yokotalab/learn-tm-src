@@ -7,7 +7,8 @@ next([struct2,struct3],[[msg,"このページは｢簡単な内容｣も用意されています。ヒント
 next([struct3,struct_exam1],[[msg,"第1のテストです。満点取れるように頑張りましょう。"]]).
 next([struct_exam1,struct3],[[msg,"満点を取るまで挑戦してください。"]]):-getTestPoint(my_string_exam,Point),100 != Point.
 next([struct_exam1,struct4],[[msg,"第1のテストは合格です。次の演習課題は電話番号簿の実装です。<br>その調子で頑張りましょう。"]]):-getTestPoint(my_string_exam,Point),100 == Point.
-next([struct4,end],[]).
+next([struct4,struct_exam2],[]).
+next([struct_exam2,end],[]).
 
 toc(struct1,[]).
 toc(struct2,[]).
