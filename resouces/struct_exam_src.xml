@@ -29,21 +29,21 @@ int my_strcmp(char *str, char *ct){
   return [ i ] - (unsigned char)ct[n];
 }</pre>
 	</explanation>
-	<examination title="解答欄" id="struct_exam" ordering="_random">
-		<group id="structquiz" mark="100">
-        <item id="structquiz_0" type="random">
+	<examination title="解答欄" id="my_string_exam" ordering="_random">
+		<group id="mystring" mark="100">
+        <item id="mystring_0" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
-        <item id="structquiz_1" type="random">
+        <item id="mystring_1" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
-        <item id="structquiz_2" type="random">
+        <item id="mystring_2" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
-        <item id="structquiz_3" type="random">
+        <item id="mystring_3" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
@@ -92,21 +92,21 @@ void findByNumber(int number){
 }</pre>
 </explanation>
 
-	<examination title="解答欄" id="struct_exam" ordering="_random">
-		<group id="structquiz2" mark="100">
-        <item id="structquiz2_0" type="random">
+	<examination title="解答欄" id="person_list_exam" ordering="_random">
+		<group id="personlist" mark="100">
+        <item id="personlist_0" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
-        <item id="structquiz2_1" type="random">
+        <item id="personlist_1" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
-        <item id="structquiz2_2" type="random">
+        <item id="personlist_2" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
-        <item id="structquiz2_3" type="random">
+        <item id="personlist_3" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
