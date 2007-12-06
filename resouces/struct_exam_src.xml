@@ -7,26 +7,26 @@
 		</p>
 		<pre class="prettyprint">char * my_strcpy(char *str, char *ct){
   int n = 0;
-  while( [ a ] ){
-    [ b ]
+  while( [ A ] ){
+    [ B ]
     n++;
   }
-  str[n] = [ c ];
+  str[n] = [ C ];
 
   return str;
 }
 
-char * my_strcat( [ d ] ){
-  my_strcpy( &amp;str[ [ e ] ], ct);
+char * my_strcat( [ D ] ){
+  my_strcpy( &amp;str[ [ E ] ], ct);
   return str;
 }
 
 int my_strcmp(char *str, char *ct){
   int n=0;
-  while( ( [ f ] ) &amp;&amp; ( [ g ] ) &amp;&amp; (ct[n] != '\0')){
-    [ h ] ;
+  while( ( [ F ] ) &amp;&amp; ( [ G ] ) &amp;&amp; (ct[n] != '\0')){
+    [ H ] ;
   }
-  return [ i ] - (unsigned char)ct[n];
+  return [ I ] - (unsigned char)ct[n];
 }</pre>
 	</explanation>
 	<examination title="解答欄" id="my_string_exam" ordering="_random">
@@ -57,13 +57,13 @@ int my_strcmp(char *str, char *ct){
 void add(char *name, char *tel, int number){
   int n=0;
   while(n&lt;N){
-    if(strcmp([ a ]) == 0)
+    if(strcmp([ A ]) == 0)
       break;
     n++;
   }
-  if([ b ]){
-   [ c ]
-   [ d ]
+  if([ B ]){
+   [ C ]
+   [ D ]
     personList[n].number = number;
   }
 }
@@ -72,9 +72,9 @@ void add(char *name, char *tel, int number){
 void delByName(char *name){
   int i;
   for(i=0;i&lt;N;i++){
-    if([ e ] == 0)
-     [ f ]
-     [ g ]
+    if([ E ] == 0)
+     [ F ]
+     [ G ]
      personList[i].number = 0;
   }
 }
@@ -85,9 +85,9 @@ void findByNumber(int number){
   for(i=0;i&lt;N;i++){
     if(personList[i].number == number)
         printf("person[%d] :\n",i+1);
-        printf("name : %s\n",[ h ]);
-        printf("tel : %s\n",[ i ]);
-        printf("number : %d\n\n",[ j ]);
+        printf("name : %s\n",[ H ]);
+        printf("tel : %s\n",[ I ]);
+        printf("number : %d\n\n",[ J ]);
   }
 }</pre>
 </explanation>
