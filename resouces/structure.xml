@@ -181,6 +181,73 @@ struct point2 .pp ;</pre>
 					動作の確認には、my strcpy, my strcmp, my strcat を使用してmain() を実装し、その動作が予想通りになっているかどうか調べれば良い。
 				</p>
 			</exercise>
+			<explanation id="kadai3.1" title="補足説明">
+				<p>
+					strcpy,strcmp,strcatそれぞれの仕様(引数と返り値)を以下に示す．
+					<dl>
+						<dt>strcpy</dt>
+						<dd>
+							<strong>char *strcpy(s,ct)</strong> '\0'を含めて文字列 ct を s にコピーし，s を返す．<br />
+						</dd>
+						<dt>strcmp</dt>
+						<dd>
+							<strong>char *strcmp(cs,ct)</strong> 文字列 cs と文字列 ct を比較。cs &lt; ct なら負の数値を，cs == ct なら0を，cs &gt; ct なら正の数値を返す。<br />
+							strcmp関数は、二つの文字列を先頭から順に比較し、文字が異なるか、ナル文字に達した時点で比較を終える。そして、最後の文字どうしを比べて、第1引数の方が大きければ正の値を、第2引数の方が大きければ負の値を、等しければ0を返す。<br />
+							単純な仕様の関数であるが、一点だけ注意すべきなのは、文字の比較は unsigned char型として行わなければならない点である。
+						</dd>
+						<dt>strcat</dt>
+						<dd>
+							<strong>char *strcat(s,ct)</strong> 文字列 ct を文字列 s の終りに連結し，s を返す。
+						</dd>
+					</dl>
+					また，本演習課題で作成するmain関数と各文字列操作関数のひな型を下記に示す。これを利用して実装してもよい。
+				</p>
+				<pre class="prettyprint">/* プロトタイプ宣言とmain関数 */
+#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+char * my_strcpy(char *,char *);
+char * my_strcat(char *,char *);
+int my_strcmp(char *,char *);
+int main(void){
+  char str1[50];
+  char str2[50];
+
+  puts(my_strcpy(str1,"foo"));
+  puts(my_strcpy(str2,"bar"));
+  puts(my_strcat(str1,str2));
+
+  printf("strcmp : %d\n",my_strcmp(str1,str2));
+
+  return 0;
+}</pre>
+<pre class="prettyprint">/* my_strcpy ひな形 */
+char * my_strcpy(char *str, char *ct){
+  // char配列 ct の先頭文字から順番に str にコピー
+  // 配列strの末尾にヌル文字を追加
+  return str;
+}
+/* my_strcat ひな形 */
+char * my_strcat(char *str, char *ct){
+  // char配列 str の末尾の番地に ct をコピーする
+  return str;
+}
+/* my_strcmp ひな形 */
+int my_strcmp(char *str, char *ct){
+  // strとctの文字が異なるか，どちらか一方がヌル文字になるまで比較する。
+  // 最後の文字同士を比較し，差を返す。
+  return (unsigned char)str[n] - (unsigned char)ct[n];
+}
+</pre>
+<p>ここで示したmain関数を実行すると，下記のようになる。</p>
+<blockquote>
+	<pre>実行結果:
+foo
+bar
+foobar
+strcmp : 4
+</pre>
+</blockquote>
+			</explanation>
 		</section>
 		<section id="sec1.8" title="演習問題：住所録の作成">
 			<explanation id="sec1.8.1" title="演習問題：住所録の仕様">
