@@ -6,11 +6,13 @@ next([struct2,struct3],[[msg,"このページは｢簡単な内容｣も用意されています。ヒント
 
 next([struct3,struct_exam1],[[msg,"第1のテストです。満点取れるように頑張りましょう。"]]).
 next([struct_exam1,struct3],[[msg,"満点を取るまで挑戦してください。"]]):-getTestPoint(my_string_exam,Point),100 != Point.
-next([struct_exam1,end],[[msg,"お疲れ様でした。"]]):-getTestPoint(my_string_exam,Point),100 == Point.
+next([struct_exam1,struct4],[[msg,"第1のテストは合格です。次の演習課題は電話番号簿の実装です。<br>その調子で頑張りましょう。"]]):-getTestPoint(my_string_exam,Point),100 == Point.
+next([struct4,end],[]).
 
 toc(struct1,[]).
 toc(struct2,[]).
 toc(struct3,[]).
+toc(struct4,[]).
 
 changeLv([up,5] ,[] ):-getCurrentLevel(L),L==1.
 changeLv([down,1] ,[] ):-getCurrentLevel(L),L==5.

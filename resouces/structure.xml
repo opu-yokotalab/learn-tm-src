@@ -249,8 +249,8 @@ strcmp : 4
 </blockquote>
 			</explanation>
 		</section>
-		<section id="sec1.8" title="演習問題：住所録の作成">
-			<explanation id="sec1.8.1" title="演習問題：住所録の仕様">
+		<section id="sec1.8" title="演習問題：電話番号簿の実装">
+			<explanation id="sec1.8.1" title="演習問題：電話番号簿の実装">
 				<p>
 					作成する電話番号簿の仕様は次の通りとする．
 				</p>
@@ -269,6 +269,136 @@ strcmp : 4
 					<li>上記の仕様を用いて，一度削除されたデータ項目は以降の新規追加処理で再利用可能であること．</li>
 				</ul>
 			</explanation>
+
+				<exercise id="sec1.8.1-2" title="実装する関数の説明">
+					<p>個人データを管理する電話番号簿を構造体を用いて実装せよ。この電話番号簿を操作する関数群の仕様は以下のとおりである。</p>
+					<ol>
+						<li>(データの新規追加) 引数を順に名前、電話番号、学籍番号とするようなデータ項目を住所録に追加する関数<strong>void add(char *, char *, int);</strong></li>
+						<li>(データ項目の削除) 引数で指定されたデータ項目と合致する個人データを住所録から削除する関数
+						<pre class="prettyprint">void delByName(char *);
+void delByPhone(char *);
+void delByNumber(int);</pre>
+						例えばdelByName() は、引数で指定された文字列を名前とするような個人データを住所録から削除する。delByPhone(), delByNumber() も同様である。</li>
+						<li>(データの検索) 引数で指定されたデータ項目を住所録から検索する関数
+						<pre class="prettyprint">void findByName(char *);
+void findByPhone(char *);
+void findByNumber(int);</pre>
+例えばfindByName() は、引数で指定された文字列を名前とするようなデータ項目を住所録から検索する。findByPhone(), findByNumber() も同様である。<br />
+						これらの関数は、合致するすべての個人データを表示するものとする。</li>
+						<li>(データの表示) 住所録に登録されている個人データをすべて表示する関数
+						<pre class="prettyprint">void printAll();</pre>
+						未使用の領域も出力すること。</li>
+					</ol>
+					<ul>
+					</ul>
+				</exercise>
+
+				<example id="sec1.8.1-3" title="実装例の一部">
+					<p>本演習課題で作成するmain関数の一例を以下に示す。これを利用して課題に取り組んでも良い。</p>
+					<pre class="prettyprint">/* main関数の一例 */
+int main(void){
+  int n=0;
+  // personList 初期化処理
+  initList();
+
+  // 個人データ入力
+  add("Yutaka","1111",10);
+  add("Kuwahara","1112",11);
+  add("Lee","1113",12);
+  add("Lee","1115",13);
+  add("Konishi","1114",10);
+
+  // personList 表示
+  printAll();
+
+  // レコード削除
+  delByName("Lee");
+  delByNumber(10);
+
+  add("Konishi","1116",14);
+  add("Osamu","1117",15);
+
+  findByName("Konishi");
+  findByPhone("1117");
+  findByNumber(15);
+
+  delByPhone("1116");
+
+  printAll();
+
+  return 0;
+}</pre>
+<p>このmain関数を実行すると，結果は以下のようになる。</p>
+<blockquote>
+<pre>実行結果：
+person[1] :
+name : Yutaka
+tel : 1111
+number : 10
+
+person[2] :
+name : Kuwahara
+tel : 1112
+number : 11
+
+person[3] :
+name : Lee
+tel : 1113
+number : 12
+
+person[4] :
+name : Lee
+tel : 1115
+number : 13
+
+person[5] :
+name : Konishi
+tel : 1114
+number : 10
+
+person[1] :
+name : Konishi
+tel : 1116
+number : 14
+
+person[3] :
+name : Osamu
+tel : 1117
+number : 15
+
+person[3] :
+name : Osamu
+tel : 1117
+number : 15
+
+person[1] :
+name : 
+tel : 
+number : 0
+
+person[2] :
+name : Kuwahara
+tel : 1112
+number : 11
+
+person[3] :
+name : Osamu
+tel : 1117
+number : 15
+
+person[4] :
+name : 
+tel : 
+number : 0
+
+person[5] :
+name : 
+tel : 
+number : 0
+</pre>
+</blockquote>
+				</example>
+
 			<section id="sec1.8.2" title="課題：構造体を用いない実装">
 				<exercise id="kadai4" title="課題4">
 					<p>前節で述べた個人データを管理する住所録を、名前、電話番号、学籍番号を表す3 つの配列name, phone,number を用いて実装せよ。</p>
