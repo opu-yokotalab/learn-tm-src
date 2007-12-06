@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<block>
-		<node level="*" resource="structure" refs="sec1.7" />
+		<node level="*" resource="structure" refs="kadai3" />
+		<node level="1,2,3" resource="structure" refs="kadai3.1" />
 	</block>
 </module>

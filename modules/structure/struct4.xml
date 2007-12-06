@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<block>
-		<node level="*" resource="structure" refs="sec1.8" />
+		<node level="*" resource="my_string_exam" refs="sec1" />
 	</block>
 </module>
