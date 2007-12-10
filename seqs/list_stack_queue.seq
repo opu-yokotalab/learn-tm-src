@@ -8,8 +8,13 @@ next([list_exam,stack],[]):-getTestPoint(list_exam2,Point),Point == 100.
 next([list_exam,list],[]):-getTestPoint(list_exam2,Point),Point != 100.
 next([stack,stack2],[]).
 next([stack2,queue],[]).
+next([stack2,stack_exam],[]).
+next([stack_exam,queue],[]):-getTestPoint(stack_exam,Point) == 100.
+next([stack_exam,stack],[]):-getTestPoint(stack_exam,Point) != 100.
 next([queue,queue2],[]).
-next([queue2,end],[]).
+next([queue2,queue_exam],[]).
+next([queue_exam,end],[]):-getTestPoint(stack_exam,Point) == 100.
+next([queue_exam,queue],[]):-getTestPoint(stack_exam,Point) != 100.
 
 toc(list,[]).
 toc(list2,[]).
@@ -18,8 +23,10 @@ toc(list4,[]).
 toc(list_exam,[]).
 toc(stack,[]).
 toc(stack2,[]).
+toc(stack_exam,[]).
 toc(queue,[]).
 toc(queue2,[]).
+toc(queue_exam,[]).
 
 changeLv([up,5],[]):-getCurrentLevel(L),L==1.
 changeLv([down,1],[]):-getCurrentLevel(L),L==5.
