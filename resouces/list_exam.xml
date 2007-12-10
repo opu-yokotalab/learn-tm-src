@@ -21,7 +21,7 @@
 
 <section id="sec2" title="確認テスト：連結リストの実装">
 <explanation id="sec2.1" title="問題">
-	<p>前節の演習課題であるリストの操作関数のうち，下記に示したものを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
+	<p>前節の演習課題であるリストの操作関数のうち，下記に示した PreviousCell,InsertCell,DeleteCellを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
 
 <pre class="prettyprint">/*
  * Return pointer to the previous cell.
@@ -31,14 +31,12 @@ struct cell *PreviousCell(struct cell *pcCell,struct cell *pcList)
   struct cell *pcPrevious=(struct cell*)NULL;
   struct cell *pcNext;
 
-  if(FirstCell(pcList)!=(struct cell*)NULL){
-	/* セルが空のときはダミーのポインタを返す */
-	if((pcNext=FirstCell(pcList))==pcCell)
-	  return pcList;
-	do{
+  if([ A ]){
+	  if((pcNext=FirstCell(pcList))==pcCell)
+	    return pcList;
+	  do{
       pcPrevious=pcNext;
-    /* 指定したセルに行き当たるまで繰り返す */
-      }while((pcNext=NextCell(pcNext,pcList))!=pcCell);
+    }while([ B ]);
   }
 
   return pcPrevious;
@@ -51,21 +49,16 @@ struct cell *InsertCell(int data, struct cell *pcCell, struct cell *pcList)
   struct cell *pcInsert;
   struct cell *pcPrevious;
 
-/* 新規セルのアドレスを動的に確保 */
-  pcInsert=(struct cell*)malloc(sizeof(struct cell));
+  pcInsert=[ C ]
   
   pcInsert->data=data;
   pcInsert->pcNext=(struct cell*)NULL;
 
 
   if(pcCell != (struct cell*)NULL){
-/* 指定したセルの次にセルがあったときの処理 */
-    pcInsert->pcNext=pcCell;
-    pcPrevious=PreviousCell(pcCell,pcList);
-    pcPrevious->pcNext=pcInsert;
+    [ D ]
   }else{
-/* 指定したセルの次がNULLのときの処理 */
-	EndCell(pcList)->pcNext=pcInsert;
+	  EndCell(pcList)->pcNext=pcInsert;
   }
   
   return pcInsert;
@@ -78,15 +71,12 @@ struct cell *DeleteCell(struct cell *pcCell,struct cell *pcList)
 	struct cell *pcNext;
 	struct cell *pcPrevious;
 	
-/* 指定したセルの前のポインタと後のポインタを取得 */
 	pcNext=NextCell(pcCell,pcList);
 	pcPrevious=PreviousCell(pcCell,pcList);
 	
-/* 1つ以上セルが存在するとき(ダミーは除く)の処理 */
 	if(pcPrevious != (struct cell*)NULL)
-		pcPrevious->pcNext=pcNext;
-/* メモリの解放 */
-	free(pcCell);
+		[ E ]
+	[ F ]
 	
 	return pcNext;
 }
@@ -104,10 +94,6 @@ struct cell *DeleteCell(struct cell *pcCell,struct cell *pcList)
             <passing_grade>1.0</passing_grade>
         </item>
         <item id="list2_2" type="random">
-            <selection_correct>false</selection_correct>
-            <passing_grade>1.0</passing_grade>
-        </item>
-        <item id="list2_3" type="random">
             <selection_correct>false</selection_correct>
             <passing_grade>1.0</passing_grade>
         </item>
