@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<block>
+		<node level="*" resource="list" refs="list5.1"/>
+		<node level="*" resource="list" refs="list5.2.1"/>
+		<node level="*" resource="list" refs="list5.2.2"/>
+	</block>
+
+	<block>
+		<node level="1,2,3" resource="list" refs="list5.2.2_answer"/>
+	</block>
+	
+	<block>
+		<node level="*" resource="list" refs="list5.2.3"/>
+	</block>
+
+	<block>
+		<node level="1,2,3" resource="list" refs="list5.2.3_answer"/>
+	</block>
+
+	<block>
+		<node level="*" resource="list" refs="list5.2.4"/>
+		<node level="*" resource="list" refs="list5.2.5"/>
+		<node level="*" resource="list" refs="list5.2.6"/>
+		<node level="*" resource="list" refs="list5.2.7"/>
+		<node level="*" resource="list" refs="list5.2.8"/>
+		<node level="*" resource="list" refs="list5.2.9"/>
+	</block>
+
+	<block>
+		<node level="1,2,3" resource="list" refs="list5.2.9_answer"/>
+	</block>
+
+	<block>
+		<node level="*" resource="list" refs="list5.2.10"/>
+		<node level="*" resource="list" refs="list5.2.11"/>
+		<node level="*" resource="list" refs="list5.2.12"/>
+	</block>
+</module>

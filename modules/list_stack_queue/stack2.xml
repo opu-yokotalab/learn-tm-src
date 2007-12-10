@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<block>
+		<node level="*" resource="stack_queue" refs="sec3.3.1"/>
+		<node level="*" resource="stack_queue" refs="kadai1"/>
+	</block>
+
+	<block>
+		<node level="1,2,3" resource="stack_queue" refs="kadai1_answer"/>
+	</block>
+
+	<block>
+		<node level="*" resource="stack_queue" refs="kadai2"/>
+		<node level="*" resource="stack_queue" refs="kadai3"/>
+	</block>
+
+	<block>
+		<node level="1,2,3" resource="stack_queue" refs="kadai3_answer"/>
+	</block>
+
+	<block>
+		<node level="*" resource="stack_queue" refs="kadai4"/>
+		<node level="*" resource="stack_queue" refs="kadai5"/>
+		<node level="*" resource="stack_queue" refs="kadai6"/>
+		<node level="*" resource="stack_queue" refs="kadai7"/>
+	</block>
+</module>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<block>
-		<node level="*" resource="list" refs="list3"/>
+		<node level="*" resource="list" refs="list3.1,list3.2,list3.3"/>
+		<node level="4,5" resource="list" refs="list3.4"/>
 	</block>
 </module>

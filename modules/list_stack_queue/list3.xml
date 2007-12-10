@@ -2,5 +2,6 @@
 <module>
 	<block>
 		<node level="*" resource="list" refs="list4"/>
+		<node level="*" resource="list_exam" refs="sec1"/>		
 	</block>
 </module>
