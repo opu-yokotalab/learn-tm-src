@@ -1,0 +1,11 @@
+next([start,list],[]).
+next([list,list2],[]).
+next([list2,list3],[]).
+next([list3,stack],[]).
+next([stack,queue],[]).
+
+toc(list,[]).
+toc(list2,[]).
+toc(list3,[]).
+toc(stack,[]).
+toc(queue,[]).
