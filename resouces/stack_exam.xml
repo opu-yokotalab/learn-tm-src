@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xtdl>
+<section id="sec1" title="確認テスト：スタックの実装">
+<explanation id="sec1.1" title="問題">
+	<p>前節の演習課題であるスタックの操作関数のうち，下記に示した EmptyStack,PopStackを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
+
+<pre class="prettyprint">/* check stack */
+int EmptyStack(struct array_stack *pcStack)
+{
+  int n=0;
+
+  if([ A ]){
+    if([ B ])
+      n=1;
+  }
+
+  return n;
+}
+/* Pop data of the top stack. */
+int PopStack(struct array_stack *pcStack)
+{
+  int n;
+
+  [ C ]
+  if(n==-1){
+    [ D ]
+  }
+  [ E ]
+  [ F ]
+
+  return n;
+}</pre>
+</explanation>
+
+	<examination title="解答欄" id="stack_exam" ordering="_random">
+		<group id="stack" mark="100">
+        <item id="stack_0" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="stack_1" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="stack_2" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+		</group>
+	</examination>
+</section>
+</xtdl>
