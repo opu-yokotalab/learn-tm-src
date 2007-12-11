@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<block>
-		<node level="*" resource="list" refs="list5.1"/>
+		<node level="*" resource="list" refs="list5.1-a,list5.1"/>
 		<node level="*" resource="list" refs="list5.2.1"/>
 		<node level="*" resource="list" refs="list5.2.2"/>
 	</block>

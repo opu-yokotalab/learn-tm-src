@@ -9,7 +9,7 @@
 		<section id="sec3.1" title="スタック">
 			<explanation id="sec3.1.1" title="定義と基本操作群">
 				<p>
-					リストの中で、挿入や削除がいつも一方の端からしかできないものをスタックという*1。追加や削除をする側の端をスタックの先頭、もう一方の端をスタックの底という。スタックでは、あとで追加した要素のほうが先に取り出されるという性質があり、このことからスタックをLIFO(Last-In First-Out) と呼ぶこともある。<br />
+					リストの中で、挿入や削除がいつも一方の端からしかできないものをスタックという。追加や削除をする側の端をスタックの先頭、もう一方の端をスタックの底という。スタックでは、あとで追加した要素のほうが先に取り出されるという性質があり、このことからスタックをLIFO(Last-In First-Out) と呼ぶこともある。<br />
 スタックでは追加や削除が一方の端からしかできない。また、先頭以外のスタック中の要素を参照することもできない。したがって、スタックの基本操作群はリストよりも簡単になる。一例を図3.1 に示す。
 				</p>
 				<div style="text-align:center">
@@ -67,6 +67,9 @@
 			</explanation>
 		</section>
 		<section id="sec3.3" title="スタックの実装">
+			<explanation id="sec3.3.1-a" title="演習課題：スタックの実装">
+				<p>ここでは実際にスタックの実装を行ってもらいます。</p>
+			</explanation>
 			<explanation id="sec3.3.1" title="プログラムの仕様">
 				<ul>
 					<li>内部構造として連結リストを用いる．</li>
@@ -148,7 +151,7 @@ int topStack(struct cell *stack)
 				</exercise>
 			</section>
 		</section>
-		<section id="sec3.4" title="キュー(待ち行列)の実装">
+		<section id="sec3.4" title="演習課題：キュー(待ち行列)の実装">
 			<explanation id="sec3.4.1" title="実装の仕様">
 				<ul>
 					<li>内部構造として連結リストを用いる．</li>

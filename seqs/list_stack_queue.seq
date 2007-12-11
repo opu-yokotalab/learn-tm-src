@@ -1,13 +1,12 @@
-next([start,list],[]).
-next([list,list2],[]).
+next([start,list],[[msg,"ではリスト・スタック・キューについて学習を始めましょう。"]]).
+next([list,list2],[[msg,"このページには発展的な内容も含まれています。<br>気になる人は｢難しい内容｣ボタンをクリックしてみて下さい。"]]).
 next([list2,list3],[]).
-next([list3,list4],[[msg,"よくできました。<br>では演習問題を頑張ってください。"]]):-getTestPoint(list_exam1,Point),Point == 100.
+next([list3,list4],[[msg,"よくできました。<br>では演習問題を頑張ってください。｢簡単な内容｣の方には一部解答例つきの課題があります。自信のない人はそちらを見て下さい。"]]):-getTestPoint(list_exam1,Point),Point == 100.
 next([list3,list],[[msg,"構造体とポインタについてもう少し復習しましょう。"]]):-getTestPoint(list_exam1,Point),Point != 100.
 next([list4,list_exam],[]).
 next([list_exam,stack],[]):-getTestPoint(list_exam2,Point),Point == 100.
 next([list_exam,list],[]):-getTestPoint(list_exam2,Point),Point != 100.
 next([stack,stack2],[]).
-next([stack2,queue],[]).
 next([stack2,stack_exam],[]).
 next([stack_exam,queue],[]):-getTestPoint(stack_exam,Point) == 100.
 next([stack_exam,stack],[]):-getTestPoint(stack_exam,Point) != 100.
@@ -20,13 +19,10 @@ toc(list,[]).
 toc(list2,[]).
 toc(list3,[]).
 toc(list4,[]).
-toc(list_exam,[]).
 toc(stack,[]).
 toc(stack2,[]).
-toc(stack_exam,[]).
 toc(queue,[]).
 toc(queue2,[]).
-toc(queue_exam,[]).
 
 changeLv([up,5],[]):-getCurrentLevel(L),L==1.
 changeLv([down,1],[]):-getCurrentLevel(L),L==5.
