@@ -4,8 +4,8 @@
         <question><p>[A]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
 <response id="0">pcStack != (struct array_stack *)NULL</response>
-<response id="1"></response>
-<response id="2"></response>
+<response id="1">pcStack == (struct array_stack *)NULL</response>
+<response id="2">pcStack != (struct cell *)NULL</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
@@ -21,8 +21,8 @@
     <item id="1" type="select_single">
         <question><p>[B]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0"></response>
-<response id="1"></response>
+<response id="0">pcStack -> length &gt;= 0</response>
+<response id="1">pcStack -> length = 0</response>
 <response id="2">pcStack -> length == 0</response>
 <hints>ヒント</hints>
 <evaluate>
@@ -41,9 +41,9 @@
     <item id="2" type="select_single">
         <question><p>[C]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0"></response>
+<response id="0">n = PushStack(pcStack);</response>
 <response id="1">n = TopStack(pcStack);</response>
-<response id="2"></response>
+<response id="2">n = PopStack(pcStack);</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
@@ -61,8 +61,8 @@
     <item id="3" type="select_single">
         <question><p>[D]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0"></response>
-<response id="1"></response>
+<response id="0">return 0;</response>
+<response id="1">n = TopStack(pcStack);</response>
 <response id="2">return -1;</response>
 <hints>ヒント</hints>
 <evaluate>
@@ -84,8 +84,8 @@
         <question><p>[E],[F]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
 <response id="0">[E] pcStack->elements[pcStack->length - 1] = -1; [F] pcStack->length--;</response>
-<response id="1"></response>
-<response id="2"></response>
+<response id="1">[E] pcStack->elements[pcStack->length - 1] = -1; [F] pcStack->length++;</response>
+<response id="2">[E] pcStack->elements[pcStack->length] = -1; [F] pcStack->length--;</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
