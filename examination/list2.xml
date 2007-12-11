@@ -3,9 +3,9 @@
     <item id="0" type="select_single">
         <question><p>[A]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0"></response>
+<response id="0">FirstCell(pcList) == (struct cell*)NULL</response>
 <response id="1">FirstCell(pcList) != (struct cell*)NULL</response>
-<response id="2"></response>
+<response id="2">FirstCell(pcList) != (struct cell)NULL</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
@@ -22,8 +22,8 @@
         <question><p>[B]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
 <response id="0">(pcNext=NextCell(pcNext,pcList)) != pcCell</response>
-<response id="1"></response>
-<response id="2"></response>
+<response id="1">(pcNext=FirstCell(pcNext,pcList)) != pcCell</response>
+<response id="2">(pcNext=NextCell(pcCell,pcList)) != pcCell</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
@@ -41,9 +41,9 @@
     <item id="2" type="select_single">
         <question><p>[C]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0"></response>
+<response id="0">(struct cell)malloc(sizeof(struct cell))</response>
 <response id="1">(struct cell*)malloc(sizeof(struct cell))</response>
-<response id="2"></response>
+<response id="2">(struct cell*)malloc(sizeof(int)*4)</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
@@ -61,8 +61,10 @@
     <item id="3" type="select_single">
         <question><p>[D]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0"></response>
-<response id="1"></response>
+<response id="0">pcInsert->pcNext=pcCell;<br />pcPrevious=PreviousCell(pcCell,pcList);<br />pcPrevious->pcNext=pcCell;</response>
+
+<response id="1">pcInsert->pcNext=pcCell;<br />pcPrevious->pcNext=pcInsert<br />pcPrevious=PreviousCell(pcCell,pcList);</response>
+
 <response id="2">pcInsert->pcNext=pcCell;<br />pcPrevious=PreviousCell(pcCell,pcList);<br />pcPrevious->pcNext=pcInsert;</response>
 <hints>ヒント</hints>
 <evaluate>
@@ -72,7 +74,7 @@
 	<weight correct="1" incorrect="-1" />
 	<point>50</point>
 </evaluate>
-<explanation>・・・</explanation>
+<explanation>新しいセルの挿入場所：指定したセルの直前に挿入</explanation>
 		</item>
 
 
@@ -84,8 +86,8 @@
         <question><p>[E]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
 <response id="0">pcPrevious->pcNext=pcNext;</response>
-<response id="1"></response>
-<response id="2"></response>
+<response id="1">pcPrevious->pcNext=pcCell;</response>
+<response id="2">pcNext->pcNext=pcNext;</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
@@ -104,8 +106,8 @@
         <question><p>[F]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
 <response id="0">free(pcCell);</response>
-<response id="1"></response>
-<response id="2"></response>
+<response id="1">pcCell = (struct cell *)NULL;</response>
+<response id="2">pcCell = 0;</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
