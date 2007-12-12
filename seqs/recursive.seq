@@ -1,12 +1,16 @@
-next([start,recursive],[]).
-next([recursive,recursive2],[]).
-next([recursive2,recursive3],[]).
-next([recursive3,recursive4],[]).
+next([start,recursive],[[msg,"ここでは再帰呼び出しのアルゴリズムの学習をします。"]]).
+next([recursive,recursive2],[[msg,"まずは練習です。このくらいは簡単ですよね？"]]).
+next([recursive2,recursive3],[[msg,"ここでは逆順リストを求める関数を実装します。"]]):-getTestPoint(fibo_test,Point),Point==100.
+next([recursive2,recursive2],[[msg,"もう少し注意して取り組んでみましょう。"]]):-getTestPoint(fibo_test,Point),Point!=100.
+next([recursive3,recursive4],[]):-getTestPoint(reverse_list_test,Point),Point==100.
+next([recursive3,recursive3],[]):-getTestPoint(reverse_list_test,Point),Point!=100.
 next([recursive4,recursive5],[]).
-next([recursive5,end],[]).
+next([recursive5,end],[[msg,"お疲れ様です。これで全単元終了しました。"]]):-getTestPoint(merge_sort_test,Point),Point == 100.
+next([recursive5,recursive4],[]):-getTestPoint(merge_sort_test,Point),Point != 100.
 
 toc(recursive,[]).
 toc(recursive2,[]).
 toc(recursive3,[]).
-toc(recursive4,[]).
-toc(recursive5,[]).
+
+changeLv([up,5],[]):-getCurrentLevel(L),L==1.
+changeLv([down,1],[]):-getCurrentLevel(L),L==5.

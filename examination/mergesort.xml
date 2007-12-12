@@ -5,8 +5,7 @@
       <p>[A]に当てはまるプログラムを選択せよ。</p>
     </question>
     <response id="0">FirstCell(list)!=(struct cell*)NULL</response>
-    <response id="1"></response>
-    <response id="2"></response>
+    <response id="1">FirstCell(list)==(struct cell*)NULL</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -23,9 +22,9 @@
     <question>
       <p>[B]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
+    <response id="0">InsertCell(RetrieveCell(FirstCell(list)),EndCell(list1),list1);</response>
     <response id="1">InsertCell(RetrieveCell(FirstCell(list)),NextCell(EndCell(list1),list1),list1);</response>
-    <response id="2"></response>
+    <response id="2">InsertCell(RetrieveCell(FirstCell(list)),NextCell(EndCell(list1),list2),list2);</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -42,8 +41,8 @@
     <question>
       <p>[C]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
-    <response id="1"></response>
+    <response id="0">DeleteList(list);</response>
+    <response id="1">DeleteCell(EndCell(list),list);</response>
     <response id="2">DeleteCell(FirstCell(list),list);</response>
     <hints></hints>
     <evaluate>
@@ -61,9 +60,9 @@
     <question>
       <p>[D]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
+    <response id="0">InsertCell(m1,NextCell(FirstCell(merged),merged),merged);</response>
     <response id="1">InsertCell(m1,NextCell(EndCell(merged),merged),merged);</response>
-    <response id="2"></response>
+    <response id="2">InsertCell(m1,EndCell(merged),merged);</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -81,8 +80,8 @@
       <p>[E]に当てはまるプログラムを選択せよ。</p>
     </question>
     <response id="0">DeleteCell(FirstCell(list1),list1);</response>
-    <response id="1"></response>
-    <response id="2"></response>
+    <response id="1">DeleteCell(EndCell(list1),list1);</response>
+    <response id="2">DeleteCell(FirstCell(list2),list2);</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -99,9 +98,9 @@
     <question>
       <p>[F]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
+    <response id="0">InsertCell(m2,EndCell(merged),merged);</response>
     <response id="1">InsertCell(m2,NextCell(EndCell(merged),merged),merged);</response>
-    <response id="2"></response>
+    <response id="2">InsertCell(m1,NextCell(EndCell(merged),merged),merged);</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -119,8 +118,8 @@
     <question>
       <p>[G]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
-    <response id="1"></response>
+    <response id="0">DeleteCell(FirstCell(list1),list1);</response>
+    <response id="1">DeleteCell(EndCell(list2),list2);</response>
     <response id="2">DeleteCell(FirstCell(list2),list2);</response>
     <hints></hints>
     <evaluate>
@@ -139,9 +138,8 @@
     <question>
       <p>[H]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
+    <response id="0">MergeList(list2,merged,list1);</response>
     <response id="1">MergeList(list1,list2,merged);</response>
-    <response id="2"></response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -159,8 +157,8 @@
       <p>[I]に当てはまるプログラムを選択せよ。</p>
     </question>
     <response id="0">DivideList(list,list1,list2);</response>
-    <response id="1"></response>
-    <response id="2"></response>
+    <response id="1">MergeList(list,list1,list2);</response>
+    <response id="2">MergeSort(list1,list2);</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -178,9 +176,9 @@
     <question>
       <p>[J]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
+    <response id="0">list1=list;</response>
     <response id="1">list=list1;</response>
-    <response id="2"></response>
+    <response id="2">list1=list2;</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -198,8 +196,8 @@
     <question>
       <p>[K]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
-    <response id="1"></response>
+    <response id="0">MergeList(list1,list2,list);</response>
+    <response id="1">DivideList(list,list1,list2);</response>
     <response id="2">MergeSort(list1,list);</response>
     <hints></hints>
     <evaluate>
@@ -217,9 +215,9 @@
     <question>
       <p>[L]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
+    <response id="0">list2=list1;</response>
     <response id="1">list1=list2;</response>
-    <response id="2"></response>
+    <response id="2">list=list2;</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -237,8 +235,8 @@
       <p>[M]に当てはまるプログラムを選択せよ。</p>
     </question>
     <response id="0">MergeList(list,list1,sorted);</response>
-    <response id="1"></response>
-    <response id="2"></response>
+    <response id="1">DivideList(sorted,list1,list2);</response>
+    <response id="2">MergeSort(list1,list2,sorted);</response>
     <hints></hints>
     <evaluate>
       <function></function>

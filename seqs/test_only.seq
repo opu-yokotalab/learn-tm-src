@@ -1,0 +1,30 @@
+next([start,struct_exam1],[]).
+
+next([struct_exam1,struct_exam2],[]):-getTestPoint(my_string_exam,Point),Point==100.
+next([struct_exam1,struct_exam1],[[msg,"不合格です。再挑戦して下さい。"]]):-getTestPoint(my_string_exam,Point),Point!=100.
+
+next([struct_exam2,list_exam],[]):-getTestPoint(person_list_exam,Point),Point==100.
+next([struct_exam2,struct_exam2],[[msg,"不合格です。再挑戦して下さい。"]]):-getTestPoint(person_list_exam,Point),Point!=100.
+
+next([list_exam,stack_exam],[]):-getTestPoint(list_exam2,Point),Point==100.
+next([list_exam,list_exam],[[msg,"不合格です。再挑戦して下さい。"]]):-getTestPoint(list_exam2,Point),Point!=100.
+
+next([stack_exam,queue_exam],[]):-getTestPoint(stack_exam,Point) == 100.
+next([stack_exam,stack_exam],[[msg,"不合格です。再挑戦して下さい。"]]):-getTestPoint(stack_exam,Point) != 100.
+
+next([queue_exam,recursive3],[]):-getTestPoint(queue_exam,Point) == 100.
+next([queue_exam,queue_exam],[[msg,"不合格です。再挑戦して下さい。"]]):-getTestPoint(queue_exam,Point) != 100.
+
+next([recursive3,recursive5],[]):-getTestPoint(reverse_list_test,Point),Point==100.
+next([recursive3,recursive3],[[msg,"不合格です。再挑戦して下さい。"]]):-getTestPoint(reverse_list_test,Point),Point!=100.
+
+next([recursive5,end],[]):-getTestPoint(merge_sort_test,Point),Point == 100.
+next([recursive5,recursive5],[[msg,"不合格です。再挑戦して下さい。"]]):-getTestPoint(merge_sort_test,Point),Point != 100.
+
+toc(struct_exam1,[]).
+toc(struct_exam2,[]).
+toc(list_exam,[]).
+toc(stack_exam,[]).
+toc(queue_exam,[]).
+toc(recursive3,[]).
+toc(recursive5,[]).

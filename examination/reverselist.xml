@@ -4,9 +4,9 @@
     <question>
       <p>[A]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
+    <response id="0">FirstCell(pcList)!=(struct cell)NULL</response>
     <response id="1">FirstCell(pcList)!=(struct cell*)NULL</response>
-    <response id="2"></response>
+    <response id="2">FirstCell(pcList)==(struct cell*)NULL</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -25,8 +25,8 @@
       <p>[B]に当てはまるプログラムを選択せよ。</p>
     </question>
     <response id="0">tmp=RetrieveCell(FirstCell(pcList));</response>
-    <response id="1"></response>
-    <response id="2"></response>
+    <response id="1">tmp=RetrieveCell(FirstCell(pcList->pcNext));</response>
+    <response id="2">tmp=RetrieveCell(EndCell(pcList));</response>
     <hints></hints>
     <evaluate>
       <function></function>
@@ -44,13 +44,12 @@
     <question>
       <p>[C]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0"></response>
-    <response id="1"></response>
-    <response id="2">ReverseList(pcList);</response>
+    <response id="0">DeleteList(pcList);</response>
+    <response id="1">ReverseList(pcList);</response>
     <hints></hints>
     <evaluate>
       <function></function>
-      <correct id="2" />
+      <correct id="1" />
       <score>1</score>
       <weight correct="1" incorrect="-1" />
       <point>10</point>
@@ -65,8 +64,8 @@
       <p>[D]に当てはまるプログラムを選択せよ。</p>
     </question>
     <response id="0">InsertCell(tmp,(struct cell*)NULL,pcList);</response>
-    <response id="1"></response>
-    <response id="2"></response>
+    <response id="1">InsertCell(tmp,EndCell(pcList),pcList);</response>
+    <response id="2">InsertCell(tmp,(struct cell)NULL,pcList);</response>
     <hints></hints>
     <evaluate>
       <function></function>

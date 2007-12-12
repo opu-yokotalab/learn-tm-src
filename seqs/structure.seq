@@ -14,7 +14,6 @@ next([struct_exam2,end],[[msg,"この単元はこれで終了です。お疲れ様でした。"]]):-g
 toc(struct1,[]).
 toc(struct2,[]).
 toc(struct3,[]).
-toc(struct4,[]).
 
 changeLv([up,5] ,[] ):-getCurrentLevel(L),L==1.
 changeLv([down,1] ,[] ):-getCurrentLevel(L),L==5.

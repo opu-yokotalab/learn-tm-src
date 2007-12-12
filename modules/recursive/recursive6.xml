@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<module>
-	<block>
-		<node level="*" resource="recursive-other" refs="recursive2.2.4"/>
-	</block>
-</module>
