@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<block>
-		<node level="*" resource="recursive" refs="recursive2.1"/>
+		<node level="*" resource="recursive-other" refs="recursive2.1.1-a,recursive2.1.1"/>
+		<node level="1,2,3" resource="recursive-other" refs="recursive2.1.1_answer1,recursive2.1.1_answer2"/>
+		<node level="*" resource="recursive-other" refs="recursive2.1.3"/>
+		<node level="*" resource="recursive-exam" refs="sec1"/>
 	</block>
 </module>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<block>
-		<node level="*" resource="recursive" refs="recursive1.1,recursive1.2,recursive1.3"/>
+		<node level="*" resource="recursive-other" refs="recursive1.1-a,recursive1.1,recursive1.2,recursive1.3"/>
 	</block>
 </module>

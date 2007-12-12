@@ -44,9 +44,12 @@
 </section>
 <section title="再帰プログラミング" id="recursive2">
 	<section title="数に関する再帰" id="recursive2.1">
+		<explanation title="数に関する再帰" id="recursive2.1.1-a">
+			<p>ここでは，数に関する再帰のアルゴリズムについて解説する。</p>
+		</explanation>
 		<example title="例題" id="recursive2.1.1">1 から引数で指定された正の整数値までの和を返す関数int sigma(int); を再帰を用いて作成せよ．
 			<pre>sigma(n)	= n + sigma(n − 1)
-		= n + (n − 1) + sigma(n − 2)
+		= n + (n - 1) + sigma(n − 2)
 		...
 		= n + (n − 1) + · · · + sigma(1)
 		= n + (n − 1) + · · · + 1</pre>
@@ -85,8 +88,8 @@
 	return 0;
 }</pre>
 		</example>
-		<exercise title="課題1" id="recursive2.1.2">上記の解答例では，引数として与える値に制限が存在する．その制限値の上限についてあらかじめ推定せよ．また，様々な値を引数として与え，その推定の正否を確認するとともに，その様な制限が発生している理由を文献等により調査せよ．</exercise>
-		<exercise title="課題2" id="recursive2.1.3">1, 1, 2, 3, 5, 8, 13, 21, 34, 55, . . . という数列を<strong>フィボナッチ数列</strong>という．この数列の最初の2 要素は1 であり，それ以降の要素はその前2 つの要素の和となっている．例えば5 番目の要素は，その前2 つの要素である3, 4 番目の要素2 と3 の和であるから2 + 3 = 5 となっている．<br/>フィボナッチ数列において，引数で指定された順番に位置する要素を返す関数int fibonacci(int); を再帰を用いて作成せよ．また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。
+
+		<exercise title="練習問題：フィボナッチ数列" id="recursive2.1.3">1, 1, 2, 3, 5, 8, 13, 21, 34, 55, . . . という数列を<strong>フィボナッチ数列</strong>という．この数列の最初の2 要素は1 であり，それ以降の要素はその前2 つの要素の和となっている．例えば5 番目の要素は，その前2 つの要素である3, 4 番目の要素2 と3 の和であるから2 + 3 = 5 となっている．<br/>フィボナッチ数列において，引数で指定された順番に位置する要素を返す関数int fibonacci(int); を再帰を用いて作成せよ．また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。
 			<pre>fibonacci(n)	= fibonacci(n − 1) + fibonacci(n − 2)
 		= {fibonacci(n − 2) + fibonacci(n − 3)} + {fibonacci(n − 3) + fibonacci(n − 4)}
 		...
@@ -95,13 +98,13 @@
 	</section>
 	<section title="リストに関する再帰" id="recursive2.2">
 		<explanation title="注意" id="recursive2.2_attention">これ以降の課題については，前回に作成したリスト操作関数を用いること．</explanation>
-		<exercise title="課題1" id="recursive2.2.1">リストへのポインタを引数としてとり，その内容を逆順に並べ替えたリストへのポインタを返す関数struct cell *reverseList(struct cell*); を再帰を用いて作成せよ．また、この関数の動作を確かめるmain()関数を作成し、動作を確かめよ。なお，並べ替え後に元のリストが破壊されていても構わない．
+		<exercise title="演習課題：ReverseList" id="recursive2.2.1">リストへのポインタを引数としてとり，その内容を逆順に並べ替えたリストへのポインタを返す関数struct cell *reverseList(struct cell*); を再帰を用いて作成せよ．また、この関数の動作を確かめるmain()関数を作成し、動作を確かめよ。なお，並べ替え後に元のリストが破壊されていても構わない．
 			<pre>reverseList([3, 6, 4, 5, 2])	= reverseList([6, 4, 5, 2])@[3](@はリストの連結演算を表す)
 				= reverseList([4, 5, 2])@[6]@[3]
 				...
 				= [2, 5, 4, 6, 3]</pre>
 		</exercise>
-		<exercise title="課題2" id="recursive2.2.2">与えられたリストlist を二分割した結果をlist1，list2 として返す再帰関数を作成せよ．プロトタイプ宣言は次のとおりとする．
+		<exercise title="演習課題：リストの分割" id="recursive2.2.2">与えられたリストlist を二分割した結果をlist1，list2 として返す再帰関数を作成せよ．プロトタイプ宣言は次のとおりとする．
 			<pre class="prettyprint">void divideList(struct cell *list, struct cell *list1, struct cell *list2);</pre>
 分割は，list の奇数番目のデータをlist1 に，偶数番目のデータをlist2 に格納するという手順で行うこと．なお，並べ替え後に元のリストが破壊されていても構わない．また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。
 			<pre>参考) pcList = [1, 2, 3, 4, 5] のとき，
@@ -110,7 +113,7 @@ list1	= [1]@([3, 4, 5] をdivideList した結果得られるlist1)
 list2	= [2]@([3, 4, 5] をdivideList した結果得られるlist2)
 	= [2]@([4]@([5] をdivideList した結果得られるlist2))</pre>
 		</exercise>
-		<exercise title="課題3" id="recursive2.2.3">与えられた2 つのリストを結合する再帰関数を作成せよ．プロトタイプ宣言は次のとおりとする．
+		<exercise title="演習課題：リストの結合" id="recursive2.2.3">与えられた2 つのリストを結合する再帰関数を作成せよ．プロトタイプ宣言は次のとおりとする．
 			<pre class="prettyprint">void mergeList(struct cell *list1, struct cell *list2, struct cell *merged);</pre>
 結合は，list1 およびlist2 それぞれの先頭のデータを比較し，小さい方のデータをmerged に追加するという手順で行う．なお，並べ替え後に元のリストlist1 およびlist2 が破壊されていても構わない．<br/>また、この関数の動作を確かめるmain() 関数を作成し、動作を確かめよ。
 			<pre>参考) list1 = [3, 6, 2]，list2 = [4, 5, 7] のとき，
@@ -118,7 +121,7 @@ merged	= [3]@([6, 2]，[4, 5, 7] をmergeList した結果得られるmerged)
 	= [3]@([4]@([6, 2]，[5, 7] をmergeList した結果得られるmerged))
 	= · · ·</pre>
 		</exercise>
-		<exercise title="課題4" id="recursive2.2.4">作成したdivideList とmergeList を利用することで，リストの並べ替えを行うことができる．並べ替えを行う関数がmergeSort であるとき，並べ替えは，
+		<exercise title="演習課題：マージソート" id="recursive2.2.4">作成したdivideList とmergeList を利用することで，リストの並べ替えを行うことができる．並べ替えを行う関数がmergeSort であるとき，並べ替えは，
 			<ol type="1">
 				<li>与えられたリストをdivideList によって二分割，</li>
 				<li>分割した結果をそれぞれmergeSort で並べ替え，</li>

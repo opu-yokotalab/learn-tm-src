@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem_set id="fibo">
+  <item id="0" type="select_single">
+    <question>
+      <p>[A],[B]に当てはまるプログラムを選択せよ。</p>
+    </question>
+    <response id="0">[A] 1 [B] fibonacci(n-1)+fibonacci(n)</response>
+    <response id="1">[A] 0 [B] fibonacci(n-1)+fibonacci(n-2)</response>
+    <response id="2">[A] 1 [B] fibonacci(n-1)+fibonacci(n-2)</response>
+    <hints></hints>
+    <evaluate>
+      <function></function>
+      <correct id="2" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation>フィボナッチ数列を求めるための基底と帰納の条件を思い出そう。</explanation>
+  </item>
+</problem_set>

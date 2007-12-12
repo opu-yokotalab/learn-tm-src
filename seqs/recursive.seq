@@ -1,0 +1,12 @@
+next([start,recursive],[]).
+next([recursive,recursive2],[]).
+next([recursive2,recursive3],[]).
+next([recursive3,recursive4],[]).
+next([recursive4,recursive5],[]).
+next([recursive5,end],[]).
+
+toc(recursive,[]).
+toc(recursive2,[]).
+toc(recursive3,[]).
+toc(recursive4,[]).
+toc(recursive5,[]).

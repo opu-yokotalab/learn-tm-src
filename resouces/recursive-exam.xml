@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xtdl>
+<section id="sec1" title="練習問題テスト：フィボナッチ数列">
+	<explanation id="sec1.1" title="問題">
+		<p>
+			フィボナッチ数列を求めるプログラムを以下のように実装した。各問いに答えよ。
+		</p>
+		<pre class="prettyprint">#include&gt;stdio.h>
+int fibonacci(int);
+int main(void){
+  int a,n=5;
+  a = fibonacci(n);
+  printf("Fibonacci : %d = %d\n",n,a);
+}
+int fibonacci(int n){
+  if(n == 0) return 0;
+  else if(n == 1) [ A ];
+  else return [ B ];
+}</pre>
+	</explanation>
+	<examination title="解答欄" id="fibo_test" ordering="_random">
+		<group id="fibo" mark="100">
+        <item id="mystring_0" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+		</group>
+	</examination>
+</section>
+
+
+<section id="sec2" title="確認テスト：ReverseList">
+<explanation id="sec2.1" title="問題">
+	<p>ReverseList関数を以下のように実装した．各問いの箇所に当てはまるプログラムを選択せよ．</p>
+	<pre class="prettyprint">struct cell *ReverseList(struct cell *pcList){
+  int tmp;
+  if([ A ]){
+    if(NextCell(FirstCell(pcList),pcList)!=(struct cell*)NULL){
+      [ B ]
+      DeleteCell(pcList->pcNext,pcList);
+      [ C ]
+      [ D ]
+    }
+  }
+  return pcList;
+}
+</pre>
+</explanation>
+
+	<examination title="解答欄" id="reverse_list_test" ordering="_random">
+		<group id="reverselist" mark="100">
+        <item id="reverselist_0" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="reverselist_1" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+		</group>
+	</examination>
+</section>
+
+
+<section id="sec3" title="確認テスト：マージソート">
+<explanation id="sec3.1" title="問題">
+	<p>マージソートに必要な関数DivideList,MergeList,MergeSortを以下のように実装した．各問いの箇所に当てはまるプログラムを選択せよ．</p>
+	<pre class="prettyprint">/* リストの分割 */
+void DivideList(struct cell *list,struct cell *list1,struct cell *list2){
+  if([ A ]){
+    [ B ]
+    [ C ]
+  }
+  if([ A ]){
+    InsertCell(RetrieveCell(FirstCell(list)),NextCell(EndCell(list2),list2),list2);
+    DeleteCell(FirstCell(list),list);
+  }
+  if([ A ]){
+    DivideList(list,list1,list2);
+  }
+}
+
+/* リストの結合 */
+void MergeList(struct cell *list1,struct cell *list2,struct cell *merged){
+  int m1=0,m2=0,f=0;
+  if(FirstCell(list1)!=(struct cell*)NULL){
+    m1=RetrieveCell(FirstCell(list1));
+    f++;
+  }
+  if(FirstCell(list2)!=(struct cell*)NULL){
+    m2=RetrieveCell(FirstCell(list2));
+    if(f==1){
+      f++;
+    }else{
+      f=3;
+    }
+  }
+  if(f!=0){
+    if((m1&lt;=m2 &amp;&amp; f==2) || f==1){
+     [ D ]
+     [ E ]
+    }
+    if((m1>m2 &amp;&amp; f==2) || f==3){
+     [ F ]
+     [ G ]
+    }
+    [ H ]
+  }
+}
+
+/* マージソート */
+void MergeSort(struct cell *list,struct cell *sorted){
+  struct cell *list1,*list2; 
+  if(FirstCell(list)!=EndCell(list)){
+    list1=MakeNullList();
+    list2=MakeNullList();
+    [ I ]
+    if(FirstCell(list1)==EndCell(list1)){
+      [ J ]
+    }else{
+      [ K ]
+    }
+    if(FirstCell(list2)==EndCell(list2)){
+      [ L ]
+    }else{
+      [ K ]
+    }
+    [ M ]
+    DeleteList(list1);
+    DeleteList(list2); 
+  }
+}</pre>
+</explanation>
+
+	<examination title="解答欄" id="merge_sort_test" ordering="_random">
+		<group id="mergesort" mark="100">
+        <item id="mergesort_0" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mergesort_1" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mergesort_2" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mergesort_3" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mergesort_4" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+        <item id="mergesort_5" type="random">
+            <selection_correct>false</selection_correct>
+            <passing_grade>1.0</passing_grade>
+        </item>
+		</group>
+	</examination>
+</section>
+</xtdl>

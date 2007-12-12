@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem_set id="reverselist">
+  <item id="0" type="select_single">
+    <question>
+      <p>[A]に当てはまるプログラムを選択せよ。</p>
+    </question>
+    <response id="0"></response>
+    <response id="1">FirstCell(pcList)!=(struct cell*)NULL</response>
+    <response id="2"></response>
+    <hints></hints>
+    <evaluate>
+      <function></function>
+      <correct id="1" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation></explanation>
+  </item>
+
+
+
+  <item id="1" type="select_single">
+    <question>
+      <p>[B]に当てはまるプログラムを選択せよ。</p>
+    </question>
+    <response id="0">tmp=RetrieveCell(FirstCell(pcList));</response>
+    <response id="1"></response>
+    <response id="2"></response>
+    <hints></hints>
+    <evaluate>
+      <function></function>
+      <correct id="0" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation></explanation>
+  </item>
+
+
+
+  <item id="2" type="select_single">
+    <question>
+      <p>[C]に当てはまるプログラムを選択せよ。</p>
+    </question>
+    <response id="0"></response>
+    <response id="1"></response>
+    <response id="2">ReverseList(pcList);</response>
+    <hints></hints>
+    <evaluate>
+      <function></function>
+      <correct id="2" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation></explanation>
+  </item>
+
+
+
+  <item id="3" type="select_single">
+    <question>
+      <p>[D]に当てはまるプログラムを選択せよ。</p>
+    </question>
+    <response id="0">InsertCell(tmp,(struct cell*)NULL,pcList);</response>
+    <response id="1"></response>
+    <response id="2"></response>
+    <hints></hints>
+    <evaluate>
+      <function></function>
+      <correct id="0" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation></explanation>
+  </item>
+</problem_set>
