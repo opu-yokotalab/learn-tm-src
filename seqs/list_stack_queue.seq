@@ -6,13 +6,13 @@ next([list3,list],[[msg,"構造体とポインタについてもう少し復習しましょう。"]]):-g
 next([list4,list_exam],[]).
 next([list_exam,stack],[]):-getTestPoint(list_exam2,Point),Point == 100.
 next([list_exam,list],[]):-getTestPoint(list_exam2,Point),Point != 100.
-next([stack,stack2],[]).
+next([stack,stack2],[[msg,"一部の課題には解答例があります。｢簡単な内容｣ボタンをクリックしてみてください。"]]).
 next([stack2,stack_exam],[]).
 next([stack_exam,queue],[]):-getTestPoint(stack_exam,Point) == 100.
 next([stack_exam,stack],[]):-getTestPoint(stack_exam,Point) != 100.
-next([queue,queue2],[]).
+next([queue,queue2],[[msg,"今度は解答例はありません。自力で頑張りましょう。"]]).
 next([queue2,queue_exam],[]).
-next([queue_exam,end],[]):-getTestPoint(queue_exam,Point) == 100.
+next([queue_exam,end],[[msg,"これでこの単元は終了です。お疲れ様でした。"]]):-getTestPoint(queue_exam,Point) == 100.
 next([queue_exam,queue],[]):-getTestPoint(queue_exam,Point) != 100.
 
 toc(list,[]).

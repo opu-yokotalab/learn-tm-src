@@ -12,5 +12,6 @@ toc(recursive,[]).
 toc(recursive2,[]).
 toc(recursive3,[]).
 
+
 changeLv([up,5],[]):-getCurrentLevel(L),L==1.
 changeLv([down,1],[]):-getCurrentLevel(L),L==5.

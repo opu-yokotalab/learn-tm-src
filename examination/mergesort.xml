@@ -22,9 +22,9 @@
     <question>
       <p>[B]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0">InsertCell(RetrieveCell(FirstCell(list)),EndCell(list1),list1);</response>
-    <response id="1">InsertCell(RetrieveCell(FirstCell(list)),NextCell(EndCell(list1),list1),list1);</response>
-    <response id="2">InsertCell(RetrieveCell(FirstCell(list)),NextCell(EndCell(list1),list2),list2);</response>
+    <response id="0">InsertCell(RetrieveCell(FirstCell(list),list),EndCell(list1),list1);</response>
+    <response id="1">InsertCell(RetrieveCell(FirstCell(list),list),NextCell(EndCell(list1),list1),list1);</response>
+    <response id="2">InsertCell(RetrieveCell(FirstCell(list),list),NextCell(EndCell(list1),list2),list2);</response>
     <hints></hints>
     <evaluate>
       <function></function>

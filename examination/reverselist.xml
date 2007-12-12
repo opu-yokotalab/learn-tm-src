@@ -24,9 +24,9 @@
     <question>
       <p>[B]に当てはまるプログラムを選択せよ。</p>
     </question>
-    <response id="0">tmp=RetrieveCell(FirstCell(pcList));</response>
-    <response id="1">tmp=RetrieveCell(FirstCell(pcList->pcNext));</response>
-    <response id="2">tmp=RetrieveCell(EndCell(pcList));</response>
+    <response id="0">tmp=RetrieveCell(FirstCell(pcList),pcList);</response>
+    <response id="1">tmp=RetrieveCell(FirstCell(pcList->pcNext),pcList);</response>
+    <response id="2">tmp=RetrieveCell(EndCell(pcList),pcList);</response>
     <hints></hints>
     <evaluate>
       <function></function>

@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xtdl>
-<section id="sec1" title="確認テスト：スタックの実装">
+<section id="sec1" title="確認テスト：配列によるスタックの実装">
 <explanation id="sec1.1" title="問題">
-	<p>前節の演習課題であるスタックの操作関数のうち，下記に示した EmptyStack,PopStackを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
+	<p>配列を用いたスタック操作関数群を作成する．各操作関数のプロトタイプは下記のとおりである．</p>
+<pre class="prettyprint">struct array_stack *makeNullStack(void);
+int emptyStack(struct array_stack*);
+int topStack(struct array_stack*);
+int popStack(struct array_stack*);
+void pushStack(int, struct array_stack*);
+void deleteStack(struct array_stack*);
+</pre>
+<p>また，構造体 struct array_stack は下記を用いる．</p>
+<pre class="prettyprint">
+#define MAX_STACK_SIZE 10
+struct array_stack {
+  int length; /* スタックの長さ(格納数) */
+  int elements[MAX_STACK_SIZE]; /* データを格納するための配列*/
+};</pre>
+<p>
+上記に示した関数群のうち，EmptyStack,PopStackを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
 
 <pre class="prettyprint">/* check stack */
 int EmptyStack(struct array_stack *pcStack)

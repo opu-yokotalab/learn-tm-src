@@ -3,7 +3,7 @@
 	<section id="sec1" title="構造体">
 		<explanation id="sec1.1" title="構造体とは">
 			<p>
-				構造体(structure) とは、複数の変数をひとまとまりにしたものである。構造体を構成する変数のことをメンバー(member) という。1 つの構造体に同じ名前のメンバーを含めることはできない。<br />
+				<strong>構造体</strong>(structure) とは、複数の変数をひとまとまりにしたものである。構造体を構成する変数のことを<strong>メンバー</strong>(member) という。1 つの構造体に同じ名前のメンバーを含めることはできない。<br />
 例えば、平面座標上の点を表す構造体の宣言は次のようになる。
 			</p>
 			
@@ -54,7 +54,7 @@ struct float_point{
 		<explanation id="sec1.3" title="メンバーの値を参照するには">
 			<p>
 				構造体のメンバーの値を参照するにはどうしたらよいのだろうか。例えば、平面上の点のx 座標の値を得るにはどうしたらよいのだろうか。<br />
-それには構造体メンバー演算子(structure member operator) “ . ” を用いる。これは二項演算子であり、各演算数は次の通りでなければならない。
+それには<strong>構造体メンバー演算子</strong>(structure member operator) “ . ” を用いる。これは二項演算子であり、各演算数は次の通りでなければならない。
 			</p>
 			<ul>
 				<li>第1 演算数は構造体型の変数や式</li>
@@ -94,8 +94,8 @@ pts1[1].y = 240;</pre>
 そこで、C では以下の2 つの単項演算子を用意した。
 				</p>
 				<ul>
-					<li>アドレス演算子(address operator) &amp;：変数名からメモリ領域の先頭番地を得る演算子</li>
-					<li>間接演算子(indirection operator) *：メモリ領域の先頭番地から変数の値を得る演算子</li>
+					<li><strong>アドレス演算子</strong>(address operator) &amp;：変数名からメモリ領域の先頭番地を得る演算子</li>
+					<li><strong>間接演算子</strong>(indirection operator) *：メモリ領域の先頭番地から変数の値を得る演算子</li>
 				</ul>
 				<p>
 					また、型X に対して、X 型のメモリ領域の先頭番地を表す型X*を用意した。例えばint *pi; と書くと、変数pi にはint 型のメモリ領域の先頭番地しか格納できない(図1.2)。
@@ -109,35 +109,35 @@ pts1[1].y = 240;</pre>
 				<p>
 					前節のポインタに関する説明は、構造体にもそのままあてはまる。以下の2 つの変数宣言はまったく異なることに注意せよ。</p>
 					<ul>
-						<li>struct point pt; … 変数pt はpoint 型の値を格納できるだけの領域(64 ビット) を持つ。格納できる値は(320, 200) のような2 つの整数の組である。</li>
-						<li>struct point *p; … 変数p は番地を格納できる領域(現在は多くの場合32 ビット) を持つ。格納できる値はpoint 型の値の格納領域の先頭番地である。</li>
+						<li><strong>struct point pt;</strong> … 変数pt はpoint 型の値を格納できるだけの領域(64 ビット) を持つ。格納できる値は(320, 200) のような2 つの整数の組である。</li>
+						<li><strong>struct point *p;</strong> … 変数p は番地を格納できる領域(現在は多くの場合32 ビット) を持つ。格納できる値はpoint 型の値の格納領域の<strong>先頭番地</strong>である。</li>
 					</ul>
 					<p>
 						これまで呪文のように書いてきた以下のプログラムコードも、これまでの説明を踏まえると、体系的に理解することができる。</p>
 						<ul>
-							<li>struct point *p = (struct point *)NULL;<br />
+							<li style="margin:10px;"><strong>struct point *p = (struct point *)NULL;</strong><br />
 							C では、NULL は整数0 の別名である。すると、このコードの意味は「番地を格納する32 ビットのメモリ領域p を確保し、そこに0 を代入する」となる。ただし、0 は通常int 型であり、変数p の型とは異なる。そこで、(struct point *)NULL というように、明示的に0 の型を変換(キャスト, cast) してから代入を行っている。</li>
-							<li>struct point *p = (struct point *)malloc(sizeof(struct point));<br />
+							<li style="margin:10px;"><strong>struct point *p = (struct point *)malloc(sizeof(struct point));</strong><br />
 							変数p の領域を確保するところまでは上の例と同じ。<br />
 							malloc() 関数は次のような動きをする。<br />
 							<ul>
-								<li>プログラム実行時に、(引数で与えられた整数値) バイトの領域を確保</li>
-								<li>確保した領域の先頭番地を、void *型、もしくはint 型の値として返す</li>
-								<li>確保した領域の初期値は未定義(何が入っているか分からない)</li>
+								<li style="margin:10px;">プログラム実行時に、(引数で与えられた整数値) バイトの領域を確保</li>
+								<li style="margin:10px;">確保した領域の先頭番地を、void *型、もしくはint 型の値として返す</li>
+								<li style="margin:10px;">確保した領域の初期値は未定義(何が入っているか分からない)</li>
 							</ul>
 							sizeof は(なんと!) 単項演算子で、しかも型名を演算数にとる。結果は、その型の値を格納するのに必要なバイト数である。したがってsizeof(struct point) = 8(8 バイト=64 ビット) である。<br />
 							まとめると、malloc() によりsizeof(struct point) バイトの領域を動的に確保し、その先頭番地を明示的にstruct point *型に変換してからp に代入していることになる(図1.3)。ただしmalloc() で確保した領域の初期値は分からないので、プログラマが自分で初期化しておかなければならない。
 							</li>
 						</ul>
+					<div style="text-align:center">
+						<img src="/images/c-kunishi/fig1_3.jpg" alt="領域の動的確保" /><br />
+						<strong>図1.3　領域の動的確保</strong>
+					</div>
 			</explanation>
 			<explanation id="sec1.5.3" title="ポインタ参照した構造体のメンバー">
 				<p>
 					図1.3 において、動的に確保した構造体のメンバーx の値を読み出すにはどうしたらよいだろうか。<br />
 					8236 番地から始まる構造体は、*p で得られる。したがって、この構造体のメンバーx は(*p).x で得られる。ただし、二項演算子. は単項演算子*よりも優先順位が高いので、カッコが必要になる。</p>
-					<div style="text-align:center">
-						<img src="/images/c-kunishi/fig1_3.jpg" alt="領域の動的確保" /><br />
-						<strong>図1.3　領域の動的確保</strong>
-					</div>
 					<div style="text-align:center">
 						<img src="/images/c-kunishi/fig1_4.jpg" alt="point2型の構造体" /><br />
 						<strong>図1.4　point2型の構造体</strong>

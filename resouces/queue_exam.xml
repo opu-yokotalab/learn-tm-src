@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xtdl>
-<section id="sec1" title="確認テスト：キュー(待ち行列)の実装">
+<section id="sec1" title="確認テスト：配列を用いたキュー(待ち行列)の実装">
 <explanation id="sec1.1" title="問題">
-	<p>前節の演習課題であるキューの操作関数のうち，下記に示した FrontQueue,Dequeue,Enqueueを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
+	<p>配列を用いたキュー操作関数群を作成する。各操作関数群のプロトタイプは下記の通りとする。</p>
+	<pre class="prettyprint">struct array_queue *makeNullQueue(void);
+int emptyQueue(struct array_queue*);
+int frontQueue(struct array_queue*);
+int dequeue(struct array_queue*);
+void enqueue(int, struct array_queue*);
+void deleteQueue(struct array_queue*);</pre>
+
+<p>また，構造体struct array_queue は下記を用いることとする．</p>
+
+<pre class="prettyprint">#define MAX_QUEUE_SIZE 10
+struct array_queue {
+int front; /* キューのフロントを示す配列の添字*/
+int length; /* キューの長さ(格納数) */
+int elements[MAX_QUEUE_SIZE]; /* データを格納するための配列*/
+};</pre>
+
+	<p>上記に示したキューの操作関数群のうち FrontQueue,Dequeue,Enqueueを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
 
 <pre class="prettyprint">/* Return data of the top queue. */
 int FrontQueue(struct array_queue *pcQueue)
