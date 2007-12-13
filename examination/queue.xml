@@ -60,9 +60,9 @@
     <item id="3" type="select_single">
         <question><p>[E]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0">pcQueue->front &lt; Max</response>
-<response id="1">pcQueue->front > Max</response>
-<response id="2">pcQueue->front == Max</response>
+<response id="0">pcQueue->front &lt; MAX_QUEUE_SIZE</response>
+<response id="1">pcQueue->front > MAX_QUEUE_SIZE</response>
+<response id="2">pcQueue->front == MAX_QUEUE_SIZE</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>
@@ -99,9 +99,9 @@
     <item id="5" type="select_single">
         <question><p>[G]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
-<response id="0">pcQueue->elements[(pcQueue -> front)% Max] = data;</response>
-<response id="1">pcQueue->elements[(pcQueue->length )% Max] = data;</response>
-<response id="2">pcQueue->elements[(pcQueue->length + pcQueue -> front)% Max] = data;</response>
+<response id="0">pcQueue->elements[(pcQueue -> front)% MAX_QUEUE_SIZE] = data;</response>
+<response id="1">pcQueue->elements[(pcQueue->length )% MAX_QUEUE_SIZE] = data;</response>
+<response id="2">pcQueue->elements[(pcQueue->length + pcQueue -> front)% MAX_QUEUE_SIZE] = data;</response>
 <hints>ヒント</hints>
 <evaluate>
 	<function></function>

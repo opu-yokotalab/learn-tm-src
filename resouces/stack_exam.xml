@@ -18,6 +18,7 @@ struct array_stack {
   int elements[MAX_STACK_SIZE]; /* データを格納するための配列*/
 };</pre>
 <p>
+スタックに格納するデータはint型に限定する．また，格納位置が0のものをスタックの底とする．なお，MAX_STACK_SIZEを越えてデータを格納しようとした場合にはエラーメッセージを出し，その操作を無効とすること．<br /><br />
 上記に示した関数群のうち，EmptyStack,PopStackを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
 
 <pre class="prettyprint">/* check stack */

@@ -11,7 +11,7 @@
     [ B ]
     n++;
   }
-  str[n] = [ C ];
+  [ C ];
 
   return str;
 }
@@ -52,7 +52,8 @@ int my_strcmp(char *str, char *ct){
 </section>
 <section id="sec2" title="確認テスト：電話番号簿の操作関数">
 <explanation id="sec2.1" title="問題">
-	<p>前節の電話番号簿の演習課題のうち，add，delByName，findByNumberの3つの関数を以下のように実装した．各問いの箇所に当てはまるプログラムを選択せよ．</p>
+	<p>前節の電話番号簿の演習課題のうち，add，delByName，findByNumberの3つの関数を以下のように実装した．各問いの箇所に当てはまるプログラムを選択せよ．<br />
+<strong>※定数Nはレコード数の最大値．この問題の場合では#defineにより5が定義されている．</strong></p>
 	<pre class="prettyprint">/* レコードを新規追加する */
 void add(char *name, char *tel, int number){
   int n=0;

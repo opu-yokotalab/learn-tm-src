@@ -32,6 +32,13 @@ int fibonacci(int n){
 <section id="sec2" title="確認テスト：ReverseList">
 <explanation id="sec2.1" title="問題">
 	<p>ReverseList関数を以下のように実装した．各問いの箇所に当てはまるプログラムを選択せよ．</p>
+<p>リストの基本操作群を下記に示す。必要な者は参考にすること。</p>
+
+	<div align="center">
+		<img src="/images/c-kunishi/fig2_1.jpg" alt="リストの基本操作群"/><br/>
+		<strong>図2.1 リストの基本操作群</strong>
+	</div>
+
 	<pre class="prettyprint">struct cell *ReverseList(struct cell *pcList){
   int tmp;
   if([ A ]){
@@ -65,6 +72,14 @@ int fibonacci(int n){
 <section id="sec3" title="確認テスト：マージソート">
 <explanation id="sec3.1" title="問題">
 	<p>マージソートに必要な関数DivideList,MergeList,MergeSortを以下のように実装した．各問いの箇所に当てはまるプログラムを選択せよ．</p>
+
+<p>リストの基本操作群を下記に示す。必要な者は参考にすること。</p>
+
+	<div align="center">
+		<img src="/images/c-kunishi/fig2_1.jpg" alt="リストの基本操作群"/><br/>
+		<strong>図2.1 リストの基本操作群</strong>
+	</div>
+
 	<pre class="prettyprint">/* リストの分割 */
 void DivideList(struct cell *list,struct cell *list1,struct cell *list2){
   if([ A ]){

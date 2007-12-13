@@ -19,7 +19,8 @@ int length; /* キューの長さ(格納数) */
 int elements[MAX_QUEUE_SIZE]; /* データを格納するための配列*/
 };</pre>
 
-	<p>上記に示したキューの操作関数群のうち FrontQueue,Dequeue,Enqueueを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
+	<p>キューに格納するデータはint型に限定する．また，格納位置が配列の終端(MAX_QUEUE_SIZE - 1)になった場合には，配列の先頭の0に折り返すこととし，常にMAX_QUEUE_SIZE個のデータを格納できるようにすること．なお，MAX_QUEUE_SIZEを越えてデータを格納しようとした場合にはエラーメッセージを出し，その操作を無効とすること．<br /><br />
+上記に示したキューの操作関数群のうち FrontQueue,Dequeue,Enqueueを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
 
 <pre class="prettyprint">/* Return data of the top queue. */
 int FrontQueue(struct array_queue *pcQueue)
@@ -51,7 +52,7 @@ int Dequeue(struct array_queue *pcQueue)
 /* Push data of the top queue. */
 void Enqueue(int data,struct array_queue *pcQueue)
 {
-  if(pcQueue->length == Max)
+  if(pcQueue->length == MAX_QUEUE_SIZE)
     printf("error!!: Queue is full.\n");
   else{
     [ G ]

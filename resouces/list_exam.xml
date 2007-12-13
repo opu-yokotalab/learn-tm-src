@@ -23,6 +23,13 @@
 <explanation id="sec2.1" title="問題">
 	<p>前節の演習課題であるリストの操作関数のうち，下記に示した PreviousCell,InsertCell,DeleteCellを実際に実装した．各問の箇所に当てはまるプログラムを選択せよ．</p>
 
+<p>リストの基本操作群を下記に示す。必要な者は参考にすること。</p>
+
+	<div align="center">
+		<img src="/images/c-kunishi/fig2_1.jpg" alt="リストの基本操作群"/><br/>
+		<strong>図2.1 リストの基本操作群</strong>
+	</div>
+
 <pre class="prettyprint">/*
  * Return pointer to the previous cell.
  */
@@ -32,9 +39,9 @@ struct cell *PreviousCell(struct cell *pcCell,struct cell *pcList)
   struct cell *pcNext;
 
   if([ A ]){
-	  if((pcNext=FirstCell(pcList))==pcCell)
-	    return pcList;
-	  do{
+    if((pcNext=FirstCell(pcList))==pcCell)
+      return pcList;
+    do{
       pcPrevious=pcNext;
     }while([ B ]);
   }

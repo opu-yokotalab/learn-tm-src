@@ -21,7 +21,7 @@
 
 
     <item id="1" type="select_single">
-        <question><p>[B]に当てはまるものは何か？以下の3つから一つ選択しなさい。※Nはレコード数の最大値．問いの場合では#defineにより5が定義されている．</p>
+        <question><p>[B]に当てはまるものは何か？以下の3つから一つ選択しなさい。</p>
 </question>
 <response id="0">n &gt; N</response>
 <response id="1">n &lt; N</response>

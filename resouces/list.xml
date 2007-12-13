@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xtdl>
 <section title="リスト" id="list">
 <explanation title="リストの数学的定義" id="list1">　数学的には、「ある同一の型の要素を0 個以上並べたもの」を<strong>リスト</strong>という。記法は文献によってまちまちであるが、この実験では[a1, a2, · · · , an] というように、要素をコンマで区切り、角括弧で囲って書くことにする。このとき、リストに含まれる要素数をリストの長さという。また、要素が一つもないリストを<strong>空リスト</strong>といい、[] と書く。<br/>

@@ -32,8 +32,9 @@ struct point pt ;
    pointの宣言に従って、値とメンバが対応される。この例では、
    x と320が、yと200がそれぞれ対応される
 */
-
 struct point maxpt = {320 , 200};
+
+
 /* 構造体の宣言と変数宣言を一緒にしてもよい */
 struct float_point{
   float x;
@@ -137,11 +138,7 @@ pts1[1].y = 240;</pre>
 			<explanation id="sec1.5.3" title="ポインタ参照した構造体のメンバー">
 				<p>
 					図1.3 において、動的に確保した構造体のメンバーx の値を読み出すにはどうしたらよいだろうか。<br />
-					8236 番地から始まる構造体は、*p で得られる。したがって、この構造体のメンバーx は(*p).x で得られる。ただし、二項演算子. は単項演算子*よりも優先順位が高いので、カッコが必要になる。</p>
-					<div style="text-align:center">
-						<img src="/images/c-kunishi/fig1_4.jpg" alt="point2型の構造体" /><br />
-						<strong>図1.4　point2型の構造体</strong>
-					</div>
+					8632 番地から始まる構造体は、*p で得られる。したがって、この構造体のメンバーx は(*p).x で得られる。ただし、二項演算子. は単項演算子*よりも優先順位が高いので、カッコが必要になる。</p>
 					<p>
 					C のプログラムでは、この種のコードが頻繁に出てくるので、カッコが多くなると煩わしい。そこで、C には、(*p).x の略記法が用意してある。p -> x である。この2 つの式はまったく等価である。<br />
 なお、演算子->は左結合であることに注意されたい。すなわち、a -> b -> c は(a -> b) -> c の意味になる。
@@ -156,13 +153,17 @@ pts1[1].y = 240;</pre>
 				<pre class="prettyprint">struct point2 {
   int x ;
   int y ;
-  struct point2 . next ;
+  struct point2 *next ;
 };
-struct point2 .pp ;</pre>
+struct point2 *pp ;</pre>
 			
 			<p>
-				これは図1.4 のような構造体を表している。メンバーnext が、別のpoint2 型の構造体を指し示すポインタになっている。左側の構造体の先頭番地が変数pp に格納されているとすると、右側の構造体の先頭番地はp -> next である。したがって、右側の構造体のメンバーx の値を得るには(pp -> next) -> x、もしくはpp -> next -> x とすればよい。
+				これは図1.4 のような構造体を表している。メンバーnext が、別のpoint2 型の構造体を指し示すポインタになっている。左側の構造体の先頭番地が変数pp に格納されているとすると、右側の構造体の先頭番地はp -> next である。したがって、右側の構造体のメンバーx の値を得るには(pp -> next) -> x、とすればよい。
 			</p>
+					<div style="text-align:center">
+						<img src="/images/c-kunishi/fig1_4.jpg" alt="point2型の構造体" /><br />
+						<strong>図1.4　point2型の構造体</strong>
+					</div>
 		</explanation>
 		<section id="sec1.7" title="演習問題：文字列操作">
 			<exercise id="kadai2" title="演習問題：文字列操作関数の調査">
