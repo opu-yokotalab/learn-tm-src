@@ -14,6 +14,13 @@ next([struct_exam2,end],[[msg,"この単元はこれで終了です。お疲れ様でした。"]]):-g
 toc(struct1,[]).
 toc(struct2,[]).
 toc(struct3,[]).
+toc(struct_exam1,[]).
+
+toc(struct4,[]):-getTestPoint(my_string_exam,Point),Point == 100.
+toc(struct4,[[msg,"確認テスト：文字列操作関数に合格しないと閲覧できません。"],[view,struct_exam1]]):-getTestPoint(my_string_exam,Point),Point != 100.
+
+toc(struct_exam2,[]):-getTestPoint(my_string_exam,Point),Point == 100.
+toc(struct_exam2,[[msg,"確認テスト：文字列操作関数に合格しないと閲覧できません。"],[view,struct_exam1]]):-getTestPoint(my_string_exam,Point),Point != 100.
 
 changeLv([up,5] ,[] ):-getCurrentLevel(L),L==1.
 changeLv([down,1] ,[] ):-getCurrentLevel(L),L==5.
