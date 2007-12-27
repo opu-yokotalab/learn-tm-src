@@ -12,11 +12,11 @@ toc(recursive,[]).
 toc(recursive2,[]).
 toc(recursive3,[]).
 
-toc(recursive4,[]):-getTestPoint(reverse_lsit_test,Point),Point == 100.
-toc(recursive4,[[msg,"確認テスト：ReversListに合格しないと閲覧できません。"],[view,recursive3]]):-getTestPoint(reverse_lsit_test,Point),Point != 100.
+toc(recursive4,[]):-getTestPoint(reverse_list_test,Point),Point == 100.
+toc(recursive4,[[msg,"確認テスト：ReversListに合格しないと閲覧できません。"],[view,recursive3]]):-getTestPoint(reverse_list_test,Point),Point != 100.
 
-toc(recursive5,[]):-getTestPoint(reverse_lsit_test,Point),Point == 100.
-toc(recursive5,[[msg,"確認テスト：ReversListに合格しないと閲覧できません。"],[view,recursive3]]):-getTestPoint(reverse_lsit_test,Point),Point != 100.
+toc(recursive5,[]):-getTestPoint(reverse_list_test,Point),Point == 100.
+toc(recursive5,[[msg,"確認テスト：ReversListに合格しないと閲覧できません。"],[view,recursive3]]):-getTestPoint(reverse_list_test,Point),Point != 100.
 
 changeLv([up,5],[]):-getCurrentLevel(L),L==1.
 changeLv([down,1],[]):-getCurrentLevel(L),L==5.
