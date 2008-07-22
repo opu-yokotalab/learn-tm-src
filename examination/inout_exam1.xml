@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem_set id="inout_exam1">
+  <item id="0" type="select_single">
+    <question>
+      <p>以下のプログラムは入力した数字を画面に表示させるプログラムである。</p>
+      <p>[A]に当てはまるコードを選択せよ。</p>
+　　　	    <blockquote style="width:300px;" title="sample source0">
+		#include&lt;stdio.h&gt;<br/>
+		  int main()<br/>
+		  {<br/>
+		    int a;
+	            printf(&quot;数字を入力してください。:&quot;);<br/>
+		    scanf(&quot;%d&quot;,[ A ]);<br/>
+		    printf(&quot;あなたが入力した数は%dです。\n&quot;,a);<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+    </question>
+    <response id="0">a</response>
+    <response id="1">&amp;a</response>
+    <response id="2">%a</response>
+    <hints></hints>
+    <evaluate>
+      <function></function>
+      <correct id="1" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation>scanfの引数には先頭にアドレス演算子&amp;がつきます。</explanation>
+  </item>
+
+    <item id="1" type="select_single">
+        <question><p>以下のプログラムの出力結果を選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source1">
+		#include&lt;stdio.h&gt;<br/>		  int main<br/>
+		  {<br/>
+		    int a;
+		    a = ( 2 + 3 + 1 ) * 2 + 4 / 2;
+		    printf(&quot;%d\n&quot;,a);
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">8</response>
+	<response id="1">9</response>
+	<response id="2">14</response>
+	<response id="3">24</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="2" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>優先順位は１：（）、２：乗除算、３：加減算です。</explanation>    </item>
+
+    <item id="2" type="select_single">
+        <question><p>以下のプログラムの出力結果を選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source2">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+		    int a,b;<br/>
+			a = 5 * 10 + 5;<br/>
+			b = 5 + 10 / 2;<br/>
+			printf(&quot;%d\n&quot;,a+b);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">45</response>
+	<response id="1">65</response>
+	<response id="2">85</response>
+	<response id="3">105</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="1" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>加減算より乗除算のほうが優先度が高いです。</explanation>    </item>
+
+    <item id="3" type="select_single">
+        <question><p>以下のプログラムの出力結果を選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source3">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+		    int a;
+			a = 8.6 * 5;
+			printf(&quot;a = %d\n&quot;,a);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">5</response>
+	<response id="1">8.6</response>
+	<response id="2">40</response>
+	<response id="3">43</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="3" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>暗黙的な型変換が行われ、実数として計算されます。</explanation>    </item>
+
+    <item id="4" type="select_single">
+        <question><p>以下のプログラムは暗黙的な型変換がされるプログラムです。<br/>
+		出力結果を選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source4">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+			int i,j;<br/>
+			float a,b;<br/>
+			<br/>
+			a = 100;<br/>
+			b = a * 20;<br/>
+			i = 2.5 * 3;<br/>
+			j = i * 3;<br/>
+			printf(&quot;a = %f,b = %f\n&quot;a,b);<br/>
+			printf(&quot;i = %d,j = %d\n&quot;i,j);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">a = 100,b = 2000<br/>i = 7.5,j = 22.5</response>
+	<response id="1">a = 100.00000,b = 2000.00000<br/>i = 7.5,j = 22.5</response>
+	<response id="2">a = 100.00000,b = 2000.00000<br/>i = 7,j = 21</response>
+	<response id="3">a = 100,b = 2000<br/>i = 7,j = 21</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="2" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>データの型変換はint型よりfloat型の方が優先度が高い。</explanation>    </item>
+
+    <item id="5" type="select_single">
+        <question><p>以下のプログラムはキャスト演算を用いたプログラムです。<br/>
+		出力結果を選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source4">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+			int a;<br/>
+			float b;<br/>
+			<br/>
+			a = 100;<br/>
+			b = (float)a / 30;<br/>
+			printf(&quot;a = %d,b = %f\n&quot;a,b);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">a = 100,b = 33.33333</response>
+	<response id="1">a = 100.00000,b = 3.33333</response>
+	<response id="2">a = 100.00000,b = 3</response>
+	<response id="3">a = 100,b = 3.33333</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="3" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>キャスト演算子を使わないとbは3.00000になります。</explanation>    </item>	
+
+</problem_set>

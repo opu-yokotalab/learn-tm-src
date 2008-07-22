@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem_set id="basic_exam1">
+  <item id="0" type="select_single">
+    <question>
+      <p>以下のプログラムは画面に「Hello world」と表示させるプログラムである。</p>
+      <p>[A]に当てはまるコードを選択せよ。</p>
+　　　	    <blockquote style="width:300px;" title="sample source0">
+		#include&lt;stdio.h&gt;<br/>
+		  int main()<br/>
+		  {<br/>
+	          [ A ](&quot;Hello World\n&quot;);<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+    </question>
+    <response id="0">[A] scanf</response>
+    <response id="1">[A] gets</response>
+    <response id="2">[A] printf</response>
+    <hints></hints>
+    <evaluate>
+      <function></function>
+      <correct id="2" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation>出力関数なのはprintf、scanfとgetsは入力関数である。</explanation>
+  </item>
+
+    <item id="1" type="select_single">
+        <question><p>以下のプログラムはもっとも簡単なプログラムである。<br/>
+		[A]に当てはまるコードを選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source1">		  int [ A ]<br/>
+		  {<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">mine[]</response>
+	<response id="1">mein[]</response>
+	<response id="2">main()</response>
+	<response id="3">mine()</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="2" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>C言語のプログラムにはmain関数が必ず必要です。</explanation>    </item>
+
+    <item id="2" type="select_single">
+        <question><p>以下のプログラムは円の面積を求めるプログラムです。<br/>
+		[A]に当てはまるコードを選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source2">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+		    [ A ] rad = 3.141592,area;
+		    int i;
+			printf(&quot;半径を入力してください。\n&quot;);<br/>
+			scanf(&quot;%d&quot;,&amp;i);<br/>
+			area = i * i * rad;<br/>
+			printf(&quot;面積＝%d\n&quot;,area);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">int</response>
+	<response id="1">float</response>
+	<response id="2">short int</response>
+	<response id="3">char</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="1" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>少数を記憶するには浮動少数点型でないといけません。</explanation>    </item>
+
+    <item id="3" type="select_single">
+        <question><p>以下のプログラムは円の面積を求めるプログラムです。<br/>
+		[A]と[B]に当てはまるコードを選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source3">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+		    [ A ] rad = 3.141592,area;
+		    int i;
+			printf(&quot;半径を入力してください。\n&quot;);<br/>
+			scanf(&quot;%d&quot;,&amp;i);<br/>
+			area = i * [ B ] * rad;<br/>
+			printf(&quot;面積＝%d\n&quot;,area);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">[A]:int [B]:area</response>
+	<response id="1">[A]:float [B]:i</response>
+	<response id="2">[A]:int [B]:i</response>
+	<response id="3">[A]:float [B]:area</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="1" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>面積の公式は「半径×半径×円周率」</explanation>    </item>
+
+    <item id="4" type="select_single">
+        <question><p>以下のプログラムは「Hello World!!」と表示させるプログラムである。<br/>
+		[A]に当てはまるコードを選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source4">
+		#include&lt;[ A ]&gt;<br/>		  int main()<br/>
+		  {<br/>
+			printf(&quot;Hello World!!\n&quot;);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">stdio.h</response>
+	<response id="1">math.h</response>
+	<response id="2">stdio</response>
+	<response id="3">sdtio.h</response>
+	<hints>ヒント</hints>
+	<evaluate>
+		<function></function>
+		<correct id="0" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>printf関数を使うためのヘッダはstdio.hである。</explanation>    </item>
+
+</problem_set>
