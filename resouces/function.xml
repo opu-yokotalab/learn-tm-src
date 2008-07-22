@@ -1,0 +1,339 @@
+<xtdl>
+    <section title="関数" id="std5">
+        <explanation title="関数の説明" id="std5ex1">
+            <div style="font-size:13pt;">
+     関数は<font color="red">いくつかの値を受け取って、一連の計算を行い、値を1つ返すもの</font>と理解すればよい。<br/>
+     C言語のプログラムは、1つ以上の関数(main関数とその他の関数)から構成される。
+     <font color="red">どんなプログラムにもmainと呼ばれる関数がなければならなく、プログラムの実行は必ずmain関数から始まる。</font>関数mainは他の関数を呼び出し、それらの関数からさらに別の関数を呼び出すこともできる。関数が呼び出されると、プログラムの実行は呼び出された関数の最初の文に移る。その関数はreturn文あるいはその関数の最後の文が実行された後に終了する。呼び出し元の関数の実行は、呼び出された関数が終了した後に再開される。その関数が返す値は、式中の値として使うこともできる。
+   </div>
+        </explanation>
+        <explanation title="プログラムの実行" id="std5ex2">
+            <div align="center">
+      <!-- image  -->
+                <img src="/images/c-kishi/std5ex2img1.jpg" alt="プログラムの実行順"/>
+                <br/>
+                <strong>プログラムの実行順</strong>
+            </div>
+            <br/>
+        </explanation>
+        <explanation title="関数を用いるメリット" id="std5ex3">
+            <div style="font-size:13pt;">
+                <b>関数を用いて、同じような処理を１ヵ所にまとめる</b>と、以下のようなメリットがある<br/>
+      　1. 関数にしてしまえば、同様の計算をさせるときに何度も記述する必要がなくなる。<br/>
+      　2. どこで何をしているかを見つけやすくなる。<br/>
+      　3. 後からプログラムを修正するときに、修正箇所が1ヵ所ですむ。<br/>
+      　4. バグがあった場合、バグの発生箇所を特定しやすい。
+    </div>
+        </explanation>
+        <section title="関数の定義" id="std5.1">
+            <explanation title="基本説明" id="std5.1ex1">
+      以下に関数定義の書式を示す。
+      <blockquote style="width:600px;" title="関数定義の書式">
+                    <pre>関数の型  関数名(引数の型 引数1, 引数の型 引数2, …)
+{
+   /*  関数の本体  */
+   return 戻り値;        /*  戻り値のない関数の場合不要  */
+}</pre>
+                </blockquote>
+                <div style="font-size:13pt;">
+        関数の型とは、関数が返す戻り値のデータ型のことを指し、関数が返す値はreturn文により決定される。関数の型の後には、関数名と関数の引数宣言が続く、引数の不要な関数の場合には、( )のように書けばよい。ただし、(void)のようにして引数のないことを明示してもよい。
+      </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.1ex2">
+      以下に関数の例を示す。この関数funcはargという値を受け取ってその2乗を返す。<br/>
+                <blockquote style="width:350px;" title="example program1">
+                    <pre>int func(int arg)
+{
+　　int mul;            /*  変数宣言 */
+    mul = arg * arg;
+
+    return mul;         /*  mulを返す  */
+}</pre>
+                </blockquote>
+                <div style="font-size:13pt;">
+        この関数funcは、<br/>
+        1.戻り値の値はint型である。<br/>
+        2.引数は1つで、型はint、この関数内ではargという変数名で扱う。<br/>
+        3.変数mulにarg * argの結果を代入する。<br/>
+        4.変数mulを戻り値として返す。<br/>
+        という動作をする関数である。
+      </div>
+            </explanation>
+        </section>
+        <section title="関数の呼び出し" id="std5.2">
+            <explanation title="サンプルソース" id="std5.2ex1">
+      先ほどの説明で用いた関数funcの呼び出し例を以下に示す。このプログラムは関数funcにaの値を渡しその結果をbに格納、出力する。<br/>
+                <blockquote style="width:500px;" title="example program2">
+                    <pre>
+int main()
+{
+    int a = 10, b;        /*  変数宣言  */
+    <font color="red">b = func(a);</font>          /*  関数funcの呼び出し  */
+    printf("a = %d, b = %d\n", a, b);
+    return 0;
+}
+        </pre>
+                </blockquote>
+                <div style="font-size:13pt;">
+        関数funcを呼び出したとき、次のことが行われる。<br/>
+        1.func(a)の式aを評価→値10が得られる。<br/>
+        2.引数argに1.の結果の値10が対応付けられる。<br/>
+        3.func()の内部の計算が行われる。このとき、argは変数のように用いられる。<br/>
+        4.戻り値(この場合は100)がfunc(a)の評価値となり、bに代入。
+      </div>
+            </explanation>
+        </section>
+        <section title="関数の戻り値" id="std5.3">
+            <explanation title="基本説明" id="std5.3ex1">
+                <div style="font-size:13pt;">
+        C言語では、<font color="red">特に指示のない限り関数の戻り値はint型</font>であると規定されている。よって、戻り値がint型の関数の定義の<br/>
+        　　　int func(int arg)<br/>
+        は<br/>
+        　　　func(int arg)<br/>
+        としても問題はない。しかし、プログラムを分かりやすく書くという観点から、戻り値がint型であっても明示的に型を記述することが望ましい。<br/>
+        また、戻り値のない関数というのも定義できる。その場合には、関数の型をvoidと指定すれば実現できる。
+      </div>
+            </explanation>
+            <explanation title="補足" id="std5.3ex2">
+                <div style="font-size:13pt;">
+        main関数も1つの関数であるが、このmain関数の戻り値は、プログラムの戻り値に相当し、プログラムの戻り値はOS内部で利用されることがある。プログラムの正常終了時には0、異常終了時にはその他の値を戻すことが通例である。
+      </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.3ex1">
+      以下にdouble型を戻り値とした関数の例を示す。この関数はa,bの値を受け取り、その積を求める。
+      <blockquote style="width:300px" title="example program3">
+                    <pre>
+                        <font color="red">
+double</font> dmul(double a, double b)
+{
+      double mul;
+      mul = a * b;
+      return mul;
+}
+        </pre>
+                </blockquote>
+                <div style="font-size:13pt;">
+        (解説)<br/>
+        2つのdouble型の引数を取り、double型の値を返す関数である。<br/>
+        受け取った値は、それぞれaおよびbという変数名で扱う。処理内容は、受け取った2つの値の積を返すというものである。
+      </div>
+            </explanation>
+        </section>
+        <section title="プロトタイプ宣言" id="std5.4">
+            <explanation title="プロトタイプ宣言の書式" id="std5.4ex1">
+                <div style="font-size:13pt;">
+        関数の定義がその関数を呼び出す記述より後にある場合、プロトタイプ宣言が必要になる。<br/>
+        以下にプロトタイプ宣言の書式を示す。<br/>
+                </div>
+                <blockquote style="width:400px" title="プロトタイプ宣言">
+                    <pre>戻り値の型　関数名(引数1の型, 引数2の型, .....);</pre>
+                </blockquote>
+      プロトタイプ宣言の例:　int func(int);<br/>
+      　　　　　　　　　　　　　　double dmul(double, double);<br/>
+                <br/>
+      上の例のようにプロトタイプ宣言では<b>引数の変数名を明記しない</b>。また、それぞれのプロトタイプ宣言は<b>;(セミコロン)で終わる</b>。<br/>
+      プロトタイプ宣言は#inclueなどの後の行にまとめて記述されることが多い。
+    </explanation>
+            <explanation title="説明" id="std5.4ex2">
+                <div style="font-size:13pt;">
+        C言語のコンパイラはソースファイルの解析を上から順番に行う。そのため、関数の定義がその関数を呼び出す記述より前にあれば、その関数の引数の数や型、戻り値を知ることができ、呼び出しの記述のところで戻り値や引数のチェックをすることができる。<br/>
+        逆に、先にmain関数が記述されている場合など、関数の定義が呼び出しより後に記述されていると、コンパイラは呼び出しの記述のところでその関数の戻り値を規定に従ってint型であると解釈してしまう。また、引数については何らチェックがされない。<br/>
+        このように、関数定義の位置によってプログラムの挙動が変わる可能性があり、さらには引数のチェックもされないというのは大変不都合である。これを回避するためにはプロトタイプ宣言を用いる。<br/>
+        プロトタイプ宣言は、使用する関数の引数の数や型、およびその関数の戻り値の型をあらかじめ宣言しておくもので、この宣言があれば関数定義が呼び出しより後であってもこの宣言を元に処理することができる。
+      </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.4ex2so1">
+                <div style="font-size:13pt;">
+        以下の例は配列変数を関数の引数として与えるものである。<br/>
+        関数sumの引数として、int型の配列変数を与えている。配列を引数として渡す場合、関数定義には<b>int num[]</b>のように括弧<b>[]</b>を付ける。一方、その関数を呼び出すときは括弧[]を省略し、配列変数名のみを記述する。これは、その配列のアドレス(ポインタ)を渡していることになる。
+      </div>
+                <blockquote style="width:400px" title="example program4">
+                    <pre>
+                        <font color="red">
+int sum(int[]);</font>
+
+int main()
+{
+	int aa[10]={1,2,3,4,5,6,7,8,9,10},bb;
+	
+	bb = sum(aa);
+	printf("sum=%d\n",bb);
+	return 0;
+}
+	
+int sum(int num[])
+{
+	int n,s=0;
+	
+	for(n=0;n&lt;10;n++)
+	s+=num[n];
+	
+	return s;
+}
+        </pre>
+                </blockquote>
+        (解説)<br/>
+         mainないで関数sumが呼び出されているが、main関数の前に関数sumの内容が記述されていないため、プロトタイプ宣言 <font color="red">int sum(int []);</font>が必要になる。
+    </explanation>
+        </section>
+        <section title="ライブラリ" id="std5.5">
+            <explanation title="基本説明" id="std5.5ex1">
+                <div style="font-size:13pt;">
+        printf関数などの関数は、その関数の定義がなくても利用できる。これは、コンパイル時にライブラリと呼ばれる関数集が自動的にリンクされているからである。ライブラリとは、コンパイルされた様々な関数を集めたファイル集のことである。<br/>
+                    <b>cc</b>でコンパイルを行う場合、<b>stdio.h</b>や<b>stdlib.h</b>で宣言されている関数のライブラリは自動的にリンクされる。一方、数学関数である<b>sin</b>関数や<b>log</b>関数などは、明示的にリンクする必要がある。そのためには、<b>math.h</b>を<b>#include</b>した上で、さらにコンパイル時に<font color="red">-lm</font>というオプションを付けてコンパイルする必要がある。
+      </div>
+                <blockquote style="width:350px" title="コンパイル">
+                    <pre>math.hをincludeしたときのコンパイル
+  %cc  -o  実行ファイル名　ファイル名  -lm</pre>
+                </blockquote>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.5ex2">
+      以下はsin関数を用いたプログラム例である。<br/>
+      このプログラムは入力した実数のsin関数を求め、出力する。
+      <blockquote style="width:400px" title="example program5">
+                    <pre>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    double value;
+
+    printf("Input value: ");
+    scanf("%lf",&amp;value);
+
+    printf("sin(%f) = %f \n",value, sin(value));
+    return 0;
+}</pre>
+                </blockquote>
+        (解説)<br/>
+        このプログラムは<b>math.h</b>をincludeしているのでコンパイルするときに <b>-lm</b>オプションを付ける必要がある。
+    </explanation>
+        </section>
+        <section title="記憶クラスとスコープ" id="std5.6">
+            <explanation title="基本説明" id="std5.6ex1">
+                <div style="font-size:13pt;">
+        C言語の変数はすべて、あるデータ型を持っている。変数はまた、<b>記憶クラス</b>と<b>スコープ(通用範囲)</b>を持っている。スコープ(通用範囲)とは、その変数がプログラム中のどこで有効であるかを示している。
+      </div>
+            </explanation>
+            <section title="ローカル変数" id="std5.5.1">
+                <explanation title="基本説明" id="std5.5.1ex1">
+                    <div style="font-size:13pt;">
+          これまでに見てきた変数は、ある関数内でのみ有効なローカル(局所)変数である。これらのローカル変数は関数の中で宣言され、他の関数から参照することはできない。また、ローカル変数は一時的に生成される変数で、その関数が実行されているときにのみ存在し、その関数から抜け出したときには消滅する。この記憶クラスは<b>auto</b>(自動変数ともいう)と呼ばれる。
+        </div>
+                </explanation>
+            </section>
+            <section title="グローバル変数" id="std5.5.2">
+                <explanation title="基本説明" id="std5.5.2ex1">
+                    <div style="font-size:13pt;">
+          自動変数の値は、その関数を抜けると消滅してしまうので、その関数が実行される度に値を代入し直さなければならない。複数の関数から同時に参照できる変数を作りたい場合、ローカル変数に対するものとして<b>グローバル変数(大域変数)</b>がある。グローバル変数は、一度宣言されるとプログラムの終了までメモリ中に存在し、<font color="red">複数の関数によって共有することができる</font>。グローバル変数は関数の外部で宣言されるので、その記憶クラスは<b>extern</b>と呼ばれる。グローバル変数のスコープは、宣言された場所からそのファイルの終わりまでである。なお、グローバル変数はコンパイル時に0で初期化される。
+        </div>
+                </explanation>
+                <explanation title="グローバル変数の利用" id="std5.5.2ex2">
+                    <div style="font-size:13pt;">
+                        <blockquote style="width:450px">
+            グローバル変数を作成するには、関数の外で変数を宣言する
+          </blockquote>
+                    </div>
+                    <pre>例:sumというグローバル変数の作成
+int sum;
+
+int main()
+{
+    .....
+}</pre>
+                </explanation>
+                <explanation title="サンプルソース" id="std5.5.2so1">
+        以下にグローバル変数を用いたプログラム例をあげる。<br/>
+        このプログラムはplus関数の前後でのグローバル変数の値を出力する。
+        <blockquote style="width:300px" title="サンプルソース">
+                        <pre>
+                            <font color="red">
+int sum;</font> /*  グローバル変数 sum  */
+
+void plus(int a, int b)
+{
+     sum = a + b;
+}
+
+int main()
+{
+     s=0;
+     printf("plus関数前:sum = %d\n",sum);
+     plus(10,5);
+     printf("plus関数後:sum = %d\n",sum);
+     return 0;
+}
+          </pre>
+                    </blockquote>
+                    <blockquote style="width:350px" title="サンプルソースの実行例">
+                        <pre>[実行例]
+plus関数前:sum = 0
+plus関数後:sum = 15</pre>
+                    </blockquote>
+          (解説)<br/>
+            sumはグローバル変数であるため、他の関数(この例ならplus)で変化した値が保持される。もしsumがグローバル変数ではなく、main内で宣言されていればplus関数でsumの値が変化してもそれはplus関数内だけであり、main関数でのsumの値は変化しない。よって、以下のような実行結果になる。
+          <blockquote style="width:500px" title="sumがグローバル変数でなかったときの実行例">
+                        <pre>[sumがグローバル変数ではなくmain内で宣言されていたときの実行例]
+plus関数前:sum = 0
+plus関数後:sum = 0</pre>
+                    </blockquote>
+                </explanation>
+            </section>
+            <section title="static" id="std5.6.3">
+                <explanation title="基本説明" id="std5.6.3ex1">
+                    <div style="font-size:13pt;">
+          C言語には<b>static</b>と呼ばれる記憶クラスがある。ある関数の中で記憶クラス<b>static</b>を使用すると、ローカル変数を恒久的な変数とすることができる。すなわち、<b>static</b>で宣言されたローカル変数は、関数を抜けたときにも消滅しない。これを使えば、<font color="red">複数回の関数の呼び出しの際にも、その変数の値を保持させることができる</font>。グローバル変数と同様、このローカルな静的(static)変数もコンパイル時に0で初期化される。しかし、静的変数はコンパイル時に一度だけ初期化されるのであって、関数に入って来る度に初期化されることはない。
+        </div>
+                </explanation>
+                <explanation title="static変数の宣言" id="std5.6.3ex2">
+                    <div style="font-size:13pt;">
+          複数回の関数の呼び出しの際にも、その変数の値を保持させるstaticの宣言を以下に示す。
+        </div>
+                    <blockquote style="width:500px" title="static変数の宣言">
+                        <pre>static  データ型  変数名;</pre>
+                    </blockquote>
+                </explanation>
+                <explanation title="サンプルソース" id="std5.6.3so1">
+        以下にstaticを用いた例を示す。<br/>
+        このプログラムは3回入力を求め、入力するごとに今まで入力した値の合計を出力する。
+        <blockquote style="width:300px" title="サンプルソース">
+                        <pre>void sumit(void);
+
+int main()
+{
+	int count;
+	printf("加算する3つの数字を入力してください\n");
+	for(count=0;count&lt;3;count++)
+	sumit();
+	printf("プログラム終了\n");
+	return 0;
+}
+	
+void sumit()
+{
+	static int sum;
+	int num;
+	
+	printf("入力: \n");
+	scanf("%d",&amp;num);
+	sum += num;
+	printf("合計 = %d\n",sum);
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px" title="サンプルソースの実行例">
+                        <pre>[実行結果]
+入力: 4
+合計 = 4
+入力: 7
+合計 = 11
+入力: 2
+合計 = 13
+プログラム終了</pre>
+                    </blockquote>
+           (解説)<br/>
+           このようにsumの値が関数を抜けたあとでも保持されている(普通なら関数を抜けるとsumの値は消滅する)。
+      </explanation>
+            </section>
+        </section>
+    </section>
+</xtdl>

@@ -1,0 +1,787 @@
+<xtdl>
+    <section title="制御構文" id="std4">
+        <section title="比較演算子と論理演算子" id="std4.1">
+            <explanation title="比較演算子" id="std4.1ex1">
+                <div style="font-size:13pt;">
+	  関係演算子、等価演算子は２つの値を比較する演算子である。<br/>
+	  結果は、条件が正しければ「<font color="red">真</font>」、正しくなければ「<font color="red">偽</font>」を返す。<br/>
+                    <br/>
+                    <table border="1" cellspacing="0">
+                        <th colspan="2">等価演算子</th>
+                        <tr/>
+                        <td>a == b</td>
+                        <td>aとbは等しい</td>
+                        <tr/>
+                        <td>a != b</td>
+                        <td>aとbは等しくない</td>
+                        <tr/>
+                        <th colspan="2">関係演算子</th>
+                        <tr/>
+                        <td>a &lt; b</td>
+                        <td>aはbより小さい</td>
+                        <tr/>
+                        <td>a &gt; b</td>
+                        <td>aはbより大きい</td>
+                        <tr/>
+                        <td>a &lt;= b</td>
+                        <td>aはbより小さいか、等しい</td>
+                        <tr/>
+                        <td>a &gt;= b</td>
+                        <td>aはbより大きいか、等しい</td>
+	　</table>
+                    <br/>
+	  C言語では、条件の「真」と「偽」を以下のように表す。<br/>
+                    <br/>
+                    <table border="1" cellspacing="0">
+                        <th>真(TRUE)</th>
+                        <td>0でない値(1で表すことが多い)</td>
+                        <tr/>
+                        <th>偽(FALSE)</th>
+                        <td>整数値「0」</td>
+                    </table>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.1ex2">
+                <div style="font-size:13pt;">
+	比較演算子を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:650px;" title="sample source4.1.1">
+                        <pre>int main()
+{
+	int x,y,z;
+
+	x=y=3;
+	z=2;
+	printf("x==yは%d\n",x==y);  //xとyが等しければ真
+	printf("x!=yは%d\n",x!=y);  //xとyが等しくなければ真
+	printf("x&lt;=zは%d\n",x&lt;=z);  //xがyより小さいか、等しければ真
+	printf("x!=zは%d\n",x!=z);  //xとyが等しくなければ真
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source4.1.2">
+                        <pre>[実行結果]
+x==yは1
+x!=yは0
+x&lt;=zは0
+x!=zは1</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  xとyの値はそれぞれ「3」、zの値は「2」であり、<br/>
+	  1と出力された条件文が「真」、0と出力された条件文が「偽」である。<br/>
+                </div>
+            </explanation>
+            <explanation title="論理演算子" id="std4.1ex3">
+                <div style="font-size:13pt;">
+	    論理演算子を使うことで、より複雑な条件式を書くことができるようになる。<br/>
+                    <br/>
+                    <table border="1" cellspacing="0">
+                        <th>演算子</th>
+                        <th>意味</th>
+                        <th>使用例</th>
+                        <th>用例の意味</th>
+                        <tr/>
+                        <td align="center">&amp;&amp;</td>
+                        <td>AND(かつ)</td>
+                        <td>a&gt;2 &amp;&amp; a&lt;6</td>
+                        <td>2&lt;a&lt;6</td>
+                        <tr/>
+                        <td align="center">||</td>
+                        <td>OR(または)</td>
+                        <td>a&lt;2 || a&gt;6</td>
+                        <td>a&lt;2 または 6&lt;a</td>
+                    </table>
+                </div>
+            </explanation>
+            <explanation title="優先順位" id="std4.1ex4">
+                <div style="font-size:13pt;">
+	  比較演算子、論理演算子の優先順位は以下のようになっている。<br/>
+                    <br/>
+                    <table border="1" cellspacing="0">
+                        <th>順位</th>
+                        <th>演算子</th>
+                        <tr/>
+                        <td rowspan="4">↑<br/>高<br/>
+                            <br/>低<br/>↓</td>
+                        <td>&lt;　&gt;　&lt;=　&gt;=</td>
+                        <tr/>
+                        <td>==　!=</td>
+                        <tr/>
+                        <td>&amp;&amp;</td>
+                        <tr/>
+                        <td>||</td>
+                    </table>
+	  優先順位が高いものが先に評価される。<br/>
+	  例えば｢a&gt;2 &amp;&amp; a&lt;6｣では、｢a&gt;2｣及び｢a&lt;6｣が先に評価され、その後に｢&amp;&amp;｣が評価される。<br/>
+                </div>
+            </explanation>
+        </section><!-- end std4.1 -->
+        <section title="if文" id="std4.2">
+            <explanation title="基本説明" id="std4.2ex1">
+                <div style="font-size:13pt;">
+	    条件によって処理を分岐させたい時はif文を用いる。<br/>
+	    if文は以下のように書く。
+            <blockquote style="width:500px;" title="sample source4.2.1">
+                        <pre>
+/*if文の書き方*/
+<font color="red">if</font>(条件式){
+
+	命令文;  /*条件式が真の時実行される*/
+
+}
+	      </pre>
+                    </blockquote>
+	    また、else文を使うことで、if文の条件式が偽である時に実行する文を指定できる。
+            <blockquote style="width:500px;" title="sample source4.2.2">
+                        <pre>
+/*else文の書き方*/
+if(条件式){
+
+	命令文1;  /*条件式が真の時実行される*/
+
+}<font color="red">else</font>{
+
+	命令文2;  /*条件式が偽の時実行される*/
+
+}
+	      </pre>
+                    </blockquote>
+	    else文に条件をつけることもできる。
+            <blockquote style="width:650px;" title="sample source4.2.2">
+                        <pre>
+/*else if文の書き方*/
+if(条件式1){
+
+	命令文1;  /*条件式1が真の時実行される*/
+
+}<font color="red">else if</font>(条件式2){
+
+	命令文2;  /*条件式1が偽であり、かつ条件式2が真の時実行される*/
+
+}else{
+
+	命令文3;  /*条件式1,2共に偽の時実行される*/
+
+}
+	      </pre>
+                    </blockquote>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.2ex2">
+                <div style="font-size:13pt;">
+	  if文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:600px;" title="sample source4.2.3">
+                        <pre>int main()
+{
+	int x,y,z;
+
+	x=y=3;
+
+	if(x==y) printf("x==y\n"); 	/*条件が真なら実行*/
+	else printf("x!=y\n");		/*条件が偽なら実行*/
+
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source4.2.4">
+                        <pre>[実行結果]
+x==y</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  x==yが真なら「x==y」,偽なら「x!=y」と出力する。<br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.2ex3">
+                <div style="font-size:13pt;">
+	  if文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:900px;" title="sample source4.2.5">
+                        <pre>int main(){
+
+	int num;
+
+	printf("整数を入力してください：");
+	scanf("%d",&amp;num)
+
+	if(num%2) printf("その値は奇数です\n");	/*条件:numの値を2で割った余りが0以外*/
+	else printf("その値は偶数です\n");	/*条件:numを2で割った余りが0*/
+	return 0;
+
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source4.2.6">
+                        <pre>[実行例]
+整数を入力してください：4
+その値は偶数です</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  入力した整数が偶数か奇数かを判定するプログラム。<br/>
+	  if(0)の時条件文が｢偽｣であると判断され、else文の処理が行われるので、if(num%2)でnum%2==0(∴偶数)の時は｢偽｣として処理し、else文の「その値は偶数です」と出力される。<br/>
+                </div>
+            </explanation>
+            <explanation title="基本説明" id="std4.2ex4">
+                <div style="font-size:13pt;">
+	    if文は以下のように書く。
+            <blockquote style="width:550px;" title="sample source4.2.1">
+                        <pre>
+/*if文の書き方*/
+<font color="red">if</font>(条件式){
+
+	命令文1;  /*条件式の評価結果が非０の時実行される*/
+
+}
+	      </pre>
+                    </blockquote>
+	    if文は、条件式を評価してその値が非０(真)であれば命令文を実行し、０(偽)であれば無視する。<br/>
+	    そのとき条件式が０である場合にも行いたい処理があれば、else文かelse if文を使用すればいい。<br/>
+                    <blockquote style="width:500px;" title="sample source4.2.2">
+                        <pre>
+/*else文の書き方*/
+if(条件式){
+
+	命令文1;  /*条件式の値が非０の時実行される*/
+
+}<font color="red">else</font>{
+
+	命令文2;  /*条件式の値が０の時実行される*/
+
+}
+	      </pre>
+                    </blockquote>
+	    else if文では、else処理で更に条件を絞る時などに使われる。<br/>
+                    <blockquote style="width:650px;" title="sample source4.2.2">
+                        <pre>
+/*else if文の書き方*/
+if(条件式1){
+
+	命令文1;  /*条件式1の値が非０の時実行される*/
+
+}<font color="red">else if</font>(条件式2){
+
+	命令文2;  /*条件式1が０であり、かつ条件式2が非０の時実行される*/
+
+}else{
+
+	命令文3;  /*条件式1,2共に０の時実行される*/
+
+}
+	      </pre>
+                    </blockquote>
+                </div>
+            </explanation>
+        </section><!-- end std4.2-->
+        <section title="while文" id="std4.3">
+            <explanation title="基本説明" id="std4.3ex1">
+                <div style="font-size:13pt;">
+	    処理を繰り返したい時は、繰り返し(ループ)処理を行う。<br/>
+	    ループ処理で最も簡単なのがwhile文である。<br/>
+                    <blockquote style="width:500px;" title="sample source4.3.1">
+                        <pre>while(条件式){
+
+	命令文;  /*条件式が真である時実行する*/
+
+}</pre>
+                    </blockquote>
+	    while文は、if文と同じように、条件式が真の時命令文を実行する。<br/>
+	    if文と異なる点は、命令文を実行した後また条件式を評価し、真である限り命令文を繰り返すことである。<br/>
+	    命令文を実行した後の条件式の評価で、条件式が偽であればループを抜ける。<br/>
+	    いつか条件文が偽になるよう命令文を書かないと、ループを抜け出せない(無限ループ)プログラムとなってしまうので注意。
+	  </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.3ex2">
+                <div style="font-size:13pt;">
+	  while文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:550px;" title="sample source4.3.2">
+                        <pre>int main(){
+
+	int i,sum;
+
+	i=1;
+	sum=0;
+	while(i&lt;=10){	/*条件:iが10を超えるまで*/
+		sum+=i;	/*sum=sum+i(sumの値にiを足す)*/
+		i++;	/*i=i+1(iを+1)*/
+	}
+	printf("sum=%d\n",sum);
+	return 0;
+
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source4.3.3">
+                        <pre>[実行結果]
+sum=55</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  1+2+3+…+10を計算するプログラムである。<br/>
+	  while文の中身はiが10以下の時に実行され、10を超えればループを抜け、sumの値を出力する。<br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.3ex3">
+                <div style="font-size:13pt;">
+                    <blockquote style="width:700px;" title="sample source4.3.4">
+                        <pre>int main(){
+
+	int count;
+
+	printf("正の整数を入力してください：");
+	scanf("%d",&amp;count);
+
+	while(count&gt;=0)		/*条件：countの値が0以上*/
+		printf("%d ",count--);	/*countの値を出力後count=count-1*/
+	printf("\n");
+	return 0;
+
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source4.3.4">
+                        <pre>[実行例]
+正の整数を入力してください：5
+5 4 3 2 1 0</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  入力された数字から0までカウントダウンするプログラム。<br/>
+	  デクリメント(--)の-1は、printfの出力後に行われる。
+	</div>
+            </explanation>
+            <explanation title="基本説明" id="std4.3ex4">
+                <div style="font-size:13pt;">
+	    ループ処理で最も簡単なのがwhile文である。<br/>
+                    <blockquote style="width:550px;" title="sample source4.3.1">
+                        <pre>while(条件式){
+
+	命令文;  /*条件式の評価結果が非０である時実行する*/
+
+}</pre>
+                    </blockquote>
+	    while文は、if文と同じように、条件式の評価結果が非０(真)の時命令文を実行する。<br/>
+	    if文と異なる点は、条件を満たす間、命令文を繰り返し実行することである。<br/>
+	    命令文を実行した後条件式を評価し、結果が０(偽)であればループを抜ける。<br/>
+                </div>
+            </explanation>
+        </section><!-- end std4.3-->
+        <section title="for文" id="std4.4">
+            <explanation title="基本説明" id="std4.4ex1">
+                <div style="font-size:13pt;">
+	    繰り返し処理をする時、決まった回数だけ実行したい場合などはfor文を使うことが多い。<br/>
+                    <blockquote style="width:500px;" title="sample source4.4.1">
+                        <pre>for(初期化式;条件式;再初期化式){
+
+	命令文;  /*条件が真である時実行する*/
+
+}</pre>
+                    </blockquote>
+	    for文では、次の手順で繰り返し処理を行う。
+	      <ol>
+                        <li>初期化式でループカウンタを初期化</li>
+                        <li>条件式が真であれば命令文を実行し、3.へ。偽であれば4.へ。</li>
+                        <li>再初期化式を実行し、2.へ。</li>
+                        <li>for文を終了。</li>
+                    </ol>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.4ex2">
+                <div style="font-size:13pt;">
+	  for文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:600px;" title="sample source4.4.2">
+                        <pre>int main(){
+
+	int i,sum=0;
+
+	for(i=1;i&lt;=10;i++) 	/*初期状態:i=1  条件:iが10以下*/
+		sum+=i;		/*sumにiの値を加算*/
+	printf("sum=%d\n",sum);
+	return 0;
+
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source4.4.3">
+                        <pre>[実行結果]
+sum=55</pre>
+                    </blockquote>
+
+	  (解説)<br/>
+	  1+2+…+10の計算をするプログラム。<br/>
+	  このfor文の動作は<br/>
+                    <ol>
+                        <li>i=1でiを初期化</li>
+                        <li>i&lt;=10ならばsum+=iを実行(sumを+i)し、3.へ。i&gt;10なら4.へ。</li>
+                        <li>i++を実行(iを+1)し、2.へ。</li>
+                        <li>for文を終了。sumを出力(printf)。</li>
+                    </ol>
+	  となる。
+	</div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.4ex3">
+                <div style="font-size:13pt;">
+	  for文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:700px;" title="sample source4.4.4">
+                        <pre>int main(){
+
+	int i,sum,num;
+
+	printf("5つの整数の平均値を求めます。\n");
+	sum=0;
+	for(i=0;i&lt;5;i++){		/*初期状態：i=0  条件：iが5以下*/
+		printf("整数を入力してください(%d個目):",i+1);
+		scanf("%d",&amp;num);	/*任意の値をnumに代入*/
+		sum+=num;		/*sumにnumの値を加算*/
+	}
+	printf("5つの整数の平均値は%dです。\n",sum/i);
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:450px;" title="sample source4.4.5">
+                        <pre>[実行例]
+5つの整数の平均値を求めます。
+整数を入力してください(1個目):1
+整数を入力してください(2個目):3
+整数を入力してください(3個目):5
+整数を入力してください(4個目):6
+整数を入力してください(5個目):9
+5つの整数の平均値は4です。</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  任意の5つの整数の平均値を求めるプログラム。(小数点以下切捨て)<br/>
+	  for文ではじめにi=1され、iが5以下である間ループ処理が行われる。<br/>
+	  ループの度にsumに入力した値numが足され、ループを抜けた後sumをループ回数iで割った値(int型)を出力する。
+	</div>
+            </explanation>
+            <explanation title="基本説明" id="std4.4ex4">
+                <div style="font-size:13pt;">
+	    繰り返し処理をする時、決まった回数だけ実行したい場合などはfor文を使うことが多い。<br/>
+                    <blockquote style="width:550px;" title="sample source4.4.1">
+                        <pre>for(初期化式;条件式;再初期化式){
+
+	命令文;  /*条件式の評価結果が非0である時実行する*/
+
+}</pre>
+                    </blockquote>
+	    for文では、<br/>
+                    <ul>
+                        <li>初期化式の実行(初めに一度のみ)　※省略可</li>
+                        <li>条件式による、繰り返しを行うかどうかの判定</li>
+                        <li>命令文の実行(条件を満たす場合のみ)</li>
+                        <li>再初期化式の実行(命令文の実行後)　※省略可</li>
+                    </ul>
+	    が行われる。<br/>
+	    条件式の評価結果が非０(真)なら繰り返し処理が行われ、０(偽)ならfor文を終了する。
+	  </div>
+            </explanation>
+        </section><!-- end std4.4-->
+        <section title="do-while文" id="std4.5">
+            <explanation title="基本説明" id="std4.5ex1">
+                <div style="font-size:13pt;">
+	    do-while文は次のように用いる。
+          <blockquote style="width:550px;" title="sample source4.5.1">
+                        <pre>
+do{
+
+	文;
+
+}while(条件式)<font color="red">;</font>  //セミコロン(;)を忘れないこと
+	    </pre>
+                    </blockquote>
+	  do-while文は、まず文を実行してからループの条件をチェックするループ文である。<br/>
+	  書き方がwhile文と似ているが、条件式をチェックする時期が<br/>
+                    <ul>
+                        <li>while文は文の実行前</li>
+                        <li>do- while文は文の実行後</li>
+                    </ul>
+	  で異なっている。<br/>
+                    <br/>
+	  while後のセミコロン(;)は、忘れやすいので忘れないこと。
+	  </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.5ex2">
+                <div style="font-size:13pt;">
+	  do-while文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:500px;" title="sample source4.5.2">
+                        <pre>int main(){
+
+	int i,sum;
+
+	i=1;
+	sum=0;
+
+	do{
+		sum+=i;
+		i++;
+	}while(i&lt;=10);  /*条件：iが10以下*/
+	printf("sum=%d\n",sum);
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source4.5.3">
+                        <pre>[実行結果]
+sum=55</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  1+2+…+10の計算をするプログラム。<br/>
+	  while文との違いは、まずsum+=i; i++;を行った後で条件の判定を行うところである。<br/>
+	  その時、iが10以下ならループ処理を行う(do{}の中身を実行)。<br/>
+	  iが10を超えていればループを抜け、sumの値を出力してプログラムを終了する。<br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.5ex3">
+                <div style="font-size:13pt;">
+	  do-while文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:1050px;" title="sample source4.5.4">
+                        <pre>int main(){
+			
+	int num;
+
+	do{
+		printf("自然数を入力してください:");
+		scanf("%d",&amp;num);
+		if(num&lt;=0) printf("その数字は自然数ではありません。\nもう一度");  /*自然数でない場合の警告表示*/
+	}while(num&lt;=0);		/*while条件：numが0以下*/
+	do{
+		printf("%d ",num--);	/*numの値を出力後、-1*/
+	}while(num);			/*while条件：numの値が0になるまで*/
+	printf("\n");
+	return 0;
+
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:450px;" title="sample source4.5.5">
+                        <pre>[実行例]
+自然数を入力してください：-2
+その数字は自然数ではありません。
+もう一度自然数を入力してください：5
+5 4 3 2 1</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  自然数(x&gt;0)を入力させ、カウントダウンをするプログラム。<br/>
+	  まずnumを入力させ、numの値が0以下ならループによって再入力させる。<br/>
+	  numが自然数なら、「numの値を出力後、-1」をnumが0になるまで繰り返す。
+	</div>
+            </explanation>
+            <explanation title="基本説明" id="std4.5ex4">
+                <div style="font-size:13pt;">
+	    do-while文は次のように用いる。
+          <blockquote style="width:300px;" title="sample source4.5.1">
+                        <pre>do{
+
+	文;
+
+}while(条件式);</pre>
+                    </blockquote>
+	  do-while文では、do{}に囲まれた命令文を、条件式の評価結果が非０である限り繰り返す。<br/>
+	  条件式の評価は、do{}の実行後に行われる。
+	  </div>
+            </explanation>
+        </section><!-- end std4.5-->
+        <section title="switch文" id="std4.6">
+            <explanation title="基本説明" id="std4.6ex1">
+                <div style="font-size:13pt;">
+	    多方向に分岐する条件文を書く時はswitch文を用いる。
+          <blockquote style="width:350px;" title="sample source4.6.1">
+                        <pre>switch(式){
+	case 定数式1:
+		文1;
+	case 定数式2:
+		文2;
+	:
+	:
+	default:
+		文;
+}</pre>
+                    </blockquote>
+	  switch文は1つの式を持ち、この結果がcase文の定数式と比較され、一致した位置からプログラムが実行される。<br/>
+	  一致する定数式がない時はdefault文の位置からプログラムが実行され、default文がない時はswitch文の次に処理が移る。<br/>
+	  switch文を抜ける時はbreak文を用いる。<br/>
+                    <br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.6ex2">
+                <div style="font-size:13pt;">
+	  switch文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:550px;" title="sample source4.6.2">
+                        <pre>int main(){
+
+	int num;
+
+	printf("整数を入力してください:");
+	scanf("%d", &amp;num);
+	switch (num) {
+		case 1:  /*num==1の時*/
+			printf("num = 1\n");
+			break;
+		case 3:  /*num==3の時*/
+			printf("num = 3\n");
+			break;
+		case 5:  /*num==5の時*/
+			printf("num = 5\n");
+			break;
+		default:
+			printf("その他\n");
+	}
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:400px;" title="sample source4.6.3">
+                        <pre>[実行例]
+整数を入力してください:1
+num=1</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  入力した値が1,3,5かそれ以外かを判定するプログラム。<br/>
+	  numの値を入力させ、case文の数値と比較して合致した場所から命令文を読み込む。<br/>
+	  実行例ではnum=1なので、"num==1\n"と出力してbreak文でswitch文を抜け、プログラムを終了している。<br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース　おまけ" id="std4.6ex3">
+                <div style="font-size:13pt;">
+	  先のプログラムで、break文を忘れるとこうなる。<br/>
+                    <blockquote style="width:550px;" title="sample source4.6.4">
+                        <pre>int main(){
+
+	int num;
+
+	printf("整数を入力してください:");
+	scanf("%d", &amp;num);
+	switch (num) {
+		case 1:
+			printf("num = 1\n");
+		case 3:
+			printf("num = 3\n");
+		case 5:
+			printf("num = 5\n");
+		default:
+			printf("その他\n");
+	}
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:400px;" title="sample source4.6.5">
+                        <pre>[実行例]
+整数を入力してください:1
+num=1
+num=3
+num=5
+other</pre>
+                    </blockquote>
+	    (解説)<br/>
+	    breakで抜けないと、次のcaseの命令文を実行する。<br/>
+	    switch文は、「一致するcase文の部分の命令を実行」するのではなく、「一致するcase文以降の命令を実行」する。<br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std4.6ex4">
+                <div style="font-size:13pt;">
+	  switch文を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:950px;" title="sample source4.6.6">
+                        <pre>#include&lt;stdio.h&gt;
+int main(){
+
+	/*宣言*/
+	int endflag;	//終了フラグ(0:続行  1:終了)
+	char ope;	//演算子
+	int slct;	//メニューの選択
+	double x,y,ans;	//変数x,yと計算結果ans
+
+	/*初期化*/
+	endflag=0;
+	ope='+';
+	x=y=ans=0.0;
+
+	/*演算*/
+	printf("四則演算をします。\n");
+	do{
+		printf("メニューから数字(1～4)を選んで入力してください。\n");
+		printf("1)変数1  2)変数2  3)演算子  4)終了:");
+		scanf("%d",&amp;slct);
+
+		/*変数等入力部*/
+		switch(slct){
+			case 1:		printf("変数1の入力：");
+					scanf("%lf",&amp;x);
+					break;
+			case 2:		printf("変数2の入力：");
+					scanf("%lf",&amp;y);
+					break;
+			case 3:		printf("演算子の入力\n");
+					printf("+)加算  -)減算  *)乗算  /)除算：")
+					scanf("%*c%c%*c",&amp;ope);
+					break;
+			case 4:		endflag=1;	//終了フラグ
+					break;
+			default:	printf("無効な選択です\n");
+		}
+		/*演算部*/
+		switch(ope){
+			case '+':	ans = x+y;
+					break;
+			case '-':	ans = x-y;
+					break;
+			case '*':	ans = x*y;
+					break;
+			case '/':	ans = x/y;
+					break;
+			default:	printf("演算子を間違えています\n");
+					printf("演算子を'+'とします\n");
+					ope = '+';
+					ans = x+y;
+			}
+		/*計算結果出力*/
+		printf("\n%f %c %f = %f\n\n",x,ope,y,ans);
+	}while(endflag==0);
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:650px;" title="sample source4.6.7">
+                        <pre>[実行例]
+四則演算をします。
+メニューから数字(1～4)を選んで入力してください。
+1)変数1  2)変数2  3)演算子  4)終了:1
+変数1の入力：1.2
+
+1.200000 + 0.000000 = 1.200000
+
+メニューから数字(1～4)を選んで入力してください。
+1)変数1  2)変数2  3)演算子  4)終了:2
+変数2の入力：5
+
+1.200000 + 5.000000 = 6.200000
+
+メニューから数字(1～4)を選んで入力してください。
+1)変数1  2)変数2  3)演算子  4)終了:3
+演算子の入力
++)加算  -)減算  *)乗算  /)除算：*
+
+1.200000 * 5.000000 = 6.000000
+
+メニューから数字(1～4)を選んで入力してください。
+1)変数1  2)変数2  3)演算子  4)終了:4
+
+1.200000 * 5.000000 = 6.000000</pre>
+                    </blockquote>
+	    (解説)<br/>
+	    任意の四則演算をするプログラム。<br/>
+	    初期状態は「0+0=0」で、switch(slct)文で1つの変数か演算子を書き換え、続いてswitch(ope)文で計算結果を算出する。<br/>
+	    これを、終了命令が出る(endflag=1)まで繰り返す。<br/>
+                </div>
+            </explanation>
+            <explanation title="基本説明" id="std4.6ex5">
+                <div style="font-size:13pt;">
+	    多方向に分岐する条件文を書く時はswitch文を用いる。
+          <blockquote style="width:350px;" title="sample source4.6.1">
+                        <pre>switch(式){
+	case 定数式1:
+		文1;
+	case 定数式2:
+		文2;
+	:
+	:
+	default:
+		文;
+}</pre>
+                    </blockquote>
+	  switch文は1つの式を持ち、この結果がcase文の定数式と比較され、一致した位置からプログラムが実行される。<br/>
+	  一致する定数式がない時はdefault文の位置からプログラムが実行される(defaultは省略可能)<br/>
+	  switch文を抜ける時はbreak文を用いる。<br/>
+                    <br/>
+	  「式」は整数を結果とするもののみ記述可(int,charなど)<br/>
+	   ｢定数式｣は整数、文字定数、定数の式のみが記述可能となっている。<br/>
+                </div>
+            </explanation>
+        </section><!-- end std4.6-->
+    </section><!-- end std4 -->
+</xtdl>

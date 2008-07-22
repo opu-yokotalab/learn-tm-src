@@ -1,0 +1,397 @@
+<xtdl>
+    <section title="簡単な入出力と式" id="std2">
+        <section title="scanf関数" id="std2.1">
+            <explanation title="scanf関数の使用" id="std2.1ex1">
+                <div style="font-size:13pt;">
+                    <b>scanf関数</b>は変数の値をキーボードで入力するときに用いる。使用方法は以下のようになる。
+          <blockquote style="width:300px;" title="scanf関数の利用書式">
+            整数(int型)を入力するとき<br/>
+            scanf("%d ", &amp;変数名);<br/>
+                        <br/>
+            実数(double型)を入力するとき<br/>
+            scanf("%lf ", &amp;変数名);<br/>
+                    </blockquote>
+          変数名の前の<b>&amp;</b>を付け忘れないようにしよう!!
+        </div>
+            </explanation>
+            <explanation title="説明" id="std2.1ex2">
+                <div style="font-size:13pt;">
+          scanf関数は、キーボードから書式付きの入力を行う。文字で表現された数字の文字列を取り込み、数値に変換する。<br/>
+          scanf関数の書式は正しくは以下のようになる。
+            <blockquote style="width:300px;" title="scanf関数の書式">
+              scanf("変換指定子", &amp;変数名);
+            </blockquote>
+          変換指定子とは、入力した値をどのデータ型に変換するかを示すものであり、<font color="red">int型(整数)なら%d</font>、<font color="red">double型(実数)なら%lf</font>となる。<br/>
+                    <font color="red">scanf関数の引数(上の書式での変数)には、その先頭にアドレス演算子(<b>&amp;</b>)を付ける必要がある。</font>アドレス演算子の付いた変数は、その変数の値が格納される場所(メモリ上のアドレス)を表していて、scanf関数には変数の格納されているアドレスを伝えなければならないためである。<br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std2.1ex2so1">
+      以下は関数scanfを使用した例である。このプログラムは整数を1つ入力し、入力した整数を画面に出力する。
+        <blockquote style="width:300px;" title="sample source1">
+                    <pre>
+int main(){
+{
+ int x;
+ printf("Input : \n");
+ <font color="red">scanf("%d", &amp;x); </font>               /*  キーボードから数字を取り込む  */
+ printf("Output : %d \n",x);    /*  取り込んだ数値を画面に出力    */
+ 
+ return 0;
+}
+          </pre>
+                </blockquote>
+                <blockquote style="width:300px" title="実行例">
+                    <pre>[実行例]
+Input : 32    ← ここでは仮に32と入力したことにする
+Output : 32</pre>
+                </blockquote>
+        (解説)<br/>
+        "Input : "の後に入力された数字をxに格納し、"Output : "の後にxに格納された値を画面に出力する
+      </explanation>
+            <explanation title="scanf関数の引数にアドレス演算子がいる理由" id="std2.1ex3">
+                <div style="font-size:13pt;">
+          なぜscanfの引数には、その先頭にアドレス演算子(&amp;)が必要か?<br/>
+          それは<br/>
+          1.scanfが関数であること<br/>
+          2.関数に引数を渡す方法として値渡し(pass by value)とアドレス渡し(pass by reference)の2通りがあり、scanf関数にはアドレス渡しする必要があるためである<br/>
+          以下に例を示す。
+        </div>
+                <blockquote style="width:300px" title="例">
+                    <pre>
+int main()
+{
+     int x,y;
+     printf("Input : ");
+     scanf("%d %d",<font color="red">&amp;x,y</font>);
+     printf("Output : %d %d \n",x,y);
+
+     return 0;
+}
+            </pre>
+                </blockquote>
+                <blockquote style="width:300px" title="実行例">
+                    <pre>[実行例]
+Input : 6 6
+Output : 6 2147348480</pre>
+                </blockquote>
+        x,yともに6にしたいのだが、scanf関数での記述で&amp;のないyではちゃんと取り込めていない。このようにscanf関数に引数を渡すときはアドレス演算子(&amp;)を付けてアドレス渡しをしないと、正しく値を取り込むことができない。
+      </explanation>
+            <explanation title="scanf関数での複数の値の入力" id="std2.1ex4">
+                <div style="font-size:13pt;">
+          scanf関数で複数の値の入力を行うときは、書式""中の<b>%d</b>を必要な数だけ増やし、用いる変数を後ろに並べることで実現できる。
+          <blockquote style="width:300px;" title="例">
+                        <pre>[例]2つ値の入力を行うとき
+scanf("%d %d",&amp;変数名1, &amp;変数名2);</pre>
+                    </blockquote>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std2.1ex4so1">
+        以下はscanfで複数の値の入力を行う例である。このプログラムは3つの整数を入力し、入力した整数を出力する。<br/>
+                <blockquote style="width:300px;" title="sample source2">
+                    <pre>
+int main()
+{
+      int x, y, z;
+      printf("Input : ");
+      <font color="red">scanf("%d %d %d", &amp;x, &amp;y, &amp;z);</font>
+      printf("Output : %d %d %d", x, y, z);
+
+      return 0;
+}
+          </pre>
+                </blockquote>
+                <blockquote style="width:300px;" title="実行例">
+                    <pre>[実行例]
+Input : 23 54 194
+Output : 23 54 194</pre>
+                </blockquote>
+        (解説)<br/>
+        xに23、yに54、zに194が格納され、それぞれの値を画面に出力する。
+      </explanation>
+        </section>
+        <section title="式" id="std2.2">
+            <explanation title="基本説明" id="std2.2ex1">
+                <div style="font-size:13pt;">
+          1つの式の中でいくつかの演算子が使われる場合、<font color="red">演算子の優先順位に従って</font>式が評価される。<br/>
+          例えば、式3+3*5の中には2つの演算子(+と*)がある。この式ではまず3*5が先に評価され、その結果に3が加算され18という値が得られる。<br/>
+          基本的には演算子の優先順位は<b>数学などの式と同じと考えてよい</b>。ただし、%は余りを求める演算子で乗除算と同じ優先順位である。<br/>
+                    <br/>
+          C言語には多くの演算子があり、これには15段階の優先順位がある。<b>長い式を記述する場合には、なるべく括弧()を用いて評価順序を強制的に指定する習慣をつけるようにしよう。</b>
+                </div>
+            </explanation>
+            <explanation title="計算例" id="std2.2ex2">
+                <blockquote style="width:300px;" title="例">
+          以下に計算例を示す。
+          <pre>[計算例]
+2 * 3 + 6 * 2 = 18
+24 % 5 + 7 * 4 / 7 = 8
+(3 + 2) * 4 % (6 - 3) = 2</pre>
+                </blockquote>
+          この例で用いた演算子の優先順位は、括弧()が一番高く、次いで乗算(*)・除算(/)・余り(%)であり、最後が加算(+)・減算(-)である。
+      </explanation>
+        </section>
+        <section title="型変換" id="std2.3">
+            <section title="定数の型" id="std2.3.0">
+                <explanation title="定数の型" id="std2.3.0ex1">
+                    <div style="font-size:13pt;">
+            定数の型は以下のようになる。
+            <blockquote style="width:300px;" title="定数の型">
+                            <pre>
+少数点を付けると<b>実数型の定数(double型の定数)</b>になる。
+       [例] 3.14   2.0   0.12　は全部double型 
+       
+少数を付けなければ<b>整数型の定数(int型の定数)</b>になる。
+       [例]13  23  -34   は全部int型
+              </pre>
+                        </blockquote>
+                    </div>
+                </explanation>
+            </section>
+            <section title="暗黙的な型変換" id="std2.3.1">
+                <explanation title="基本説明1" id="std2.3.1ex1">
+                    <div style="font-size:13pt;">
+            2つの演算子が異なるデータ型であると、順位の高い方へとデータの型変換が自動的に行われる。C言語のデータ型には順位があり、順位の低いものから並べると次のようになる。<br/>
+                        <b>char &lt; int &lt; float &lt; double &lt; long double</b>
+                        <br/>
+                        <font color="red">代入式の右辺にどんなデータ型が来ても、その値は左辺のデータ型に型変換されて代入される</font>。
+          </div>
+                </explanation>
+                <explanation title="サンプルソース" id="std2.3.1so1">
+          以下は型変換の様子を示したものである。このプログラムはf1,f2,i1,i2の値を計算し、その値を出力する。<br/>
+          ここではf1,f2,i1,i2の値がどのように出力されるか見てもらいたい。
+          <blockquote style="width:300px" title="サンプルソース">
+                        <pre>int main()
+{
+	int i1, i2;
+        float f1, f2, f3;
+
+        f1 = 200;
+        f2 = 350 * f1;
+        i2 = 3.4 * 7;
+        i1 = f3 = f1 / 350;
+        printf("f1=%f, f2=%f\n",f1,f2);
+        printf("i2=%d, f3=%f, i1=%d\n",i2,f3,i1);
+
+        return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px" title="サンプルソースの実行結果">
+                        <pre>[実行結果]
+f1=200.000000, f2=700000.000000
+i2=23, f3=0.571429, i1=0</pre>
+                    </blockquote>
+            (解説)<br/>
+                    <b>f1 = 200</b>
+                    <br/>
+                    <img src="/images/c-kishi/std231so1img1.jpg" alt="f1=200"/>
+                    <br/>
+           200はint型であるが、左辺のf1のデータ型floatに型変換されて代入される。<br/>
+                    <br/>
+                    <b>f2 = 350 * f1</b>
+                    <br/>
+                    <img src="/images/c-kishi/std231so1img2.jpg" alt="f2 = 350 * f1"/>
+                    <br/>
+           350はint型、f1はfloat型である。350*f1の結果はデータ型の優先度よりfloat型700000.000000になる。左辺のf2がfloat型であるため型変換はせずに代入される。<br/>
+                    <br/>
+                    <b>i2 = 3.4 * 7</b>
+                    <br/>
+                    <img src="/images/c-kishi/std231so1img3.jpg" alt="i2 = 3.4 * 7"/>
+                    <br/>
+           3.4はdouble型、7はint型である。3.4*7の結果はデータ型の優先度よりdouble型23.8になる。左辺のi2のデータ型がint型なのでそのデータ型に型変換されて代入される。<br/>
+                    <br/>
+                    <b>i1 = f3 = f1 / 350</b>
+                    <br/>
+                    <img src="/images/c-kishi/std231so1img4.jpg" alt="i1 = f3 = f1 / 350"/>
+                    <br/>
+           f1はfloat型、350はint型である。f1/350の結果はデータ型の優先度よりfloat型0.571429になる。左辺のf3はfloat型なので型変換せずに代入される。<br/>
+           f3はfloat型であるが、i1はint型であるためint型に型変換した0が代入される。
+        </explanation>
+            </section>
+            <section title="明示的な型変換(キャスト)" id="std2.3.2">
+                <explanation title="基本説明" id="std2.3.2ex1">
+                    <div style="font-size:13pt;">
+            キャスト演算子を使用すれば、式の結果をあるデータ型に明示的に型変換できる。型変換させたいデータ型を括弧()で囲み、その後に式を記述する。
+          </div>
+                    <blockquote style="width:550px" title="例">
+              記述例 : キャスト演算子を用いてx,yのデータ型をこの式だけdouble型にする<br/>
+              z = <font color="red">(double)</font>x + <font color="red">(double)</font>y;
+          </blockquote>
+          上のようにすると、x,yは元のデータ型が何であっても、この式ではdouble型の変数として扱われる。
+        </explanation>
+                <explanation title="キャスト演算子を利用するとき" id="std2.3.2ex2">
+                    <div style="font-size:13pt;">
+          double x = 1/2;<br/>
+          上の式では1,2がint型であるために x=0 となる。<br/>
+                        <br/>
+          これをx=0.5にしたいとき、キャスト演算子を用いて、以下のようにする。<br/>
+          double x = (double)1/(double)2;<br/>
+          すると、1,2のデータ型がdouble型になるのでx=0.5となる。
+          </div>
+                </explanation>
+                <explanation title="サンプルソース" id="std2.3.2so1">
+          以下はキャスト演算子を用いた例である。このプログラムはiX,iY,dX,dYの値を計算し、出力するものである。
+          <blockquote styl="width:300px" title="サンプルソース">
+                        <pre>int main()
+{
+	int iX, iY;
+	double dX, dY;
+
+	iX = 2/3+0.5;
+	iY = (double)2/(double)3+0.5;
+	dX = 2/3.0+0.5;
+        dY = 2/(int)3.0+0.5;
+
+	printf("iX = %d\n",iX);
+	printf("iY = %d\n",iY);
+	printf("dX = %d\n",dX);
+	printf("dY = %d\n",dY);
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px" title="サンプルソースの実行結果">
+                        <pre>[実行結果]
+iX = 0
+iY = 1
+dX = 1.166667
+dY = 0.500000</pre>
+                    </blockquote>
+           (解説)<br/>
+                    <b>iX = 2/3+0.5</b>
+                    <br/>
+                    <img src="std232so1img1.jpg" alt="iX = 2/3+0.5"/>
+                    <br/>
+             iXの式は演算子の優先順位に従って2/3の計算が行われる。この結果はint型0となる。0と0.5を足した結果0.5となるがiXがint型なので0が代入される。<br/>
+                    <br/>
+                    <b>iY = (double)2/(double)3+0.5</b>
+                    <br/>
+                    <img src="std232so1img2.jpg" alt="iY = (double)2/(double)3+0.5"/>
+                    <br/>
+             iYの式も同じく演算子の優先順位に従って(double)2/(double)3の計算が行われる。ここでiXのときと違うのがキャスト演算子(double)がついているために2,3はdouble型扱いになり、その結果はdouble型である0.666667になる。その結果と0.5を足すと1.166667になる。iYがint型なのでint型に型変換されて1が代入される。<br/>
+                    <br/>
+                    <b>dX = 2/3+0.5</b>
+                    <br/>
+                    <img src="std232so1img3.jpg" alt="dX = 2/3.0+0.5"/>
+                    <br/>
+             dXの式は2/3.0の結果がデータ型の優先順位(int &lt; double)からdouble型である0.666667となる。それと0.5を足すと1.166667となり、dXがdouble型なので型変換せずに代入される。<br/>
+                    <br/>
+                    <b>dY = 2/(int)3.0+0.5</b>
+                    <br/>
+                    <img src="std232so1img4.jpg" alt="dY = 2/(int)3.0+0.5"/>
+                    <br/>
+             dYの式は2/(int)3.0がまず計算され2も3.0もint型であるため0になる。0と0.5を足すと0.5になるのでiYは0.5となる。
+        </explanation>
+            </section>
+        </section>
+        <section title="代入演算子" id="std2.4">
+            <explanation title="基本説明" id="std2.4ex1">
+                <div style="font-size:13pt;">
+          代入および算術演算子には、2つの演算子を組み合わせた簡略表記法もある。
+        </div>
+                <table border="1" rule="none">
+                    <tr>
+                        <td>省略形</td>
+                        <td>例</td>
+                        <td>同等の式</td>
+                    </tr>
+                    <tr>
+                        <td>+=</td>
+                        <td>x += y</td>
+                        <td>x = x + y</td>
+                    </tr>
+                    <tr>
+                        <td>-=</td>
+                        <td>x -= y</td>
+                        <td>x = x - y</td>
+                    </tr>
+                    <tr>
+                        <td>*=</td>
+                        <td>x *= y</td>
+                        <td>x = x * y</td>
+                    </tr>
+                    <tr>
+                        <td>/=</td>
+                        <td>x /= y</td>
+                        <td>x = x / y</td>
+                    </tr>
+                    <tr>
+                        <td>%=</td>
+                        <td>x %= y</td>
+                        <td>x = x % y</td>
+                    </tr>
+                </table>
+            </explanation>
+            <explanation title="サンプルソース" id="std2.4so1">
+        以下は算術演算子の簡略表記法を用いた例である。このプログラムはx,y,zの値を計算し、その値を出力する。
+        <blockquote style="width:300px" title="サンプルソース">
+                    <pre>int main()
+{
+	double x, y, z;
+	x=3.14159;
+	z=y=x;
+	y=y/2.0;
+	z/=2.0;
+	
+	printf("x=%lf, y=%lf, z=%lf\n",x,y,z);
+	return 0;
+}</pre>
+                </blockquote>
+                <blockquote style="width:300px" title="サンプルソースの実行結果">
+                    <pre>[実行結果]
+x=3.141590, y=1.570795, z=1.570795</pre>
+                </blockquote>
+        (解説)<br/>
+        zの式はyの簡略表記法を用いたものである。この2つは同等の式なのでy,zの値も等しい。
+      </explanation>
+        </section>
+        <section title="インクリメント演算子、デクリメント演算子" id="std2.5">
+            <explanation title="基本説明" id="std2.5ex1">
+                <div style="font-size:13pt;">
+          インクリメント演算子は演算数に1を加える演算子であり<b>++</b>と表す。<br/>
+          デクリメント演算子は演算数から1を減ずる演算子で<b>--</b>と表す。<br/>
+                    <blockquote style="width:300px;" title="概要">
+            x = x + 1  →  x++<br/>
+            x = x - 1  →  x--
+          </blockquote>
+          これらの演算子は、<b>演算子の前に付けると変数が使用される前に1加減算され、演算数の後に付けると変数が使用された後に1加減算される</b>。
+        </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std2.5so1">
+        以下はインクリメント、デクリメント演算子を用いた例である。このプログラムはx,yそれぞれの値をインクリメント演算子を付ける前の値、付けたときの値、その後の値を出力するものである。
+        <blockquote style="width:300px;" title="サンプルソース">
+                    <pre>int main()
+{
+     int x, y, z;
+
+     x = y = 5;
+     printf("x  :%d, y  :%d\n",x,y);
+     printf("x++:%d, ++y:%d\n",x++,++y);
+     printf("x  :%d, y  :%d\n\n",x,y);
+
+     x = y = 5;
+     printf("x  :%d, y  :%d\n",x,y);
+     printf("x--:%d, --y:%d\n",x--,--y);
+     printf("x  :%d, y  :%d\n",x,y);
+
+     z = x++ + ++y;
+     printf("z = %d, x = %d, y = %d\n",z,x,y);
+
+     return 0;
+}</pre>
+                </blockquote>
+                <blockquote style="width:300px;" title="サンプルソースの実行結果">
+                    <pre>[実行結果]
+x  :5, y  :5
+x++:5, ++y:6
+x  :6, y  :6
+
+x  :5, y  :5
+x--:5, --y:4
+x  :4, y  :4
+z = 9, x = 5, y = 5</pre>
+                </blockquote>
+        (解説)<br/>
+        インクリメント演算子が演算数の後にあると、変数が使用された後(printfで出力された後や、計算がされた後)に1足される。逆に前にあると、変数が使用される前(printfで出力される前、計算がされる前)に1足される。デクリメント演算子も同様で違うのは1足されるのではなく、1引かれることである。  
+      </explanation>
+        </section>
+    </section>
+</xtdl>

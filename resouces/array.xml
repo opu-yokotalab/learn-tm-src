@@ -1,0 +1,476 @@
+<xtdl>
+    <section title="配列" id="std5">
+        <section title="配列と配列の初期化" id="std5.1">
+            <explanation title="配列の基本説明" id="std5.1ex1">
+                <div style="font-size:13pt;">
+	  配列とは、同じデータ型を持つ複数の要素に番号を振ることによって、データの管理を容易にしたものである。<br/>
+	  何次元の構造を持っていてもかまわないが、要素数は宣言時に固定され、後で変更することはできない。<br/>
+	  また、配列の宣言はどんなデータ型でも可能である。<br/>
+                    <blockquote style="width:650px;" title="sample source5.1.1">
+                        <pre>/*配列の宣言例*/
+int integer[10];	/*要素数10のint型配列*/
+char str[256];  	/*要素数256のchar型配列*/
+double number[20];	/*要素数20のdouble型配列*/</pre>
+                    </blockquote>
+	  配列の要素は、配列変数名の後に添え字をつけてアクセスすることができる。<br/>
+	  配列の先頭要素の添え字は<font color="red">0</font>からとなり、最後の要素の添え字は<font color="red">要素数-1</font>となるので注意。
+	  <blockquote style="width:550px;" title="sample source5.1.2">
+                        <pre>/*配列の要素*/
+integer[0],integer[1],…,integer[9];
+str[0],str[1],…,str[255];
+number[0],number[1],…,number[19]</pre>
+                    </blockquote>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.1ex2">
+                <div style="font-size:13pt;">
+	  配列を用いたプログラムのサンプルソースを以下に示す。
+	  <blockquote style="width:750px;" title="sample source5.1.3">
+                        <pre>int main(){
+
+	int i,num[5];
+
+	for(i=0;i&lt;5;i++)  /*配列numのi番目の要素にint型定数iを格納*/
+		num[i]=i;
+	for(i=0;i&lt;5;i++)  /*配列numのi番目の要素を出力*/
+		printf("num[%d]=%d\n",i,num[i]);
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:300px;" title="sample source5.1.3">
+                        <pre>[実行結果]
+num[0]=0
+num[1]=1
+num[2]=2
+num[3]=3
+num[4]=4</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  0～4の整数をint型配列変数0～4に格納するプログラム。<br/>
+	  代入・出力の方法は変数の扱いと同じだが、アクセス(num[0],num[1]などの指定)は必要である。
+	  </div>
+            </explanation>
+            <explanation title="配列の初期化" id="std5.1ex3">
+                <div style="font-size:13pt;">
+	  配列を宣言する時、その配列の要素を初期化することもできる。
+	  <blockquote style="width:900px;" title="sample source5.1.4">
+                        <pre>/*配列の初期化例*/
+int num[5]={0,1,2,3,4};
+int num[]={0,1,2,3,4};  //宣言時に初期化を行う時のみ、添え字を省略することが可能。</pre>
+                    </blockquote>
+	  上２文は以下と同じ意味を持つ。
+	  <blockquote style="width:650px;" title="sample source5.1.5">
+                        <pre>int number[5];
+num[0]=0; num[1]=1; num[2]=2; num[3]=3; num[4]=4;</pre>
+                    </blockquote>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.1ex4">
+                <div style="font-size:13pt;">
+	  配列を用いたプログラムのサンプルソースを以下に示す。
+	  <blockquote style="width:750px;" title="sample source5.1.3">
+                        <pre>int main(){
+
+	int i,temp,num[5]={0,1,2,3,4};
+
+	printf("&lt;before&gt;\n");
+	for(i=0;i&lt;5;i++)	/*配列numのi番目の要素を出力*/
+		printf("num[%d]=%d : ",i,num[i]);
+	printf("\n");
+
+	for(i=0;i&lt;2;i++){	/*値の交換*/
+		temp=num[i]; 	/*temp:上書き用変数*/
+		num[i]=num[4-i];
+		num[4-i]=temp;
+	}
+
+	printf("&lt;after&gt;\n");
+	for(i=0;i&lt;5;i++)	/*配列numのi番目の要素を出力*/
+		printf("num[%d]=%d : ",i,num[i]);
+	printf("\n");
+
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:600px;" title="sample source5.1.3">
+                        <pre>[実行結果]
+&lt;before&gt;
+num[0]=0 : num[1]=1 : num[2]=2 : num[3]=3 : num[4]=4 : 
+&lt;after&gt;
+num[0]=4 : num[1]=3 : num[2]=2 : num[3]=1 : num[4]=0 :</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  配列の要素を逆順に入れ替えるプログラム。<br/>
+	  i番目の要素をtempを使って一時的に保存し、4-i番目の要素をi番目に上書きし、4-i番目にはtempに保存しておいたi番目の要素を上書きして値の交換を行う。<br/>
+	  これを要素数の半分の折り返し地点(∴i&lt;2)まで繰り返すと、逆順入れ替えが完了する。
+	  </div>
+            </explanation>
+            <explanation title="配列の基本説明" id="std5.1ex5">
+                <div style="font-size:13pt;">
+	  配列とは、同じデータ型を持つ複数の要素に番号を振ることによって、データの管理を容易にしたものである。<br/>
+	  何次元の構造を持っていてもかまわないが、要素数は宣言時に固定される。<br/>
+	  また、配列の宣言はどんなデータ型でも可能である。<br/>
+                    <blockquote style="width:650px;" title="sample source5.1.1">
+                        <pre>/*配列の宣言例*/
+int integer[10];	/*要素数10のint型配列*/
+char str[256];  	/*要素数256のchar型配列*/
+double number[20];	/*要素数20のdouble型配列*/</pre>
+                    </blockquote>
+	  配列の要素は、配列変数名の後に添え字をつけてアクセスすることができる。<br/>
+	  配列の先頭要素の添え字は<font color="red">0</font>から始まることに注意。
+	  <blockquote style="width:550px;" title="sample source5.1.2">
+                        <pre>/*配列の要素*/
+integer[0],integer[1],…,integer[9];
+str[0],str[1],…,str[255];
+number[0],number[1],…,number[19]</pre>
+                    </blockquote>
+                </div>
+            </explanation>
+        </section><!-- end std5.1 -->
+        <section title="文字型配列" id="std5.2">
+            <explanation title="基本説明" id="std5.2ex1">
+                <div style="font-size:13pt;">
+	    Cでは、文字列はchar型配列として扱う。<br/>
+                    <blockquote style="width:600px;" title="sample source5.2.1">
+                        <pre>/*文字型配列の初期化例*/
+char str[]="Hello!";
+char str[]={'H','e','l','l','o','!','\0'};</pre>
+                    </blockquote>
+	  上２文は同じ意味である。<br/>
+	  文字型配列では、内容の最後に終了コードである<font color="red">\0</font>がつく。"(ダブルクォーテーション)を使った初期化では自動的に付加されるが、'(シングルクォーテーション)で初期化する場合は忘れないように注意。<br/>
+	  また、文字型配列を宣言する時は、終了コードを付加するため、実際の文字数以上の要素数が必要となる。<br/>
+                    <br/>
+	  (イメージ図)
+	      <table border="1" cellspacing="0" style="font-size:13pt; text-align:center">
+                        <th>str</th>
+                        <th>[0]</th>
+                        <th>[1]</th>
+                        <th>[2]</th>
+                        <th>[3]</th>
+                        <th>[4]</th>
+                        <th>[5]</th>
+                        <th>[6]</th>
+                        <tr/>
+                        <td>(先頭アドレス)</td>
+                        <td>H</td>
+                        <td>e</td>
+                        <td>l</td>
+                        <td>l</td>
+                        <td>o</td>
+                        <td>!</td>
+                        <td>
+                            <font color="red">\0</font>
+                        </td>
+                    </table>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.2ex2">
+                <div style="font-size:13pt;">
+	  文字型配列を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:950px;" title="sample source5.2.2">
+                        <pre>int main(){
+
+	char name[]="your name";  //文字型配列の宣言・初期化
+
+	printf("こんにちは、%sさん。\n",name);  /*1. name内の文字列を出力*/
+	printf("あなたのイニシャルは%cです。\n",name[0]);  /*2. nameの先頭要素([0])を出力*/
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:550px;" title="sample source5.2.3">
+                        <pre>[実行結果]
+こんにちは、your nameさん。
+あなたのイニシャルはyです。</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  配列に格納された文字列を出力し、続いて頭１文字だけ出力するプログラム。<br/>
+	  1. 文字型配列では、変換指定子<font color="red">%s</font>で配列の要素を一括出力できる。<br/>
+	  2. 文字型配列の各要素へのアクセスは他の配列と同様。ただし、各要素の型はchar型なので、変換指定子は<font color="red">%c</font>となることに注意。
+
+	  </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.2ex3">
+                <div style="font-size:13pt;">
+	  文字型配列を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:850px;" title="sample source5.2.4">
+                        <pre>int main(){
+
+	char str[]="He dripped the coffee.";
+	int c=0;
+
+	printf("%s\n",str);  /*処理前の表示(比較用)*/
+	while(str[c]!='\0'){  /*条件:文字列の終わりまで*/
+		if(str[c]=='i')	str[c]='o';  /*要素が'i'なら、'o'を上書きする*/
+		c++;
+	}
+	printf("%s\n",str);  /*処理結果の表示*/
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:550px;" title="sample source5.2.4">
+                        <pre>[実行結果]
+He dripped the coffee.
+He dropped the coffee.</pre>
+                    </blockquote>
+	  (解説)<br/>
+	  文字列から各要素をチェックし、「i」を「o」に置き換えるプログラム。<br/>
+	  文字列を先頭から1文字ずつ単語の比較(合致すれば書き換え)を行う。<br/>
+	  終了コード'\0'が検出された時、文字列が終了したと判断する。<br/>
+                </div>
+            </explanation>
+            <explanation title="基本説明" id="std5.2ex4">
+                <div style="font-size:13pt;">
+	    Cでは、文字列はchar型配列として扱う。<br/>
+                    <blockquote style="width:600px;" title="sample source5.2.5">
+                        <pre>/*文字型配列の初期化例*/
+char str[]="Hello!";
+char str[]={'H','e','l','l','o','!','\0'};</pre>
+                    </blockquote>
+	  上２文は同じ意味である。<br/>
+	  文字型配列では、内容の最後に終了コードである<font color="red">\0</font>がつく。これは"(ダブルクォーテーション)を使った初期化では自動的に付加される。<br/>
+                    <br/>
+	  (イメージ図)
+	      <table border="1" cellspacing="0" style="font-size:13pt; text-align:center">
+                        <th>str</th>
+                        <th>[0]</th>
+                        <th>[1]</th>
+                        <th>[2]</th>
+                        <th>[3]</th>
+                        <th>[4]</th>
+                        <th>[5]</th>
+                        <th>[6]</th>
+                        <tr/>
+                        <td>(先頭アドレス)</td>
+                        <td>H</td>
+                        <td>e</td>
+                        <td>l</td>
+                        <td>l</td>
+                        <td>o</td>
+                        <td>!</td>
+                        <td>
+                            <font color="red">\0</font>
+                        </td>
+                    </table>
+                </div>
+            </explanation>
+        </section><!-- end std5.2-->
+        <section title="多次元配列" id="std5.3">
+            <explanation title="基本説明" id="std5.3ex1">
+                <div style="font-size:13pt;">
+	    配列の次元数に制限はない。次に、２次元配列の例を示す。<br/>
+                    <blockquote style="width:950px;" title="sample source5.3.1">
+                        <pre>/*２次元配列の例*/
+int array[5][5];		//int型二次元配列の宣言例
+char arrays[][10]={"one","two","three"};		//文字型二次元配列の宣言＆初期化例</pre>
+                    </blockquote>
+                    <br/>
+	    (イメージ図)
+	    <table border="0" style="font-size:13pt; text-align:center">
+                        <td>arrays[3][10]</td>
+                        <td>
+                            <table border="1" cellspacing="0" style="font-size:13pt; text-align:center">
+                                <th>
+                                    <br/>
+                                </th>
+                                <th>[0]</th>
+                                <th>[1]</th>
+                                <th>[2]</th>
+                                <th>[3]</th>
+                                <th>[4]</th>
+                                <th>[5]</th>
+                                <th>[6]…[9]</th>
+                                <tr/>
+                                <th>[0]</th>
+                                <td>o</td>
+                                <td>n</td>
+                                <td>e</td>
+                                <td>
+                                    <font color="red">\0</font>
+                                </td>
+                                <td colspan="3">…</td>
+                                <tr/>
+                                <th>[1]</th>
+                                <td>t</td>
+                                <td>w</td>
+                                <td>o</td>
+                                <td>
+                                    <font color="red">\0</font>
+                                </td>
+                                <td colspan="3">…</td>
+                                <tr/>
+                                <th>[2]</th>
+                                <td>t</td>
+                                <td>h</td>
+                                <td>r</td>
+                                <td>e</td>
+                                <td>e</td>
+                                <td>
+                                    <font color="red">\0</font>
+                                </td>
+                                <td>…</td>
+                            </table>
+                        </td>
+                    </table>
+	    この例では、2次元配列arrays[3][10]は、要素数10のchar型配列を、3つ要素に持つ配列である。<br/>
+                </div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.3ex2">
+                <div style="font-size:13pt;">
+	  多次元配列を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:800px;" title="sample source5.3.1">
+                        <pre>#include&lt;stdio.h&gt;
+#define MEMBER 3
+#define GAME 3
+int main(){
+
+	int score[GAME][MEMBER]={{10,12,34},
+				 {32,5,20},
+				 {40,22,34}}; //二次元配列の宣言・初期化
+	int  i, j;
+	printf("-game score-\n");
+	printf("\t game1\t game2\t game3\t\n");
+	printf("-----------------------------\n");
+	for(i=0;i&lt;3;i++){  /*配列scoreの各要素の出力*/
+		printf("member%d:"i+1);
+		for(j=0;j&lt;3;j++)
+			printf("%d\t",score[j][i]);
+		printf("\n");
+	}
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:450px;" title="sample source5.3.2">
+                        <pre>[実行結果]
+-game score-
+	game1	game2	game3
+-----------------------------
+member1:10	32	40
+member2:12	5	22
+member3:34	20	34</pre>
+                    </blockquote>
+                    <br/>(イメージ図)
+	    <table border="0" style="font-size:13pt; text-align:center">
+                        <td>score[GAME][MEMBER]</td>
+                        <td>
+                            <table border="1" cellspacing="0" style="font-size:13pt; text-align:center">
+                                <td colspan="2" rowspan="2">score</td>
+                                <td colspan="3">MEMBER</td>
+                                <tr/>
+                                <th>[0]</th>
+                                <th>[1]</th>
+                                <th>[2]</th>
+                                <tr/>
+                                <td rowspan="3">GAME</td>
+                                <th>[0]</th>
+                                <td>10</td>
+                                <td>12</td>
+                                <td>34</td>
+                                <tr/>
+                                <th>[1]</th>
+                                <td>32</td>
+                                <td>5</td>
+                                <td>20</td>
+                                <tr/>
+                                <th>[2]</th>
+                                <td>40</td>
+                                <td>22</td>
+                                <td>34</td>
+                            </table>
+                        </td>
+                    </table>
+                    <br/>(解説)<br/>
+	  配列に格納された、各メンバーごとの各試合の得点を行列で出力するプログラム。<br/>
+	  次元が大きくなると配列のアクセス時に混乱しがちなので注意。
+	</div>
+            </explanation>
+            <explanation title="サンプルソース" id="std5.3ex3">
+                <div style="font-size:13pt;">
+	  多次元配列を用いたプログラムのサンプルソースを以下に示す。<br/>
+                    <blockquote style="width:800px;" title="sample source5.3.1">
+                        <pre>int main(){
+
+	char name[3][256];
+	int i,num,bool;
+
+	/*文字列の入力(３回行う)*/
+	printf("メンバーを3人入力してください\n");
+	for(i=0;i&lt;3;i++){
+		printf("[%d]:",i);
+		scanf("%s",name[i]);
+	}
+
+	/*文字列の選出*/
+	do{
+		printf("誰をリーダーにしますか？(番号):");
+		scanf("%d",&amp;num);
+		bool= num&lt;0 || num&gt;=3;	/*numの値が0～2でなければbool=0*/
+		if(bool) printf("その番号は無効です。\n");
+	}while(bool);
+
+	/*選出された文字列の出力*/
+	printf("リーダーは%sです\n",name[num]);
+	return 0;
+}</pre>
+                    </blockquote>
+                    <blockquote style="width:450px;" title="sample source5.3.2">
+                        <pre>[実行例]
+メンバーを3人入力してください
+[0]:Adam
+[1]:Beckey
+[2]:Candy
+誰をリーダーにしますか？(番号):1
+リーダーはBeckyです</pre>
+                    </blockquote>
+                    <br/>(イメージ図)<br/>
+                    <table border="0" style="font-size:13pt; text-align:center">
+                        <td>name[3][256]</td>
+                        <td>
+                            <table border="1" cellspacing="0" style="font-size:13pt; text-align:center">
+                                <th>
+                                    <br/>
+                                </th>
+                                <th>[0]</th>
+                                <th>[1]</th>
+                                <th>[2]</th>
+                                <th>[3]</th>
+                                <th>[4]</th>
+                                <th>[5]</th>
+                                <th>[6]…[255]</th>
+                                <tr/>
+                                <th>[0]</th>
+                                <td>A</td>
+                                <td>d</td>
+                                <td>a</td>
+                                <td>m</td>
+                                <td>\0</td>
+                                <td colspan="2">…</td>
+                                <tr/>
+                                <th>[1]</th>
+                                <td>B</td>
+                                <td>e</td>
+                                <td>c</td>
+                                <td>k</td>
+                                <td>y</td>
+                                <td>\0</td>
+                                <td>…</td>
+                                <tr/>
+                                <th>[2]</th>
+                                <td>C</td>
+                                <td>a</td>
+                                <td>n</td>
+                                <td>d</td>
+                                <td>y</td>
+                                <td>\0</td>
+                                <td>…</td>
+                            </table>
+                        </td>
+                    </table>
+                    <br/>(解説)<br/>
+2次元の文字型配列に３種類の文字列を入力し、その中から１つ出力するプログラム。<br/>
+do-while文では、配列の領域外へのアクセスを防ぐための繰り返し処理が行われている。<br/>
+繰り返し処理が行われる条件は、変数boolの値が0であることである。｢numが0未満 あるいは numが3以上｣の時bool=0となる。<br/>
+                </div>
+            </explanation>
+        </section><!-- end std5.3-->
+    </section><!-- end std5 -->
+</xtdl>

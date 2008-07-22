@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xtdl>
+  <section title="基本概念" id="std1">
+    <section title="基本構造" id="std1.1">
+      <explanation title="基本説明" id="std1.1ex1">
+	<div style="font-size:13pt;">
+	  C言語のプログラムは、必ず１つあるいはそれ以上の関数から構成されている。その関数は多種多様だが、どんなC言語のプログラムでも<b>main</b>という関数がなければならない。このmain関数は特殊な関数で、C言語のプログラムは<font color="red" size="5px">常にmain関数で始まり、main関数で終わる</font>という性質を持っている。</div>
+      </explanation>
+      <explanation title="サンプルソース1" id="std1.1ex2">
+	もっとも簡単なプログラムの例を以下に示す。<br/>
+	  <blockquote style="width:300px;" title="sample source1">
+	      int main()<br/>
+	      {<br/>
+	      　return 0;<br/>
+	      }<br/>
+	  </blockquote>
+	  <div style="font-size:13pt;">
+	    このプログラムはmainという1つの関数からできている。この例で実行される処理はOSへ0を返すreturn文のみである。文の最後には;（セミコロン）をつけなければならない。
+	  </div>
+	</explanation>
+	<explanation title="サンプルソース2" id="std1.1ex3">
+	  画面に「Hello World」と表示するプログラム例を以下に示す。<br/>
+	    <blockquote style="width:300px;" title="sample source2">
+		#include&lt;stdio.h&gt;<br/>
+		  int main()<br/>
+		  {<br/>
+	          printf(&quot;Hello World\n&quot;);<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+	      <div style="font-size:13pt;">
+		このプログラムはprintfという関数を使って画面に「Hello World」と表示させるプログラムである。この関数を使うためには1行目に#include$lt;stdio.h$gt;というヘッダーファイルを読み込むための行を加えなくてはならない。<br/>このプログラムを実行すると画面に1行、以下のように表示される。
+		  </div>
+		  <blockquote style="width:300px;" title="ss2 run"><pre>
+		      Hello World
+		    </pre>
+		  </blockquote>
+		</explanation>
+		      </section><!-- end std1.1 -->
+		<explanation title="インクルード" id="std1.1ex4">
+		  <blockquote style="width:300px" title="include"><pre>
+		      #include&lt;stdio.h&gt;
+		      </pre>
+		    </blockquote>
+		    <div style="font-size:13pt;">
+		      この行は<br/>
+			画面に表示を行う機能について書かれているstdio.hというファイルを、コンパイルを行う前に読み込んでおくという処理を表している。<br/>
+			  この読み込み処理をインクルードと呼ぶ。画面に表示をするプログラムを作る場合は、必ずstdio.hを読み込む必要がある。読み込まないと、画面出力関数の「printf」を正しく使うことはできない。stdio.hのように、前もって読み込まれるファイルのことを<font color="red" size="5px">ヘッダファイル</font>という。</div>
+			</explanation>
+
+
+		      <section title="定数、変数、データ型" id="std1.2">
+			  
+			  <explanation title="基本説明" id="std1.2ex1">
+			    <div style="font-size:13pt;">
+			      プログラムを実行するとき、プログラムはコンピュータにいろいろな値を記憶させながら処理をして行く。<br/>
+たとえば、ユーザが入力した値を画面に表示するというプログラムについて考えてみる。<br/>
+コンピュータはキーボードから値が入力されると変数という箱に値を入れる。
+そして、表示させる命令がきたときその箱から値を取り出し、画面に表示させる。<br/>
+もし、この変数という箱がなかった場合、入力された値はどこにも保存されず、すぐに捨てられてしまう。
+</div>
+
+			    </explanation>
+			  <explanation title="入出力ソース" id="std1.2ex2">
+			    先ほどの説明で考えたプログラムの例を以下に示す。<br/>
+			      <blockquote style="width:300px;" title="sample source3">
+	#inlclude&lt;stdio.h&gt;<br/>
+	  int main()<br/>
+	  {<br/>
+	   int a;<br/>
+	   printf(&quot;数字を入力してください\n&quot;);<br/>
+	   scanf(&quot;%d&quot;,&amp;a);<br/>
+	   printf(&quot;あなたが入力した数字は「%d」ですね。\n&quot;,a);<br/>
+	  　return 0;<br/>
+	  }<br/>
+			      </blockquote>
+			    </explanation>
+			    <explanation title="変数の型" id="std1.2ex3">
+			      <div style="font-size:13pt;">
+				変数にはいつくかの種類があり、型の種類はデータ型(data type)、または型と呼ばれている。そのデータ型により変数が記憶できる値の範囲が異なる。<br/>特に代表的なのは文字を記憶する<font color="red">char</font>型、整数値を記憶する<font color="red">int</font>型、小数を記憶する<font color="red">float</font>型や<font color="red">double</font>型などがある。
+			      </div>
+			      <div align="center">
+				<img src="/images/c-kishi/hen1.jpg" alt="変数のイメージ"/><br/>
+				<strong>図1.1 変数のイメージ</strong>
+			      </div><br/>
+			    </explanation>
+	            </section><!-- end std1.2-->
+			    <explanation title="型表" id="std1.2ex4">
+			      <div style="font-size:13pt;">次の表のようにＣ言語には基本的な型がある。</div>
+<table border="1">
+<tr>
+<th>種類</th>
+<th>名前</th>
+<th>サイズ例</th>
+<th>記憶できる値の範囲例</th>
+</tr>
+
+<tr>
+<td rowspan="2">文字型</td>
+<td>char</td>
+<td>1バイト</td>
+<td>英数字1文字</td>
+</tr>
+
+<tr>
+<td>unsigned char</td>
+<td>1バイト</td>
+<td>英数字1文字（符号なし）</td>
+</tr>
+
+<tr>
+<td rowspan="6">整数型</td>
+<td>short int</td>
+<td>2バイト</td>
+<td>整数 -32768〜32767</td>
+</tr>
+
+<tr>
+<td>unsigned short int</td>
+<td>2バイト</td>
+<td>整数（符号なし)0〜65535</td>
+</tr>
+
+<tr>
+<td>int</td>
+<td>4バイト</td>
+<td>整数-2147483648〜2147483647</td>
+</tr>
+
+<tr>
+<td>unsigned int</td>
+<td>4バイト</td>
+<td>整数(符号なし)0〜4294967295</td>
+</tr>
+
+<tr>
+<td>long int</td>
+<td>4バイト</td>
+<td>長整数-2147483648〜2147483647</td>
+</tr>
+
+<tr>
+<td>unsigned long int</td>
+<td>4バイト</td>
+<td>長整数(符号なし)0〜4294967295</td>
+</tr>
+
+<tr>
+<td rowspan="3">浮動小数点型</td>
+<td>float</td>
+<td>4バイト</td>
+<td>単精度浮動小数点数3.4E-38〜3.4E+38</td>
+</tr>
+
+<tr>
+<td>double</td>
+<td>8バイト</td>
+<td>倍精度浮動小数点数1.7E-308〜1.7E+308</td>
+</tr>
+
+<tr>
+<td>long double</td>
+<td>8バイト</td>
+<td>拡張倍精度浮動小数点数1.7E-308〜1.7E+308</td>
+</tr>
+ 
+</table>
+</explanation>
+<explanation title="浮動小数点型のプログラム例" id="std1.2ex5">
+<div style="font-size:13pt;">
+以下のプログラムは円の面積と円周を求めるプログラムである。<br/></div>
+<blockquote style="width:400px;" title="sample source4">
+	#inlclude&lt;stdio.h&gt;<br/>
+	  int main()<br/>
+	  {<br/>
+	   double radius,pi,area,circumference;<br/>
+	   pi = 3.141592654;<br/>
+	   radius = 5;<br/>
+	   area = pi * radius * radius;<br/>
+           circumference = 2 * pi * radius;<br/>
+           printf(&quot;Radius=%f\n Area=%f\n Circumference=%f\n&quot;,radius,area,circumference);
+	   return 0;<br/>
+	  }<br/>
+			      </blockquote><br/>
+このプログラムの実行結果は以下のようになる。<br/>
+<blockquote style="width:300px;" title="sample resoult">
+Radius=5.000000
+Area=78.539816
+Circumference=31.415927
+</blockquote>
+</explanation>
+
+
+<section title="printfと書式設定" id="std1.3">
+<explanation title="printfとは" id="std1.3ex1">
+<p>printf関数は画面に書式付きで出力を行う関数です。<br/>
+printf() の f は「format」（書式） の f で書式指定を行うことができます。<br/>
+この書式指定を行うことにより、同じ値でも、10進数で出力したり、文字で出力したりというように出力形式を変えることが可能です。</p>
+</explanation>
+
+<explanation title="printfの高度な説明" id="std1.3ex2">
+<div style="font-size:13pt;">
+printfはヘッダのstdio.hで定義されている書式を指定して標準出力へ出力を行う関数である。<br/>
+printfは書式指定を行うことにより、同じ数値でも、10進数で出力したり、文字で出力したりというように出力形式を変えることが出来る。変換指定文字列というものを用い出力データの形式を指定する。この変換指定字列と言うものは%ではじまる。
+</div>
+<table border="1">
+<caption>【printf の変換指定文字列】</caption>
+<tr> <th>変換指定文字列</th><th>意味</th><th>使われるデータ型</th> </tr>
+
+<tr> <td class="Cent">%c</td><td>文字として出力する</td><td>文字型</td> </tr>
+<tr> <td class="Cent">%d</td><td>10進数で出力する</td><td rowspan="3">整数型</td> </tr>
+<tr> <td class="Cent">%x</td><td>16進数で出力する</td> </tr>
+<tr> <td class="Cent">%o</td><td>8進数で出力する</td> </tr>
+<tr> <td class="Cent">%f</td><td>少数の形式で出力する</td><td rowspan="2">浮動小数点型</td> </tr>
+<tr> <td class="Cent">%e</td><td>指数形式で出力する</td> </tr>
+<tr> <td class="Cent">%s</td><td>文字列として出力する</td><td>文字列</td> </tr>
+</table>
+<p>※doubl型の出力の場合は、変換指定子の前に変換修飾子l（エル）を付加し、&quot;%fd&quot;のように記述する。</p>
+</explanation>
+<explanation title="エスケープシーケンス" id="std1.3ex3">
+<div style="font-size:13pt;">
+エスケープシーケンス
+</div>
+<table border="1">
+<caption>【代表的なエスケープシーケンス】</caption>
+<tr> <th>エスケープシーケンス</th><th>意味</th></tr>
+<tr> <td class="Cent">\n</td><td>復帰改行</td> </tr>
+<tr> <td class="Cent">\a</td><td>警報音</td> </tr>
+<tr> <td class="Cent">\t</td><td>タブコード</td></tr>
+<tr> <td class="Cent">\b</td><td>バックスペース</td> </tr>
+<tr> <td class="Cent">\\</td><td>文字としての \</td> </tr>
+<tr> <td class="Cent">\'</td><td>文字としての '</td></tr>
+<tr> <td class="Cent">\&quot;</td><td>文字としての &quot;</td> </tr>
+<tr> <td class="Cent">\0</td><td>文字列終了コード</td></tr>
+</table>
+</explanation>
+
+		    </section><!-- end std1.3 -->
+		    </section><!-- end std1 -->
+		  </xtdl>
+
