@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem_set id="function_exam1">
+  <item id="0" type="select_single">
+    <question>
+      <p>入力した2つの数を比較し、小さい方を表示するプログラムである。<br/>[ A ]に当てはまるコードを選びなさい。</p>
+　　　	    <blockquote style="width:450px;" title="sample source0">
+		#include&lt;stdio.h&gt;<br/>
+		  <br/>
+		  int min([ A ])<br/>
+		  <br/>
+		  int main(void){<br/>
+		    int num1,num2,ans;<br/>
+	            <br/>
+		    printf(&quot;１つ目の数字を入力してください：&quot;);<br/>
+		    scanf(&quot;%d&quot;,&amp;num1);<br/>
+		    <br/>
+		    printf(&quot;２つ目の数字を入力してください：&quot;,);<br/>
+		　　scanf(&quot;%d&quot;,&amp;num2);<br/>
+		    <br/>
+		    ans = min(num1,num2);<br/>
+		    printf(&quot;小さいのは%dです。\n&quot;,ans);<br/>
+		  　return 0;<br/>
+		  }<br/>
+		  <br/>
+		  int min(int x,int y){<br/>
+			if(x &lt; y)<br/>
+				return x;<br/>
+			else<br/>
+				return y;<br/>
+		  }<br/>
+	      </blockquote>
+    </question>
+    <response id="0">x , y</response>
+    <response id="1">int x,int y</response>
+    <response id="2">num1, num2</response>
+    <response id="3">int num1,int num2</response>
+    <hints>プロトタイプ宣言</hints>
+    <evaluate>
+      <function></function>
+      <correct id="1" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation>プロトタイプ宣言の書き方を復習してみよう。</explanation>
+  </item>
+
+    <item id="1" type="select_single">
+        <question><p>以下のプログラムは入力した数字の2乗を求めるプログラムである。<br/>[ A ]に当てはまるコードを選びなさい。</p>
+　　	    <blockquote style="width:500px;" title="sample source1">
+		#include&lt;stdio.h&gt;<br/>		  int square(int x)<br/>
+		  {<br/>
+		    return x * x;<br/>
+		  }<br/>
+		  <br/>
+		  int main(){<br/>
+		    int num,ans;<br/>
+		    <br/>
+		    printf(&quot;整数を入力してください。\n&quot;);<br/>
+		    scanf(&quot;%d&quot;,&amp;num);<br/>
+		    <br/>
+		    ans = [ A ];<br/>
+		    printf(&quot;%dの2乗は%dです。\n&quot;,num,ans);<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">square</response>
+	<response id="1">square[num]</response>
+	<response id="2">square(num)</response>
+	<response id="3">square()</response>
+	<hints>呼出記述</hints>
+	<evaluate>
+		<function></function>
+		<correct id="2" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>関数の呼出記述は「関数名(引数)」です。</explanation>    </item>
+
+    <item id="2" type="select_single">
+        <question><p>以下のプログラムは1から10までの合計を計算するプログラムである。<br/>
+			[ A ]に入るコードを選びなさい。</p>
+　　	    <blockquote style="width:400px;" title="sample source2">
+		#include&lt;stdio.h&gt;<br/>
+		　int add(int x){<br/>
+			static int a;<br/>
+			a += x;<br/>
+			return a;<br/>
+		  }<br/>		  int main()<br/>
+		  {<br/>
+		    int i,sum;<br/>
+			sum = 0;<br/>
+			for(i=1;i&lt;=10;i++){<br/>
+				sum = [ A ];<br/>
+			}<br/>
+			printf(&quot;合計は：%d\n&quot;,sum);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">add</response>
+	<response id="1">add(i)</response>
+	<response id="2">add(10)</response>
+	<response id="3">i</response>
+	<hints>関数の呼出し</hints>
+	<evaluate>
+		<function></function>
+		<correct id="1"/>
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>関数の呼出し方の確認をしてみましょう。</explanation>    </item>
+
+    <item id="3" type="select_single">
+        <question><p>以下のプログラムは１から10までの合計を求めるプログラムである。<br/>
+		[ A ]に入るコードを選びなさい</p>
+　　	    <blockquote style="width:400px;" title="sample source3">
+		#include&lt;stdio.h&gt;<br/>
+
+		　int add(int x);
+		  int main()<br/>
+		  {<br/>
+		    int i,sum;<br/>
+			sum = 0;<br/>
+			for(i=1;i&lt;=10;i++){<br/>
+				sum = add(i);<br/>
+			}<br/>
+			printf(&quot;合計は：%d\n&quot;,sum);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+		　int add(int x){<br/>
+			[ A ] a;<br/>
+			a += x;<br/>>
+		<function></function>
+			return a;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">int</response>
+	<response id="1">static int</response>
+	<response id="2">short int</response>
+	<response id="3">float</response>
+	<hints>変数のスコープ</hints>
+	<evaluate>
+		<function></function>
+		<correct id="1" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>変数aの中身が関数終了時に消えてしまっては正しく動作しません。<br/>なのでstaticを用いて変数の寿命を制御してやります。</explanation>    </item>
+
+    <item id="4" type="select_single">
+        <question><p>以下のプログラムの出力結果を選びなさい。</p>
+　　	    <blockquote style="width:400px;" title="sample source4">
+
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+			int a,i;<br/>
+			<br/>
+			a = 100;<br/>
+			i = 1;<br/>
+			for(i=0;i&lt;10;i++){<br/>
+				a= fun(a);<br/>
+			}<br/>
+			printf(&quot;%d\n&quot;a);<br/>
+		    <br/>
+		  　return 0;<br/>
+		  }<br/>
+		  <br/>
+		  int fun(int x){<br/>
+			int i = 2;<br/>
+			i = i * x;<br/>
+			return i;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">2</response>
+	<response id="1">256</response>
+	<response id="2">512</response>
+	<response id="3">1024</response>
+	<hints>ローカル変数</hints>
+	<evaluate>
+		<correct id="3"/>
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>異なる関数内の同じ名前の変数はそれぞれ別の変数を表します。</explanation>    </item>
+
+</problem_set>

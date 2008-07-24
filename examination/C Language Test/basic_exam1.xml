@@ -4,7 +4,7 @@
     <question>
       <p>以下のプログラムは画面に「Hello world」と表示させるプログラムである。</p>
       <p>[A]に当てはまるコードを選択せよ。</p>
-　　　	    <blockquote style="width:300px;" title="sample source0">
+　　　	    <blockquote style="width:400px;" title="sample source0">
 		#include&lt;stdio.h&gt;<br/>
 		  int main()<br/>
 		  {<br/>
@@ -53,11 +53,11 @@
     <item id="2" type="select_single">
         <question><p>以下のプログラムは円の面積を求めるプログラムです。<br/>
 		[A]に当てはまるコードを選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source2">
+　　	    <blockquote style="width:500px;" title="sample source2">
 		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
 		  {<br/>
-		    [ A ] rad = 3.141592,area;
-		    int i;
+		    [ A ] rad = 3.141592,area;<br/>
+		    int i;<br/>
 			printf(&quot;半径を入力してください。\n&quot;);<br/>
 			scanf(&quot;%d&quot;,&amp;i);<br/>
 			area = i * i * rad;<br/>
@@ -84,11 +84,11 @@
     <item id="3" type="select_single">
         <question><p>以下のプログラムは円の面積を求めるプログラムです。<br/>
 		[A]と[B]に当てはまるコードを選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source3">
+　　	    <blockquote style="width:500px;" title="sample source3">
 		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
 		  {<br/>
-		    [ A ] rad = 3.141592,area;
-		    int i;
+		    [ A ] rad = 3.141592,area;<br/>
+		    int i;<br/>
 			printf(&quot;半径を入力してください。\n&quot;);<br/>
 			scanf(&quot;%d&quot;,&amp;i);<br/>
 			area = i * [ B ] * rad;<br/>
@@ -115,7 +115,7 @@
     <item id="4" type="select_single">
         <question><p>以下のプログラムは「Hello World!!」と表示させるプログラムである。<br/>
 		[A]に当てはまるコードを選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source4">
+　　	    <blockquote style="width:400px;" title="sample source4">
 		#include&lt;[ A ]&gt;<br/>		  int main()<br/>
 		  {<br/>
 			printf(&quot;Hello World!!\n&quot;);<br/>

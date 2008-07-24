@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xtdl>
+<section id="function_examination1" title="第5章　確認テスト">
+<examination title="確認テスト" id="fun_exam1" ordering="_random">
+	<group id="function_exam1" mark="100">
+		<item id="function_exam1_1" type="random">			<selection_correct>false</selection_correct>
+			<passing_grade>1.0</passing_grade>
+		</item>
+		<item id="function_exam1_2" type="random">
+			<selection_correct>false</selection_correct>
+			<passing_grade>1.0</passing_grade>
+		</item>
+	</group>
+</examination>
+</section>
+</xtdl>

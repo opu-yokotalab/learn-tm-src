@@ -1,56 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<problem_set id="array_exam1">
+<problem_set id="inout_exam1">
   <item id="0" type="select_single">
     <question>
-      <p>以下のプログラムは配列の初期化を行って、配列の中身を表示するプログラムである。</p>
+      <p>以下のプログラムは入力した数字を画面に表示させるプログラムである。</p>
       <p>[A]に当てはまるコードを選択せよ。</p>
-　　　	    <blockquote style="width:300px;" title="sample source0">
+　　　	    <blockquote style="width:400px;" title="sample source0">
 		#include&lt;stdio.h&gt;<br/>
 		  int main()<br/>
 		  {<br/>
-		    int i,a[10];<br/>
-		    for(i=0;i&lt;10;i++){<br/>
-			[ A ] = i;<br/>
-		    }<br/>
-	            <br/>
-		    for(i=0;i&lt;10;i++){<br/>
-			printf(&quot;a[%d] = %d\n&quot;,i,[ A ]);<br/>
-		    }<br/>
+		    int a;<br/>
+	            printf(&quot;数字を入力してください。:&quot;);<br/>
+		    scanf(&quot;%d&quot;,[ A ]);<br/>
+		    printf(&quot;あなたが入力した数は%dです。\n&quot;,a);<br/>
 		  　return 0;<br/>
 		  }<br/>
 	      </blockquote>
     </question>
     <response id="0">a</response>
-    <response id="1">a[1]</response>
-    <response id="2">a[i]</response>
+    <response id="1">&amp;a</response>
+    <response id="2">%a</response>
     <hints></hints>
     <evaluate>
       <function></function>
-      <correct id="2" />
+      <correct id="1" />
       <score>1</score>
       <weight correct="1" incorrect="-1" />
       <point>10</point>
     </evaluate>
-    <explanation>for文を使って配列１つ1つに数を代入するので、添字は変数になります。</explanation>
+    <explanation>scanfの引数には先頭にアドレス演算子&amp;がつきます。</explanation>
   </item>
 
     <item id="1" type="select_single">
-        <question><p>以下のプログラムのは「Hello」と表示するプログラムである。<br/>
-			[ A ]に当てはまるコードを選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source1">
+        <question><p>以下のプログラムの出力結果を選びなさい。</p>
+　　	    <blockquote style="width:500px;" title="sample source1">
 		#include&lt;stdio.h&gt;<br/>		  int main<br/>
 		  {<br/>
-		    char [ A ] = &quot;Hello&quot;;<br/>
-		    <br/>
-		    printf(&quot;%s\n&quot;,a);
+		    int a;<br/>
+		    a = ( 2 + 3 + 1 ) * 2 + 4 / 2;<br/>
+		    printf(&quot;%d\n&quot;,a);<br/>
 		  　return 0;<br/>
 		  }<br/>
 	      </blockquote>
 		</question>
-	<response id="0">a[4]</response>
-	<response id="1">a[5]</response>
-	<response id="2">a[6]</response>
-	<response id="3">a</response>
+	<response id="0">8</response>
+	<response id="1">9</response>
+	<response id="2">14</response>
+	<response id="3">24</response>
 	<hints>ヒント</hints>
 	<evaluate>
 		<function></function>
@@ -59,14 +54,14 @@
 		<weight correct="1" incorrect="-1" />
 		<point>10</point>
 	</evaluate>
-	<explanation>文字列の最後には\0（ヌル文字）が入ります。</explanation>    </item>
+	<explanation>優先順位は１：（）、２：乗除算、３：加減算です。</explanation>    </item>
 
     <item id="2" type="select_single">
         <question><p>以下のプログラムの出力結果を選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source2">
+　　	    <blockquote style="width:500px;" title="sample source2">
 		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
 		  {<br/>
-		    int a[][];<br/>
+		    int a,b;<br/>
 			a = 5 * 10 + 5;<br/>
 			b = 5 + 10 / 2;<br/>
 			printf(&quot;%d\n&quot;,a+b);<br/>
@@ -91,11 +86,11 @@
 
     <item id="3" type="select_single">
         <question><p>以下のプログラムの出力結果を選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source3">
+　　	    <blockquote style="width:500px;" title="sample source3">
 		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
 		  {<br/>
-		    int a;
-			a = 8.6 * 5;
+		    int a;<br/>
+			a = 8.6 * 5;<br/>
 			printf(&quot;a = %d\n&quot;,a);<br/>
 		    <br/>
 		  　return 0;<br/>
@@ -119,7 +114,7 @@
     <item id="4" type="select_single">
         <question><p>以下のプログラムは暗黙的な型変換がされるプログラムです。<br/>
 		出力結果を選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source4">
+　　	    <blockquote style="width:500px;" title="sample source4">
 		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
 		  {<br/>
 			int i,j;<br/>
@@ -153,7 +148,7 @@
     <item id="5" type="select_single">
         <question><p>以下のプログラムはキャスト演算を用いたプログラムです。<br/>
 		出力結果を選びなさい。</p>
-　　	    <blockquote style="width:300px;" title="sample source4">
+　　	    <blockquote style="width:500px;" title="sample source4">
 		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
 		  {<br/>
 			int a;<br/>

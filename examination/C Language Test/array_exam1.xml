@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem_set id="array_exam1">
+  <item id="0" type="select_single">
+    <question>
+      <p>以下のプログラムは配列の初期化を行って、配列の中身を表示するプログラムである。</p>
+      <p>[A]に当てはまるコードを選択せよ。</p>
+　　　	    <blockquote style="width:400px;" title="sample source0">
+		#include&lt;stdio.h&gt;<br/>
+		  int main()<br/>
+		  {<br/>
+		    int i,a[10];<br/>
+		    for(i=0;i&lt;10;i++){<br/>
+			[ A ] = i;<br/>
+		    }<br/>
+	            <br/>
+		    for(i=0;i&lt;10;i++){<br/>
+			printf(&quot;a[%d] = %d\n&quot;,i,[ A ]);<br/>
+		    }<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+    </question>
+    <response id="0">a</response>
+    <response id="1">a[1]</response>
+    <response id="2">a[i]</response>
+    <hints>配列の基本</hints>
+    <evaluate>
+      <function></function>
+      <correct id="2" />
+      <score>1</score>
+      <weight correct="1" incorrect="-1" />
+      <point>10</point>
+    </evaluate>
+    <explanation>for文を使って配列１つ1つに数を代入するので、添字は変数になります。</explanation>
+  </item>
+
+    <item id="1" type="select_single">
+        <question><p>以下のプログラムのは「Hello」と表示するプログラムである。<br/>
+			[ A ]に当てはまるコードを選びなさい。</p>
+　　	    <blockquote style="width:400px;" title="sample source1">
+		#include&lt;stdio.h&gt;<br/>		  int main<br/>
+		  {<br/>
+		    char [ A ] = &quot;Hello&quot;;<br/>
+		    <br/>
+		    printf(&quot;%s\n&quot;,a);
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">a[4]</response>
+	<response id="1">a[5]</response>
+	<response id="2">a[6]</response>
+	<response id="3">a</response>
+	<hints>文字型配列</hints>
+	<evaluate>
+		<function></function>
+		<correct id="2" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>文字列の最後には\0（ヌル文字）が入ります。</explanation>    </item>
+
+    <item id="2" type="select_single">
+        <question><p>以下のプログラムは整数型のデータを、２行3列の配列へ入力し、その後最大値とその配列の要素番号を出力するプログラムです。[ A ]に当てはまるコードを選びなさい。(全て同じコードが入ります）</p>
+　　	    <blockquote style="width:400px;" title="sample source2">
+		#include&lt;stdio.h&gt;<br/>		  int main(void)<br/>
+		  {<br/>
+		    int i , j , mi , mj;<br/>
+		    int a[2][3] , max = 0;<br/>
+		    <br/>
+		    for(i=0;i&lt;2;i++){<br/>
+			for(j=0;j&lt;3;j++){<br/>
+			  scanf(&quot;%d&quot;,&amp;[ A ]);<br/>
+			  if([ A ] &gt; max){<br/>
+		    		max = [ A ];<br/>
+				mi = i;<br/>
+				mj = j;<br/>
+			  }<br/>
+			}<br/>
+		    }<br/>
+		    printf(&quot;最大：a[%d][%d] = %d\n&quot;,mi,mj,max);
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">a[i]</response>
+	<response id="1">a[j]</response>
+	<response id="2">a[i][j]</response>
+	<response id="3">a[j][i]</response>
+	<hints>多次元配列</hints>
+	<evaluate>
+		<function></function>
+		<correct id="2" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>このプログラムではiが行、jが列を指定しています。</explanation>    </item>
+
+    <item id="3" type="select_single">
+        <question><p>以下のプログラムは任意の数の文字データをキーボードから入力し、5文字ずつ改行しながら出力するプログラムである。[ A ]に当てはまるコードを選びなさい。</p>
+　　	    <blockquote style="width:500px;" title="sample source3">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+		    int i = 0;<br/>
+		    char word[100];<br/>
+		    <br/>
+		    printf(&quot;データを入力してください:\n&quot;);<br/>
+		    gets(word);/*改行を入力するまで文字列を変数に記憶する*/<br/>
+		    while([ A ]){<br/>
+			printf(&quot;%c&quot;,word[i++]);<br/>
+			if(i % 5 == 0){/*5文字ごとに*/<br/>
+			   printf(&quot;\n&quot;);/*改行させる*/<br/>
+			}<br/>
+		    }<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">word</response>
+	<response id="1">word[]</response>
+	<response id="2">word[i]</response>
+	<response id="3">word[1]</response>
+	<hints>文字型配列</hints>
+	<evaluate>
+		<function></function>
+		<correct id="2" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>（word[i]）は（word[i] != &apos;\0&apos;)と同じ働きをする。<br/>つまり、word[i]が&apos;\0&apos;になるまで繰り返えす。</explanation>    </item>
+
+    <item id="4" type="select_single">
+        <question><p>キーボードから3つの実数型のデータを配列に入力して、平均値を求めるプログラムです。[ A ]に入るコードを選びなさい。</p>
+　　	    <blockquote style="width:300px;" title="sample source4">
+		#include&lt;stdio.h&gt;<br/>		  int main()<br/>
+		  {<br/>
+			int i;<br/>
+			double a[3],sum=0.0;<br/>
+			<br/>
+			printf(&quot;3このデータを入力しなさい：\n&quot;);<br/>
+			for(i = 0; i [ A ] 3;i++){<br/>
+				scanf(&quot;%lf&quot;,&amp;a[i]);<br/>
+				sum += a[i];<br/>
+			}<br/>
+			printf(&quot;平均 = %.2f\n&quot;,sum/3);<br/>
+		  　return 0;<br/>
+		  }<br/>
+	      </blockquote>
+		</question>
+	<response id="0">&lt;</response>
+	<response id="1">&gt;</response>
+	<response id="2">&lt;=</response>
+	<response id="3">&gt;=</response>
+	<hints>配列の基礎</hints>
+	<evaluate>
+		<function></function>
+		<correct id="0" />
+		<score>1</score>
+		<weight correct="1" incorrect="-1" />
+		<point>10</point>
+	</evaluate>
+	<explanation>配列はa[0]から始まります。</explanation>    </item>
+
+</problem_set>
